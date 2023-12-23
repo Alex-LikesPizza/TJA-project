@@ -1,0 +1,82 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.7;
+  color: #131112;
+  background-color: #FAF9F9;
+  box-sizing: border-box; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito', sans-serif; }
+
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 1.6rem;
+  font-family: "Nunito", sans-serif;
+  padding: 2rem;
+  background-color: #F8EDE3;
+  color: #131112; }
+  .header__nav-container {
+    position: relative;
+    display: flex;
+    z-index: 1; }
+  .header__logo {
+    height: 6rem;
+    margin-left: -1rem; }
+  .header__nav {
+    display: inline-flex;
+    position: relative;
+    list-style: none;
+    align-items: center;
+    gap: 4vw; }
+  .header__nav-item {
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap; }
+    .header__nav-item::after {
+      content: "";
+      width: 0;
+      height: 2px;
+      background-color: #131112;
+      border-radius: 1rem;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transition: .3s all; }
+    .header__nav-item:hover::after {
+      left: 0;
+      right: auto;
+      width: 100%; }
+  .header__post {
+    align-self: center;
+    position: absolute;
+    right: 2rem;
+    display: flex;
+    gap: 4vw;
+    font-size: 1.9rem; }
+  .header__post-item {
+    font-size: 2.2rem;
+    cursor: pointer;
+    transition: .2s all; }
+    .header__post-item:hover {
+      transform: scale(1.1); }
+  .header__background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #D0B8A8;
+    z-index: 0;
+    clip-path: polygon(100% 100%, 100% 0, 70% 0, 80% 100%); }
