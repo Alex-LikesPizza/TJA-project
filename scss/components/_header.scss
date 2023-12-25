@@ -1,13 +1,15 @@
 .header{
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 8rem;
   font-size: 1.6rem;
   font-family: "Nunito", sans-serif;
   padding: 2rem;
   background-color: $primary-light;
-  color: $black;
+  color: $primary-accent;
+  transition: 0.5s;
 
 
 
@@ -15,10 +17,11 @@
     position: relative;
     display: flex;
     z-index: 1;
+    height: 100%;
   }
 
   &__logo{
-    height: 6rem;
+    height: 100%;
     margin-left: -1rem;
   }
 
@@ -43,7 +46,7 @@
       content: "";
       width: 0;
       height: 2px;
-      background-color: $black;
+      background-color: $primary-accent;
       border-radius: 1rem;
       position: absolute;
       bottom: 0;

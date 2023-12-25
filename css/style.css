@@ -18,21 +18,24 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Nunito', sans-serif; }
 
 .header {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 8rem;
   font-size: 1.6rem;
   font-family: "Nunito", sans-serif;
   padding: 2rem;
   background-color: #F8EDE3;
-  color: #131112; }
+  color: #55443a;
+  transition: 0.5s; }
   .header__nav-container {
     position: relative;
     display: flex;
-    z-index: 1; }
+    z-index: 1;
+    height: 100%; }
   .header__logo {
-    height: 6rem;
+    height: 100%;
     margin-left: -1rem; }
   .header__nav {
     display: inline-flex;
@@ -48,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
       content: "";
       width: 0;
       height: 2px;
-      background-color: #131112;
+      background-color: #55443a;
       border-radius: 1rem;
       position: absolute;
       bottom: 0;
