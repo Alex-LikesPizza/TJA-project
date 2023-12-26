@@ -6,6 +6,7 @@
   box-sizing: inherit; }
 
 body {
+  padding-top: 8rem;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-size: 1em;
@@ -83,3 +84,79 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #D0B8A8;
     z-index: 0;
     clip-path: polygon(100% 100%, 100% 0, 70% 0, 80% 100%); }
+
+.section__home {
+  padding: 1rem;
+  background-color: #f9f2ed;
+  width: calc(100% - 4rem);
+  margin: 0 auto;
+  margin-top: 1rem; }
+
+.home {
+  display: flex;
+  justify-content: center; }
+  .home__images {
+    position: relative;
+    margin-left: 10rem; }
+    .home__images > * {
+      width: 14rem;
+      height: 18.5rem;
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease-in-out; }
+    .home__images:hover__img--1 {
+      transform: translateX(-7rem) rotate(-20deg); }
+    .home__images:hover__img--2 {
+      transform: translateY(-5rem) rotate(-5deg); }
+    .home__images:hover__img--3 {
+      transform: translate(8rem, -1rem) rotate(20deg); }
+    .home__images:hover__circle--1 {
+      transform: translate(6rem, 15rem) scale(1); }
+    .home__images:hover__circle--2 {
+      transform: translate(-5rem, -2rem) scale(1); }
+    .home__images:hover__circle--3 {
+      transform: translate(-8rem, 13rem) scale(1); }
+    .home__images:hover__circle--4 {
+      transform: translate(16rem, -3rem) scale(1); }
+    .home__images:hover__square--1 {
+      transform: translate(9rem, -7rem) scale(1) rotate(-35deg); }
+    .home__images:hover__square--2 {
+      transform: translate(-11rem, 4rem) scale(1) rotate(-110deg); }
+    .home__images:hover__square--3 {
+      transform: translate(19rem, 9rem) scale(1) rotate(40deg); }
+  .home__img--1 {
+    background-image: url("../images/sample1.jpg");
+    transform: rotate(-5deg); }
+  .home__img--2 {
+    background-image: url("../images/sample3.jpg"); }
+  .home__img--3 {
+    background-image: url("../images/sample2.jpg");
+    transform: rotate(5deg); }
+  .home__circle {
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    z-index: -1;
+    transform: translate(4rem, 6rem) scale(0); }
+  .home__circle--1 {
+    border: 0.3rem solid #ff4141; }
+  .home__circle--2 {
+    border: 0.3rem solid #5252ff; }
+  .home__circle--3 {
+    border: 0.3rem solid #ffff31; }
+  .home__circle--4 {
+    border: 0.3rem solid #ff94fa; }
+  .home__square {
+    border-radius: 0.2rem;
+    width: 4rem;
+    height: 4rem;
+    z-index: -1;
+    transform: translate(4rem, 6rem) scale(0); }
+  .home__square--1 {
+    border: 0.3rem solid #5afb5a; }
+  .home__square--2 {
+    border: 0.3rem solid #5ae0fb; }
+  .home__square--3 {
+    border: 0.3rem solid #ffb443; }

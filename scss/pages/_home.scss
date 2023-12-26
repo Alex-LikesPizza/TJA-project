@@ -1,0 +1,109 @@
+.section__home{
+  padding: 1rem;
+  background-color: $primary-extra-light;
+  width: calc(100% - 4rem);
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+.home{
+  display: flex;
+  justify-content: center;
+
+  &__images{
+    position: relative;
+    margin-left: 10rem;
+    &>*{
+      width: 14rem;
+      height: 18.5rem;
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover{
+      &__img--1{
+        transform: translateX(-7rem) rotate(-20deg);
+      }
+      &__img--2{
+        transform: translateY(-5rem) rotate(-5deg);
+      }
+      &__img--3{
+        transform: translate(8rem, -1rem) rotate(20deg);
+      }
+      
+      &__circle--1{
+        transform: translate(6rem, 15rem) scale(1);
+      }
+      &__circle--2{
+        transform: translate(-5rem, -2rem) scale(1);
+      }
+      &__circle--3{
+        transform: translate(-8rem, 13rem) scale(1);
+      }
+      &__circle--4{
+        transform: translate(16rem, -3rem) scale(1);
+      }
+  
+      &__square--1{
+        transform: translate(9rem, -7rem) scale(1) rotate(-35deg);
+      }
+      &__square--2{
+        transform: translate(-11rem, 4rem) scale(1) rotate(-110deg);
+      }
+      &__square--3{
+        transform: translate(19rem, 9rem) scale(1) rotate(40deg);
+      }
+    }
+  }
+  &__img--1{
+    background-image: url("../images/sample1.jpg");
+    transform: rotate(-5deg);
+  }
+  &__img--2{
+    background-image: url("../images/sample3.jpg");
+  }
+  &__img--3{
+    background-image: url("../images/sample2.jpg");
+    transform: rotate(5deg);
+  }
+
+
+  &__circle{
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    z-index: -1;
+    transform: translate(4rem, 6rem) scale(0);
+  }
+  &__circle--1{
+    border: 0.3rem solid rgb(255, 65, 65);
+  }
+  &__circle--2{
+    border: 0.3rem solid rgb(82, 82, 255);
+  }
+  &__circle--3{
+    border: 0.3rem solid rgb(255, 255, 49);
+  }
+  &__circle--4{
+    border: 0.3rem solid rgb(255, 148, 250);
+  }
+
+  &__square{
+    border-radius: 0.2rem;
+    width: 4rem;
+    height: 4rem;
+    z-index: -1;
+    transform: translate(4rem, 6rem) scale(0);
+  }
+  &__square--1{
+    border: 0.3rem solid rgb(90, 251, 90);
+  }
+  &__square--2{
+    border: 0.3rem solid rgb(90, 224, 251);
+  }
+  &__square--3{
+    border: 0.3rem solid rgb(255, 180, 67);
+  }
+}

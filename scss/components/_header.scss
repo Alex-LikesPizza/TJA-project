@@ -37,10 +37,6 @@
     cursor: pointer;
     position: relative;
     white-space: nowrap;
-    
-    &--active{
-
-    }
 
     &::after{
       content: "";
