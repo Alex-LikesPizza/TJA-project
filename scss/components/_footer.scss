@@ -1,0 +1,24 @@
+.footer{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background-color: $primary-dark;
+  width: calc(100% - 2rem);
+  margin: 1rem auto;
+  padding: 2rem 10%;
+  border-radius: 2px 2px 1rem 1rem;
+  
+  &>*:not(&__background){
+    z-index: 1;
+  }
+
+  &__background{
+    @include full-size-absolute;
+    @include top-triangle-clip;
+    background-color: lighten($primary-dark, 3%);
+  }
+
+  &__list{
+    list-style: none;
+  }
+}

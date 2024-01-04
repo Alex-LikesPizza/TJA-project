@@ -14,10 +14,10 @@
     <nav class="header__nav-container">
       <img class="header__logo" src="./images/logo.png" alt="site logo">
       <ul class="header__nav">
-        <li class="header__nav-item header__nav-item--active">Acasă</li>
-        <li class="header__nav-item">Produse</li>
-        <li class="header__nav-item">Despre noi</li>
-        <li class="header__nav-item">Contacte</li>
+        <li class="header__nav-item"><a href="#" class="underscore">Acasă</a></li>
+        <li class="header__nav-item"><a href="#" class="underscore">Produse</a></li>
+        <li class="header__nav-item"><a href="#" class="underscore">Despre noi</a></li>
+        <li class="header__nav-item"><a href="#" class="underscore">Contacte</a></li>
       </ul>
       <div class="header__post">
         <i class="bi bi-cart2 header__post-item"></i>
@@ -29,30 +29,49 @@
 
   <main>
     <section class="section__home">
+      <div class="section__home-background"></div>
       <div class="home">
-        <div class="home__column">
-          <h1 class="home__heading">
+        <div class="home__column home__text">
+          <h1>
             Website Title
           </h1>
-          <p class="home__subheading">Pictura nu e doar un hobby</p>
+          <h4>Pictura nu e doar un hobby</h4>
         </div>
         <div class="home__column home__images">
-          <div class="home__images">
-            <div class="home__img--1"></div>
-            <div class="home__img--2"></div>
-            <div class="home__img--3"></div>
-            <div class="home__circle--1 home__circle"></div>
-            <div class="home__circle--2 home__circle"></div>
-            <div class="home__circle--3 home__circle"></div>
-            <div class="home__circle--4 home__circle"></div>
-            <div class="home__square--1 home__square"></div>
-            <div class="home__square--2 home__square"></div>
-            <div class="home__square--3 home__square"></div>
+          <div class="home__image-container">
+            <div class="home__image home__image--1"></div>
+            <div class="home__image home__image--2"></div>
+            <div class="home__image home__image--3"></div>
           </div>
         </div>
       </div>
     </section>
   </main>
+  <footer class="footer">
+    <div class="footer__background"></div>
+    <div class="footer__column">
+      <h2 class="footer__title">FAQ</h2>
+      <ul class="footer__list">
+        <li><a href="#" class="underscore">Metode de plată</a></li>
+      </ul>
+    </div>
+    <div class="footer__column">
+      <h2 class="footer__title">Contacte</h2>
+      <ul class="footer__list">
+        <li><a href="#" class="underscore">Telefon</a></li>
+        <li><a href="#" class="underscore">Email</a></li>
+        <li><a href="#" class="underscore">Facebook</a></li>
+      </ul>
+    </div>
+    <div class="footer__column">
+      <h2 class="footer__title">Altele</h2>
+      <ul class="footer__list">
+        <li><a href="" class="underscore">Despre noi</a></li>
+        <li><a href="" class="underscore">Despre noi</a></li>
+        <li><a href="" class="underscore">Despre noi</a></li>
+      </ul>
+    </div>
+  </footer>
 
   <script src="/js/components/header.js"></script>
 </body>
