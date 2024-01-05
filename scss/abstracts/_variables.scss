@@ -1,11 +1,22 @@
 // COLORS
 $black: #131112;
 $white: #FAF9F9;
-$gray: #f0f0f0;
+$gray: #807a7d;
+$light-gray: #d9ced3;
 
 
 $primary: #eeddcd;
 $primary-extra-light: #f9f2ed;
 $primary-light: #F8EDE3;
 $primary-dark: #D0B8A8;
+$primary-extra-dark: #8b644d;
 $primary-accent: #44372f;
+$primary-accent-light: $primary-light;
+
+// LAYOUT
+$light-radius: 2px;
+$normal-radius: 4px;
+$strong-radius: 1rem;
+
+// OTHER
+$light-shadow: 0.1rem 0.1rem 0.2rem rgba($black, 0.2);

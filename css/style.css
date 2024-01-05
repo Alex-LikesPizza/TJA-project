@@ -35,7 +35,7 @@ h4 {
   font-weight: 500; }
 
 a {
-  color: #131112;
+  color: inherit;
   text-decoration: none; }
   a.underscore {
     position: relative; }
@@ -62,7 +62,7 @@ a {
   height: 8rem;
   font-size: 1.6rem;
   font-family: "Nunito", sans-serif;
-  padding: 2rem;
+  padding: 1rem;
   background-color: #F8EDE3;
   color: #44372f;
   transition: 0.5s;
@@ -114,12 +114,14 @@ a {
 .footer {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #D0B8A8;
   width: calc(100% - 2rem);
   margin: 1rem auto;
-  padding: 2rem 10%;
-  border-radius: 2px 2px 1rem 1rem; }
+  padding: 0.5rem 0 1rem 0;
+  border-radius: 2px 2px 1rem 1rem;
+  color: #44372f;
+  font-size: 1.2rem; }
   .footer > *:not(.footer__background) {
     z-index: 1; }
   .footer__background {
@@ -205,3 +207,41 @@ a {
       transform: translateX(1rem) rotate(5deg); }
       .home__image--3:hover {
         rotate: -5deg; }
+
+.products-container {
+  width: calc(100% - 2rem);
+  margin: 1rem auto; }
+
+.products-nav {
+  background-color: #eeddcd;
+  padding: 0.4rem 1rem 0.8rem 1rem;
+  border-radius: 1rem 1rem 4px 4px; }
+  .products-nav__form {
+    height: 2.2rem; }
+  .products-nav__search {
+    font-size: 1.2rem;
+    height: 100%;
+    border-radius: 2px;
+    border: 1px solid #807a7d;
+    background-color: #FAF9F9;
+    outline: none;
+    color: #131112;
+    padding: 0.2rem;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2); }
+    .products-nav__search:focus {
+      background-color: color-mix(in srgb, #FAF9F9 97%, #131112); }
+  .products-nav__submit {
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    font-size: 1.2rem;
+    background-color: #8b644d;
+    color: #FAF9F9;
+    border: none;
+    padding: 0 0.4rem;
+    border-radius: 2px 1rem 1rem 2px;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2);
+    transition: 0.2s all; }
+    .products-nav__submit:hover {
+      background-color: #7b5844;
+      transform: translateX(0.2rem); }

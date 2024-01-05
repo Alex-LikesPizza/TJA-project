@@ -1,0 +1,49 @@
+.products-container{
+  width: calc(100% - 2rem);
+  margin: 1rem auto;
+}
+
+.products-nav{
+  background-color: $primary;
+  padding: 0.4rem 1rem 0.8rem 1rem;
+  border-radius: $strong-radius $strong-radius $normal-radius $normal-radius;
+
+  
+  &__form{
+    height: 2.2rem;
+  }
+  &__search{
+    font-size: 1.2rem;
+    height: 100%;
+    border-radius: $light-radius;
+    border: 1px solid $gray;
+    background-color: $white;
+    outline: none;
+    color: $black;
+    padding: 0.2rem;
+    box-shadow: $light-shadow;
+
+    &:focus{
+      background-color: color-mix(in srgb, $white 97%, $black);
+    }
+  }
+  
+  &__submit{
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    font-size: 1.2rem;
+    background-color: $primary-extra-dark;
+    color: $white;
+    border: none;
+    padding: 0 0.4rem;
+    border-radius: $light-radius $strong-radius $strong-radius $light-radius;
+    box-shadow: $light-shadow;
+    transition: 0.2s all;
+
+    &:hover{
+      background-color: darken($primary-extra-dark, 5%);
+      transform: translateX(0.2rem);
+    }
+  }
+}

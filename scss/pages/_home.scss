@@ -5,7 +5,7 @@
   margin: 0 auto;
   margin-top: 1rem;
   position: relative;
-  border-radius: 1rem 1rem 4px 4px;
+  border-radius: $strong-radius $strong-radius $normal-radius $normal-radius;
   overflow: hidden;
 
   &-background{
