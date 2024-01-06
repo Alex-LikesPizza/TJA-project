@@ -10,9 +10,7 @@
   color: $primary-accent;
   font-size: 1.2rem;
   
-  &>*:not(&__background){
-    z-index: 1;
-  }
+  @include level-up;
 
   &__background{
     @include full-size-absolute;

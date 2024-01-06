@@ -7,7 +7,16 @@
   background-color: $primary;
   padding: 0.4rem 1rem 0.8rem 1rem;
   border-radius: $strong-radius $strong-radius $normal-radius $normal-radius;
+  position: relative;
+  overflow: hidden;
 
+  @include level-up;
+  
+  &__background{
+    @include full-size-absolute;
+    @include left-reverse-clip;
+    background-color: $primary-dark;
+  }
   
   &__form{
     height: 2.2rem;
@@ -15,16 +24,18 @@
   &__search{
     font-size: 1.2rem;
     height: 100%;
+    width: clamp(20ch, 25%, 70ch);
     border-radius: $light-radius;
-    border: 1px solid $gray;
+    border: 1px solid $light-gray;
     background-color: $white;
     outline: none;
     color: $black;
     padding: 0.2rem;
     box-shadow: $light-shadow;
+    transition: 0.4s all;
 
     &:focus{
-      background-color: color-mix(in srgb, $white 97%, $black);
+      background-color: color-mix(in srgb, $white 85%, $primary-dark);
     }
   }
   
@@ -47,3 +58,9 @@
     }
   }
 }
+
+.products{
+  position: relative;
+  
+}
+
