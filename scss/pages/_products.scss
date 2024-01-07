@@ -59,8 +59,11 @@
   }
 }
 
-.products{
+.recents{
+  margin-top: $normal-margin;
+  background-color: $primary;
+  padding: 0 0.2rem 0.5rem 0.2rem;
+  border-radius: $normal-radius;
   position: relative;
-  
 }
 

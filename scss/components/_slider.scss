@@ -1,0 +1,8 @@
+.slider{
+  display: flex;
+  flex-flow: row nowrap;
+  gap: $normal-margin;
+  &>*{flex-shrink: 0;}
+  overflow: hidden;
+
+}
