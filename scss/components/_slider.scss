@@ -1,8 +1,35 @@
 .slider{
+  position: relative;
   display: flex;
   flex-flow: row nowrap;
   gap: $normal-margin;
   &>*{flex-shrink: 0;}
   overflow: hidden;
 
+  .slider__button{
+    position: absolute;
+    font-size: 6rem;
+    font-family: sans-serif;
+    width: 6rem;
+    height: 6rem;
+    color: $black;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($primary, 0.6);
+    border-radius: 50%;
+    translate: 0.3s all;
+
+    &--left{
+      left: 1rem;
+      padding-right: 0.5rem;
+    }
+    &--right{
+      padding-left: 0.5rem;
+      right: 1rem;
+    }
+  }
 }

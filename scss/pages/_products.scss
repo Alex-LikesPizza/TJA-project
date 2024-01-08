@@ -59,10 +59,10 @@
   }
 }
 
-.recents{
+.recents, .recommended{
   margin-top: $normal-margin;
   background-color: $primary;
-  padding: 0 0.2rem 0.5rem 0.2rem;
+  padding: 0 0.4rem 0.5rem 0.4rem;
   border-radius: $normal-radius;
   position: relative;
 }
