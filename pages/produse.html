@@ -8,8 +8,11 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
+  <script src="../imports/splide/splide.min.js"></script>
+  <link rel="stylesheet" href="../imports/splide/splide.min.css">
+
   <link rel="stylesheet" href="../css/style.css">
-  <script src="../js/pages/products.js"></script>
+  <script src="../js/pages/products.js" defer></script>
   <title>Produse</title>
 </head>
 <body>
@@ -41,86 +44,50 @@
       </form>
       <div class="products-nav__background"></div>
     </section>
-    
-    <section class="recents">
+
+    <section class="products">
       <h2>Recente</h2>
-      <div class="slider">
-        <div class="card">
-          <h3 class="card__title">Dark Past</h3>
-          <img  class="card__image" src="../images/sample1.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Roses</h3>
-          <img  class="card__image" src="../images/sample2.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Freedom in the wild</h3>
-          <img  class="card__image" src="../images/sample3.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Dark Past</h3>
-          <img  class="card__image" src="../images/sample1.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Roses</h3>
-          <img  class="card__image" src="../images/sample2.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Freedom in the wild</h3>
-          <img  class="card__image" src="../images/sample3.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Dark Past</h3>
-          <img  class="card__image" src="../images/sample1.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Roses</h3>
-          <img  class="card__image" src="../images/sample2.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Freedom in the wild</h3>
-          <img  class="card__image" src="../images/sample3.jpg" alt="example">
-        </div>
-      </div>
-    </section>
-    <section class="recommended">
-      <h2>Recomandari</h2>
-      <div class="slider">
-        <div class="card">
-          <h3 class="card__title">Dark Past</h3>
-          <img  class="card__image" src="../images/sample1.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Roses</h3>
-          <img  class="card__image" src="../images/sample2.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Freedom in the wild</h3>
-          <img  class="card__image" src="../images/sample3.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Dark Past</h3>
-          <img  class="card__image" src="../images/sample1.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Roses</h3>
-          <img  class="card__image" src="../images/sample2.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Freedom in the wild</h3>
-          <img  class="card__image" src="../images/sample3.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Dark Past</h3>
-          <img  class="card__image" src="../images/sample1.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Roses</h3>
-          <img  class="card__image" src="../images/sample2.jpg" alt="example">
-        </div>
-        <div class="card">
-          <h3 class="card__title">Freedom in the wild</h3>
-          <img  class="card__image" src="../images/sample3.jpg" alt="example">
+      <div class="products__slide splide" id="slider--recents">
+
+        <div class="splide__track">
+          <ul class="splide__list products__list">
+            <li class="splide__slide">
+              <div class="card">
+                <h3 class="card__title">Dark Past</h3>
+                <img  class="card__image" src="../images/sample1.jpg" alt="example">
+              </div>
+            </li>
+            <li class="splide__slide">
+              <div class="card">
+                <h3 class="card__title">Roses</h3>
+                <img  class="card__image" src="../images/sample2.jpg" alt="example">
+              </div>
+            </li>
+            <li class="splide__slide">
+              <div class="card">
+                <h3 class="card__title">Freedom in the wild</h3>
+                <img  class="card__image" src="../images/sample3.jpg" alt="example">
+              </div>
+            </li>
+            <li class="splide__slide">
+              <div class="card">
+                <h3 class="card__title">Dark Past</h3>
+                <img  class="card__image" src="../images/sample1.jpg" alt="example">
+              </div>
+            </li>
+            <li class="splide__slide">
+              <div class="card">
+                <h3 class="card__title">Roses</h3>
+                <img  class="card__image" src="../images/sample2.jpg" alt="example">
+              </div>
+            </li>
+            <li class="splide__slide">
+              <div class="card">
+                <h3 class="card__title">Freedom in the wild</h3>
+                <img  class="card__image" src="../images/sample3.jpg" alt="example">
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -155,6 +122,5 @@
   </footer>
 
   <script src="../js/components/header.js"></script>
-  <script src="../js/components/slider.js"></script>
 </body>
 </html>
