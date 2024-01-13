@@ -14,14 +14,18 @@ $primary-accent: #44372f;
 $primary-accent-light: $primary-light;
 
 // LAYOUT
+$normal-radius: 5px;
 $light-radius: 2px;
-$normal-radius: 4px;
+$medium-radius: 0.5rem;
 $strong-radius: 1rem;
 
 $card-width: 16rem;
 $card-height: 21.3rem;
 
 $normal-margin: 1rem;
+$small-margin: 0.5rem;
 
 // OTHER
 $light-shadow: 0.1rem 0.1rem 0.2rem rgba($black, 0.2);
+$medium-shadow: 0.2rem 0.2rem 0.4rem rgba($black, 0.2);
+$strong-shadow: 0.25rem 0.25rem 0.4rem rgba($black, 0.4);

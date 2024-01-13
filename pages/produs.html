@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="--TBA--">
+  <meta name="keywords" content="--TBA--">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  
+  <script src="../imports/splide/splide.min.js"></script>
+  <link rel="stylesheet" href="../imports/splide/splide.min.css">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/components/header.js" defer></script>
+  <script src="../js/components/sliders.js" defer></script>
+  <script src="../js/pages/product.js"></script>
+  <title>Produs</title>
+</head>
+<body>
+  <header id="header" class="header header--home">
+    <nav class="header__nav-container">
+      <img class="header__logo" src="../images/logo.png" alt="site logo">
+      <ul class="header__nav">
+        <li class="header__nav-item"><a href="../index.html" class="underscore">Acasă</a></li>
+        <li class="header__nav-item"><a href="./produse.html" class="underscore">Produse</a></li>
+        <li class="header__nav-item"><a href="./despre-noi.html" class="underscore">Despre noi</a></li>
+        <li class="header__nav-item"><a href="./contacte.html" class="underscore">Contacte</a></li>
+      </ul>
+      <div class="header__post">
+        <i class="bi bi-cart2 header__post-item"></i>
+        <i class="bi bi-list header__post-item"></i>
+      </div>
+    </nav>
+    <div class="header__background"></div>
+  </header>
+
+
+  <main>
+    <div class="product">
+      <div class="product__info">
+        <h2 class="product__title">Parrot on a stick</h2>
+        <p class="product__paragraph">&emsp;Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod totam hic nostrum reprehenderit ad. Natus dicta laborum autem. Reiciendis, recusandae.</p>
+        <div class="product__purchase-info">
+          <p class="product__price">120.00 lei</p>
+          <p class="product__status product__status--avalable">Valabil</p>
+        </div>
+        <button class="product__purchase"><i class="bi bi-plus-circle"></i> Adaugă în coș</button>
+      </div>
+      <div class="product__image-container">
+        <img class="product__image" src="../images/sample3.jpg">
+      </div>
+    </div>
+
+    <div class="products-container">
+      <div class="products">
+        <div class="products__section">
+          <h2 class="products__title">Produse Similare</h2>
+          <div class="products__slide splide" id="slider--similar">
+
+            <div class="splide__track">
+              <ul class="splide__list products__list">
+                <li class="splide__slide">
+                  <a href="./produs.html">
+                    <div class="card">
+                      <h3 class="card__title">Dark Past</h3>
+                      <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                      <p class="card__price">100.00 lei</p>
+                    </div>
+                  </a>
+                </li>
+                <li class="splide__slide">
+                  <a href="./produs.html">
+                    <div class="card">
+                      <h3 class="card__title">Flowers</h3>
+                      <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                      <p class="card__price">80.00 lei</p>
+                    </div>
+                  </a>
+                </li>
+                <li class="splide__slide">
+                  <a href="./produs.html">
+                    <div class="card">
+                      <h3 class="card__title">Parrot on a stick</h3>
+                      <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                      <p class="card__price">160.00 lei</p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+
+  <footer class="footer">
+    <div class="footer__background"></div>
+    <div class="footer__column">
+      <h2 class="footer__title">FAQ</h2>
+      <ul class="footer__list">
+        <li><a href="#" class="underscore">Metode de plată</a></li>
+      </ul>
+    </div>
+    <div class="footer__column">
+      <h2 class="footer__title">Contacte</h2>
+      <ul class="footer__list">
+        <li><a href="#" class="underscore">Telefon</a></li>
+        <li><a href="#" class="underscore">Email</a></li>
+        <li><a href="#" class="underscore">Facebook</a></li>
+      </ul>
+    </div>
+    <div class="footer__column">
+      <h2 class="footer__title">Altele</h2>
+      <ul class="footer__list">
+        <li><a href="" class="underscore">Despre noi</a></li>
+        <li><a href="" class="underscore">Despre noi</a></li>
+        <li><a href="" class="underscore">Despre noi</a></li>
+      </ul>
+    </div>
+  </footer>  
+</body>
+</html>

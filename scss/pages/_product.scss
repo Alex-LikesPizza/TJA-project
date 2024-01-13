@@ -1,0 +1,73 @@
+.product{
+  display: flex;
+  justify-content: center;
+  &__info{
+    width: clamp(45ch, 40%, 60ch);
+    margin-top: 4rem;
+    margin-right: 10%;
+  }
+  &__title{
+    text-align: center;
+  }
+  &__paragraph{
+    color: $gray;
+    font-size: 1.1rem;
+  }
+  &__purchase-info{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  &__price{
+    color: $black;
+  }
+  &__status--avalable{
+    color: green;
+  }
+  &__status--listed{
+    color: goldenrod;
+  }
+  &__status--sold{
+    color: red;
+  }
+  &__purchase{
+    border: none;
+    background-color: $primary;
+    color: $primary-accent;
+    font-size: 1.4rem;
+    padding: $small-margin $normal-margin;
+    border-radius: $normal-radius;
+    box-shadow: $light-shadow;
+    transition: 0.3s all;
+    cursor: pointer;
+    
+    &:hover{
+      background-color: $primary-dark;
+      box-shadow: $medium-shadow;
+      transform: translateY(-2px);
+    }
+  }
+
+
+
+  &__image-container{
+    overflow: hidden;
+    position: relative;
+    box-shadow: $medium-shadow;
+    border-radius: $light-radius;
+    height: 70vh;
+    aspect-ratio: 2/3;
+  }
+  &__image{
+    width: 100%;
+    height: 100%;
+    
+
+    &:hover{
+      transform: scale(2);
+      cursor: zoom-in;
+    }
+  }
+}

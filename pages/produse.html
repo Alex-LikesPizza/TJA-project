@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="../imports/splide/splide.min.css">
 
   <link rel="stylesheet" href="../css/style.css">
-  <script src="../js/pages/products.js" defer></script>
+  <script src="../js/components/header.js" defer></script>
+  <script src="../js/components/sliders.js" defer></script>
   <title>Produse</title>
 </head>
 <body>
@@ -46,49 +47,410 @@
     </section>
 
     <section class="products">
-      <h2>Recente</h2>
-      <div class="products__slide splide" id="slider--recents">
+      <div class="products__section">
+        <h2 class="products__title">Recente</h2>
+        <div class="products__slide splide" id="slider--recents">
 
-        <div class="splide__track">
-          <ul class="splide__list products__list">
-            <li class="splide__slide">
-              <div class="card">
-                <h3 class="card__title">Dark Past</h3>
-                <img  class="card__image" src="../images/sample1.jpg" alt="example">
-              </div>
-            </li>
-            <li class="splide__slide">
-              <div class="card">
-                <h3 class="card__title">Roses</h3>
-                <img  class="card__image" src="../images/sample2.jpg" alt="example">
-              </div>
-            </li>
-            <li class="splide__slide">
-              <div class="card">
-                <h3 class="card__title">Freedom in the wild</h3>
-                <img  class="card__image" src="../images/sample3.jpg" alt="example">
-              </div>
-            </li>
-            <li class="splide__slide">
-              <div class="card">
-                <h3 class="card__title">Dark Past</h3>
-                <img  class="card__image" src="../images/sample1.jpg" alt="example">
-              </div>
-            </li>
-            <li class="splide__slide">
-              <div class="card">
-                <h3 class="card__title">Roses</h3>
-                <img  class="card__image" src="../images/sample2.jpg" alt="example">
-              </div>
-            </li>
-            <li class="splide__slide">
-              <div class="card">
-                <h3 class="card__title">Freedom in the wild</h3>
-                <img  class="card__image" src="../images/sample3.jpg" alt="example">
-              </div>
-            </li>
-          </ul>
+          <div class="splide__track">
+            <ul class="splide__list products__list">
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Dark Past</h3>
+                    <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                    <p class="card__price">100.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Flowers</h3>
+                    <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                    <p class="card__price">80.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Parrot on a stick</h3>
+                    <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                    <p class="card__price">160.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Dark Past</h3>
+                    <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                    <p class="card__price">100.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Flowers</h3>
+                    <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                    <p class="card__price">80.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Parrot on a stick</h3>
+                    <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                    <p class="card__price">160.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Dark Past</h3>
+                    <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                    <p class="card__price">100.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Flowers</h3>
+                    <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                    <p class="card__price">80.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Parrot on a stick</h3>
+                    <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                    <p class="card__price">160.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Dark Past</h3>
+                    <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                    <p class="card__price">100.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Flowers</h3>
+                    <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                    <p class="card__price">80.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Parrot on a stick</h3>
+                    <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                    <p class="card__price">160.00 lei</p>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
+
+      <div class="products__section">
+        <h2 class="products__title">Recomandări</h2>
+        <div class="products__slide splide" id="slider--recomended">
+
+          <div class="splide__track">
+            <ul class="splide__list products__list">
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Dark Past</h3>
+                    <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                    <p class="card__price">100.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Flowers</h3>
+                    <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                    <p class="card__price">80.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Parrot on a stick</h3>
+                    <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                    <p class="card__price">160.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Dark Past</h3>
+                    <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                    <p class="card__price">100.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Flowers</h3>
+                    <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                    <p class="card__price">80.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Parrot on a stick</h3>
+                    <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                    <p class="card__price">160.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Dark Past</h3>
+                    <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                    <p class="card__price">100.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Flowers</h3>
+                    <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                    <p class="card__price">80.00 lei</p>
+                  </div>
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="./produs.html">
+                  <div class="card">
+                    <h3 class="card__title">Parrot on a stick</h3>
+                    <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                    <p class="card__price">160.00 lei</p>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="products__section products__section--gallery">
+        <h2 class="products__title">Galerie</h2>
+        <ul class="products__gallery">
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Dark Past</h3>
+                <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                <p class="card__price">100.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Flowers</h3>
+                <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                <p class="card__price">80.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Parrot on a stick</h3>
+                <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                <p class="card__price">160.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Dark Past</h3>
+                <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                <p class="card__price">100.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Flowers</h3>
+                <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                <p class="card__price">80.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Parrot on a stick</h3>
+                <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                <p class="card__price">160.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Dark Past</h3>
+                <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                <p class="card__price">100.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Flowers</h3>
+                <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                <p class="card__price">80.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Parrot on a stick</h3>
+                <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                <p class="card__price">160.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Dark Past</h3>
+                <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                <p class="card__price">100.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Flowers</h3>
+                <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                <p class="card__price">80.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Parrot on a stick</h3>
+                <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                <p class="card__price">160.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Dark Past</h3>
+                <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                <p class="card__price">100.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Flowers</h3>
+                <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                <p class="card__price">80.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Parrot on a stick</h3>
+                <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                <p class="card__price">160.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Dark Past</h3>
+                <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                <p class="card__price">100.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Flowers</h3>
+                <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                <p class="card__price">80.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Parrot on a stick</h3>
+                <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                <p class="card__price">160.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Dark Past</h3>
+                <img  class="card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+                <p class="card__price">100.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Flowers</h3>
+                <img  class="card__image" src="../images/sample2.jpg" loading="lazy" alt="example">
+                <p class="card__price">80.00 lei</p>
+              </div>
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href="./produs.html">
+              <div class="card">
+                <h3 class="card__title">Parrot on a stick</h3>
+                <img  class="card__image" src="../images/sample3.jpg" loading="lazy" alt="example">
+                <p class="card__price">160.00 lei</p>
+              </div>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
   </main>
@@ -121,6 +483,5 @@
     </div>
   </footer>
 
-  <script src="../js/components/header.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 @import "base/animations";
 @import "base/base";
-@import "base/tipography";
+@import "base/typography";
 @import "base/utilities";
 
 @import "abstracts/functions";
@@ -10,8 +10,10 @@
 @import "components/header";
 @import "components/footer";
 @import "components/card";
+@import "components/splide";
 
 @import "pages/home";
 @import "pages/products";
 @import "pages/about";
 @import "pages/contacts";
+@import "pages/product";
