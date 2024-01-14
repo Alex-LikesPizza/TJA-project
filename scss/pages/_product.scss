@@ -23,14 +23,48 @@
   &__price{
     color: $black;
   }
-  &__status--avalable{
-    color: green;
-  }
-  &__status--listed{
-    color: goldenrod;
-  }
-  &__status--sold{
-    color: red;
+
+  &__status{
+    position: relative;
+    cursor: default;
+
+    &--available{
+      color: green;
+      &::after{
+        content: "Acest produs este valabil pentru vânzare.";
+      }
+    }
+    &--listed{
+      color: goldenrod;
+      &::after{
+        content: " Dacă cumpărătorul acestui produs renunță la el, vei fi următorul după listă.";
+      }
+    }
+    &--sold{
+      color: red;
+      &::after{
+        content: "Acest produs a fost vândut.";
+      }
+    }
+
+    &::after{
+      position: absolute;
+      display: none;
+      width: 10rem;
+      font-size: 0.8rem;
+      color: $black;
+      top: -2.8rem;
+      background-color: $primary;
+      border: 1px dashed black;
+      border-radius: $medium-radius;
+      padding: 0.2rem;
+      left: 0;
+    }
+
+    &:hover::after{
+      display: block;
+    }
+    
   }
   &__purchase{
     border: none;
@@ -58,7 +92,6 @@
     box-shadow: $medium-shadow;
     border-radius: $light-radius;
     height: 70vh;
-    aspect-ratio: 2/3;
   }
   &__image{
     width: 100%;

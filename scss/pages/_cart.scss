@@ -1,0 +1,113 @@
+.cart-container{
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+}
+
+.cart{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  
+  &__pre-title{
+    text-align: center;
+  }
+  &__list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $normal-margin;
+
+  }
+  &__item{
+    position: relative;
+    width: clamp(25rem, 40vw, 60rem);
+    border-radius: $normal-radius;
+    overflow: hidden;
+    box-shadow: $medium-shadow;
+  }
+  &__title{
+    font-size: 1.4rem;
+    line-height: 2rem;
+    text-align: center;
+    background-color: $primary;
+  }
+  &__item-content{
+    position: relative;
+    height: 12rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $large-margin;
+    padding: $small-margin;
+    background-color: $primary-light;
+  }
+  &__image{
+    height: 100%;
+    box-shadow: $medium-shadow;
+  }
+  &__info{
+    font-size: 1.4rem;
+  }
+  &__price{
+    color: $black;
+  }
+
+  &__status{
+    position: relative;
+    cursor: default;
+
+    &--available{
+      color: green;
+      &::after{
+        content: "Acest produs este valabil pentru vânzare.";
+      }
+    }
+    &--listed{
+      color: goldenrod;
+      &::after{
+        content: "Dacă cumpărătorul acestui produs renunță la el, vei fi următorul după listă.";
+      }
+    }
+    &--sold{
+      color: red;
+      &::after{
+        content: "Acest produs a fost vândut.";
+      }
+    }
+
+    &::after{
+      position: absolute;
+      display: none;
+      width: 10rem;
+      font-size: 0.8rem;
+      top: -2.8rem;
+      color: $black;
+      background-color: $primary;
+      border: 1px dashed black;
+      border-radius: $medium-radius;
+      padding: 0.2rem;
+      left: 0;
+    }
+
+    &:hover::after{
+      display: block;
+    }
+    
+  }
+
+  &__remove{
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: 0.2s all;
+
+    &:hover{
+      color: $gray;
+    }
+  }
+}
