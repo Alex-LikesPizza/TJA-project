@@ -10,7 +10,7 @@ const headerScroll = () => {
   else{
     header.style.paddingTop =  "0.2rem";
     header.style.paddingBottom =  "0.2rem";
-    header.style.height = "6rem";
+    header.style.height = "5rem";
   }
 }
 window.addEventListener("scroll", headerScroll)
