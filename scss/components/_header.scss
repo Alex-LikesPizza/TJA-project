@@ -52,13 +52,13 @@
     right: 2rem;
     display: flex;
     gap: 4vw;
-    font-size: 1.9rem;
+    font-size: inherit;
   }
 
   &__post-item{
-    font-size: 2.2rem;
+    font-size: calc(1em * 1.3);
     cursor: pointer;
-    transition: .2s all;
+    transition: .2s transform;
     &:hover{
       transform: scale(1.1);
     }

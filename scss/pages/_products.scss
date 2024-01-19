@@ -1,6 +1,5 @@
-.products-container{
-  width: calc(100% - 2rem);
-  margin: 1rem auto;
+.products-main{
+  @include margin-border;
 }
 
 .products-nav{
@@ -60,29 +59,14 @@
 }
 
 .products{
-  &__section{
-    margin-top: $normal-margin;
-    background-color: $primary-light;
-    padding: $normal-margin;
-    border-radius: $normal-radius;
-    position: relative;
-    overflow: hidden;
-  }
+  padding: $normal-margin;
   
-
-  &__title{
-    background-color: $primary;
-    margin: (-1 * $normal-margin) (-1 * $normal-margin) 0 (-1 * $normal-margin);
-    padding-left: $normal-margin;
-    width: calc(100% + 2rem);
-    z-index: 10;
-  }
-
   &__gallery{
+    list-style: none;
     position: relative;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 1rem 0.4rem;
     margin-top: $normal-margin;
     

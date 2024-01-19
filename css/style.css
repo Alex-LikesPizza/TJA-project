@@ -1,4 +1,3 @@
-@charset "UTF-8";
 *,
 *::after,
 *::before {
@@ -98,11 +97,11 @@ hr {
     right: 2rem;
     display: flex;
     gap: 4vw;
-    font-size: 1.9rem; }
+    font-size: inherit; }
   .header__post-item {
-    font-size: 2.2rem;
+    font-size: calc(1em * 1.3);
     cursor: pointer;
-    transition: .2s all; }
+    transition: .2s transform; }
     .header__post-item:hover {
       transform: scale(1.1); }
   .header__background {
@@ -122,7 +121,7 @@ hr {
   width: calc(100% - 2rem);
   margin: 1rem auto;
   padding: 0.5rem 0 1rem 0;
-  border-radius: 4px 4px 1rem 4px;
+  border-radius: 0.3rem 0.3rem 1rem 1rem;
   color: #44372f;
   font-size: 1.2rem; }
   .footer > * {
@@ -143,7 +142,7 @@ hr {
   position: relative;
   width: 16rem;
   height: 21.3rem;
-  border-radius: 4px;
+  border-radius: 0.3rem;
   box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2);
   background-color: #FAF9F9;
   overflow: hidden;
@@ -188,6 +187,47 @@ hr {
 .splide__arrow {
   transform: scale(1.2); }
 
+.slider {
+  margin-top: 1rem;
+  background-color: #f8ebdf;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  position: relative;
+  overflow: hidden; }
+  .slider__title {
+    background-color: #ecd4c0;
+    margin: -1rem -1rem 0 -1rem;
+    padding-left: 1rem;
+    width: calc(100% + 2rem);
+    z-index: 10; }
+
+.block-card {
+  width: 1fr;
+  height: 16rem;
+  width: 45vw;
+  display: flex;
+  background-color: #f8ebdf;
+  border: 1px solid #ecd4c0;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  cursor: default;
+  transition: .2s background-color, .2s border-color;
+  box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2); }
+  .block-card__stats {
+    padding: 0.5rem; }
+  .block-card__title {
+    font-size: 1.6rem;
+    text-align: center; }
+  .block-card__description {
+    color: #44372f; }
+  .block-card__price {
+    font-size: 1.3rem; }
+  .block-card__image {
+    height: 100%; }
+  .block-card:hover {
+    background-color: #f5e3d2;
+    border-color: #e3bfa1; }
+
 .section__home {
   padding: 1rem;
   background-color: #f8ebdf;
@@ -195,7 +235,7 @@ hr {
   margin: 0 auto;
   margin-top: 1rem;
   position: relative;
-  border-radius: 1rem 1rem 4px 4px;
+  border-radius: 1rem 1rem 0.3rem 0.3rem;
   overflow: hidden; }
   .section__home-background {
     position: absolute;
@@ -261,14 +301,14 @@ hr {
       .home__image--3:hover {
         rotate: -5deg; }
 
-.products-container {
+.products-main {
   width: calc(100% - 2rem);
   margin: 1rem auto; }
 
 .products-nav {
   background-color: #ecd4c0;
   padding: 0.4rem 1rem 0.8rem 1rem;
-  border-radius: 1rem 1rem 4px 4px;
+  border-radius: 1rem 1rem 0.3rem 0.3rem;
   position: relative;
   overflow: hidden; }
   .products-nav > * {
@@ -288,7 +328,7 @@ hr {
     font-size: 1.2rem;
     height: 100%;
     width: clamp(20ch, 25%, 70ch);
-    border-radius: 2px;
+    border-radius: 0.2rem;
     border: 1px solid #d9ced3;
     background-color: #FAF9F9;
     outline: none;
@@ -307,35 +347,27 @@ hr {
     color: #FAF9F9;
     border: none;
     padding: 0 0.4rem;
-    border-radius: 2px 1rem 1rem 2px;
+    border-radius: 0.2rem 1rem 1rem 0.2rem;
     box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2);
     transition: 0.2s all; }
     .products-nav__submit:hover {
       background-color: #a27155;
       transform: translateX(0.2rem); }
 
-.products__section {
-  margin-top: 1rem;
-  background-color: #f8ebdf;
-  padding: 1rem;
-  border-radius: 4px;
-  position: relative;
-  overflow: hidden; }
+.products {
+  padding: 1rem; }
+  .products__gallery {
+    list-style: none;
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 1rem 0.4rem;
+    margin-top: 1rem; }
 
-.products__title {
-  background-color: #ecd4c0;
-  margin: -1rem -1rem 0 -1rem;
-  padding-left: 1rem;
-  width: calc(100% + 2rem);
-  z-index: 10; }
-
-.products__gallery {
-  position: relative;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  gap: 1rem 0.4rem;
-  margin-top: 1rem; }
+.product-main {
+  width: calc(100% - 2rem);
+  margin: 1rem auto; }
 
 .product {
   display: flex;
@@ -362,37 +394,15 @@ hr {
     cursor: default; }
     .product__status--available {
       color: green; }
-      .product__status--available::after {
-        content: "Acest produs este valabil pentru vânzare."; }
-    .product__status--listed {
-      color: goldenrod; }
-      .product__status--listed::after {
-        content: " Dacă cumpărătorul acestui produs renunță la el, vei fi următorul după listă."; }
     .product__status--sold {
       color: red; }
-      .product__status--sold::after {
-        content: "Acest produs a fost vândut."; }
-    .product__status::after {
-      position: absolute;
-      display: none;
-      width: 10rem;
-      font-size: 0.8rem;
-      color: #131112;
-      top: -2.8rem;
-      background-color: #ecd4c0;
-      border: 1px dashed black;
-      border-radius: 4px;
-      padding: 0.2rem;
-      left: 0; }
-    .product__status:hover::after {
-      display: block; }
   .product__purchase {
     border: none;
     background-color: #ecd4c0;
     color: #44372f;
     font-size: 1.4rem;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
+    border-radius: 0.3rem;
     box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2);
     transition: 0.3s all;
     cursor: pointer; }
@@ -404,7 +414,7 @@ hr {
     overflow: hidden;
     position: relative;
     box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2);
-    border-radius: 2px;
+    border-radius: 0.2rem;
     height: 70vh; }
   .product__image {
     width: 100%;
@@ -435,7 +445,7 @@ hr {
   .cart__item {
     position: relative;
     width: 100%;
-    border-radius: 4px;
+    border-radius: 0.3rem;
     overflow: hidden;
     box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2); }
   .cart__title {
@@ -464,30 +474,8 @@ hr {
     cursor: default; }
     .cart__status--available {
       color: green; }
-      .cart__status--available::after {
-        content: "Acest produs este valabil pentru vânzare."; }
-    .cart__status--listed {
-      color: goldenrod; }
-      .cart__status--listed::after {
-        content: "Dacă cumpărătorul acestui produs renunță la el, vei fi următorul după listă."; }
     .cart__status--sold {
       color: red; }
-      .cart__status--sold::after {
-        content: "Acest produs a fost vândut."; }
-    .cart__status::after {
-      position: absolute;
-      display: none;
-      width: 10rem;
-      font-size: 0.8rem;
-      top: -2.8rem;
-      color: #131112;
-      background-color: #ecd4c0;
-      border: 1px dashed black;
-      border-radius: 4px;
-      padding: 0.2rem;
-      left: 0; }
-    .cart__status:hover::after {
-      display: block; }
   .cart__remove {
     position: absolute;
     right: 1rem;
@@ -504,7 +492,7 @@ hr {
 .checkout {
   background-color: #ecd4c0;
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: 0.3rem;
   box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2);
   width: clamp(25rem, 30vw, 60rem); }
   .checkout__title {

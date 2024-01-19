@@ -1,3 +1,6 @@
+.product-main{
+  @include margin-border;
+}
 .product{
   display: flex;
   justify-content: center;
@@ -30,41 +33,10 @@
 
     &--available{
       color: green;
-      &::after{
-        content: "Acest produs este valabil pentru vânzare.";
-      }
-    }
-    &--listed{
-      color: goldenrod;
-      &::after{
-        content: " Dacă cumpărătorul acestui produs renunță la el, vei fi următorul după listă.";
-      }
     }
     &--sold{
       color: red;
-      &::after{
-        content: "Acest produs a fost vândut.";
-      }
-    }
-
-    &::after{
-      position: absolute;
-      display: none;
-      width: 10rem;
-      font-size: 0.8rem;
-      color: $black;
-      top: -2.8rem;
-      background-color: $primary;
-      border: 1px dashed black;
-      border-radius: $medium-radius;
-      padding: 0.2rem;
-      left: 0;
-    }
-
-    &:hover::after{
-      display: block;
-    }
-    
+    } 
   }
   &__purchase{
     border: none;

@@ -1,0 +1,34 @@
+.block-card{
+  width: 1fr;
+  height: 16rem;
+  width: 45vw;
+  display: flex;
+  background-color: $primary-light;
+  border: 1px solid $primary;
+  border-radius: $light-radius;
+  overflow: hidden;
+  cursor: default;
+  transition: .2s background-color, .2s border-color;
+  box-shadow: $medium-shadow;
+
+  &__stats{
+    padding: $small-margin;
+  }
+  &__title{
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  &__description{
+    color: $primary-accent;
+  }
+  &__price{
+    font-size: 1.3rem;
+  }
+  &__image{
+    height: 100%;
+  }
+  &:hover{
+    background-color: darken($primary-light, 3%);
+    border-color: darken($primary, 8%);
+  }
+}
