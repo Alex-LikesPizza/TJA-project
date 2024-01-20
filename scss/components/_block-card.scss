@@ -1,7 +1,7 @@
 .block-card{
-  width: 1fr;
   height: 16rem;
-  width: 45vw;
+  min-width: 40rem;
+  max-width: 100%;
   display: flex;
   background-color: $primary-light;
   border: 1px solid $primary;
@@ -10,6 +10,7 @@
   cursor: default;
   transition: .2s background-color, .2s border-color;
   box-shadow: $medium-shadow;
+  position: relative;
 
   &__stats{
     padding: $small-margin;
@@ -20,15 +21,49 @@
   }
   &__description{
     color: $primary-accent;
+    height: 7em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    position: relative;
+    &::after{
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 16ch;
+      height: 2em;
+      background-image: linear-gradient(to right, rgba($primary-light, 0), $primary-light 70%);
+      transition: 0.2s all;
+    }
   }
-  &__price{
+
+  &__purchase{
+    position: absolute;
+    bottom: $normal-margin;
+    right:  $normal-margin;
+    text-align: end;
     font-size: 1.3rem;
+    font-family: 'Open Sans', sans-serif;
   }
+  &__button{
+    display: inline-block;
+  }
+
+
   &__image{
     height: 100%;
+    max-width: 40rem;
+    min-width: 20rem;
+    object-fit: cover;
+    object-position: center;
   }
   &:hover{
-    background-color: darken($primary-light, 3%);
+    background-color: darken($primary-light, 2%);
     border-color: darken($primary, 8%);
+    
+    .block-card__description::after{
+      filter: brightness(0.98);
+    }
   }
 }

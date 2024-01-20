@@ -28,53 +28,39 @@
     <div class="header__background"></div>
   </header>
 
-  <main>
-    <div class="cart-container">
-      <div class="cart">
-        <ul class="cart__list">
-          <h2 class="cart__pre-title">Cart</h2>
-          <li class="cart__item">
-            <h3 class="cart__title">Flowers</h3>
-            <div class="cart__item-content">
-              <img class="cart__image" src="../images/sample2.jpg" alt="flowers">
-              <div class="cart__info">
-                <p class="cart__price">80.00 lei</p>
-                <p class="cart__status cart__status--available">Valabil</p>
+  <main class="main--cart">
+    <div class="cart">
+      <ul class="cart__list">
+        <h2 class="cart__pre-title">Cart</h2>
+        <li class="cart__item">
+          <div class="block-card">
+            <a href="./produs.html">
+              <img  class="block-card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+            </a>
+            <div class="block-card__stats">
+              <h3 class="block-card__title">Dark Past</h3>
+              <p class="block-card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. In, sint distinctio. Dicta reprehenderit, ad deleniti nemo doloremque quisquam error exercitationem. Lorem ipsum dolor sit amet consectetur adipisicing elit...
+              </p>
+              <div class="block-card__purchase">
+                <p class="block-card__price">100.00 lei</p>
+                <button class="block-card__button button button--bordered">
+                  <i class="bi bi-bookmarks"></i>
+                </button>
+                <button class="block-card__button button button--bordered">
+                  <i class="bi bi-zoom-in"></i><a href="./produs.html"> Vezi pagina</a>
+                </button>
+                <button class="block-card__button button">
+                  <i class="bi bi-dash-circle"></i> Scoate din coș
+                </button>
               </div>
-              <button class="cart__remove">&times;</button>
             </div>
-          </li>
-          <li class="cart__item">
-            <h3 class="cart__title">Flowers</h3>
-            <div class="cart__item-content">
-              <img class="cart__image" src="../images/sample3.jpg" alt="flowers">
-              <div class="cart__info">
-                <p class="cart__price">80.00 lei</p>
-                <p class="cart__status cart__status--available">Valabil</p>
-              </div>
-              <button class="cart__remove">&times;</button>
-            </div>
-          </li>
-          <li class="cart__item">
-            <h3 class="cart__title">Flowers</h3>
-            <div class="cart__item-content">
-              <img class="cart__image" src="../images/sample1.jpg" alt="flowers">
-              <div class="cart__info">
-                <p class="cart__price">80.00 lei</p>
-                <p class="cart__status cart__status--available">Valabil</p>
-              </div>
-              <button class="cart__remove">&times;</button>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="checkout-container">
-        <h2 class="checkout__title">Checkout</h2>
-        <div class="checkout">
-          <div class="checkout__products-number checkout__info-field checkout__info-field--products">Produse: <span>3</span></div>
-          <div class="checkout__info-field checkout__info-field--total">Preț Total: <span>295</span> lei</div>
-        </div>
-      </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="saved">
+      <h2 class="saved__main-title">Salvate</h2>
+      
     </div>
   </main>
 

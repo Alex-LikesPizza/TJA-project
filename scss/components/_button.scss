@@ -1,0 +1,40 @@
+.button{
+  border-radius: $normal-radius;
+  border: none;
+  outline-color: $primary-accent;
+  background-color: $primary;
+  padding: $small-margin;
+  font-size: 1.1rem;
+  transition: 0.2s all;
+  cursor: pointer;
+  box-shadow: $light-shadow;
+
+  &:hover{
+    background-color: darken($primary, 10%);
+  }
+  
+  &--bordered{
+    outline-width: 1px;
+    outline-style: solid;
+    color: $primary-accent;
+    background: none;
+    
+    &:hover{
+      background-color: darken($primary, 4%);
+      outline: none;
+    }
+  }
+  &--monochrome-bordered{
+    outline-width: 1px;
+    outline-style: solid;
+    color: $white;
+    outline-color: $white;
+    background: none;
+
+    &:hover{
+      outline: none;
+      background-color: $white;
+      color: $black;
+    }
+  }
+}

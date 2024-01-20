@@ -49,6 +49,10 @@
     transition: 0.3s all;
     cursor: pointer;
     
+    & .bi-plus-circle{
+      transform: translateY(-3px);
+      display: inline-block;
+    }
     &:hover{
       background-color: $primary-dark;
       box-shadow: $medium-shadow;

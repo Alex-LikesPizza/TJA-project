@@ -22,7 +22,7 @@
     @include full-size-absolute;
     z-index: 0;
   }
-  &__price{
+  &__actions{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -30,19 +30,24 @@
     background-color: rgba($black, .6);
     color: $white;
     font-size: 1.1rem;
-    text-align: center;
-    padding: 0.5rem 0;
+    padding: 0.75rem;
+    transition: 0.2s all;
+    display: flex;
+    justify-content: space-between;
 
   }
-  
-
-  &:hover{
+  &:hover {
     z-index: 99;
     transform: scale(1.03);
     box-shadow: $medium-shadow;
-
-    *:not(.card__image){
+  
+    & * {
+      opacity: 1;
+    }
+  
+    .card__image:hover ~ * {
       opacity: 0.5;
     }
-  }  
+  }
+  
 }

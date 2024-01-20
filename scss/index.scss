@@ -2,6 +2,7 @@
 @import "base/base";
 @import "base/typography";
 @import "base/utilities";
+@import "base/imports";
 
 @import "abstracts/functions";
 @import "abstracts/mixins";
@@ -13,6 +14,8 @@
 @import "components/splide";
 @import "components/slider";
 @import "components/block-card";
+@import "components/button";
+
 
 @import "pages/home";
 @import "pages/products";

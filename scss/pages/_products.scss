@@ -64,9 +64,8 @@
   &__gallery{
     list-style: none;
     position: relative;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
     gap: 1rem 0.4rem;
     margin-top: $normal-margin;
     
