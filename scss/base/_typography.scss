@@ -50,3 +50,22 @@ hr{
 p{
   font-family: 'Open Sans', sans-serif;
 }
+
+.text{
+  &--color-rainbow{
+    font-family: inherit;
+    background-image: linear-gradient(
+      to right,
+      #e8a790,  
+      #ffa75c, 
+      #b0d4aa,  
+      #76c676,
+      #90aee4,
+      #d8aad8, 
+      #c686b9
+    );    
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+}

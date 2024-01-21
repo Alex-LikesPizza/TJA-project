@@ -12,6 +12,14 @@
   &:hover{
     background-color: darken($primary, 10%);
   }
+  &--no-button{
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+  }
   
   &--bordered{
     outline-width: 1px;

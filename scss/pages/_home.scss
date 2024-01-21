@@ -1,16 +1,15 @@
 .section__home{
   padding: 1rem;
-  background-color: $primary-light;
+  background-color: darken($primary-extra-light, 1%);
   width: calc(100% - 2rem);
   margin: 0 auto;
-  margin-top: 1rem;
   position: relative;
   border-radius: $strong-radius $strong-radius $normal-radius $normal-radius;
   overflow: hidden;
 
   &-background{
     @include full-size-absolute;
-    background-color: darken($primary-extra-light, 7%);;
+    background-color: lighten($primary, 5%);
     @include half-clip;
   }
 }
@@ -21,7 +20,10 @@
   padding: 5rem 0;
   padding-left: 2rem;
   position: relative;
-  
+
+  & h4{
+    font-size: 1.5rem;
+  }
   
   &__text-container{
     height: 100%;
@@ -34,7 +36,7 @@
     width: 16rem;
     height: 21.3rem;
     margin: 3rem 10rem;
-
+    
     &:hover .home__image{
       &--1{
         transform: translateX(-9rem) translateY(1rem) rotate(-10deg);
@@ -89,6 +91,27 @@
       &:hover{
         rotate: -5deg;
       }
+    }
+  }
+
+  @media (max-width: 1400px) {
+    flex-direction: column;
+    padding: 2rem 0.5rem;
+  }
+  @media (max-width: 680px) {
+    & h4{
+      font-size: 1.2rem;
+    }
+    & h1{
+      font-size: 2.5rem;
+    }
+    &__image-container{
+      scale: 0.8;
+    }
+  }
+  @media (max-width: 520px) {
+    &__image-container{
+      display: none;
     }
   }
 }

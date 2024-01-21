@@ -1,7 +1,7 @@
 const header = document.querySelector("#header");
 const headerScroll = () => {
   const pageYOffset = window.scrollY;
-
+  
   if(pageYOffset === 0){
     header.style.paddingTop =  "1rem";
     header.style.paddingBottom =  "1rem";
@@ -15,4 +15,11 @@ const headerScroll = () => {
     header.style.fontSize = "1.4rem"
   }
 }
-window.addEventListener("scroll", headerScroll)
+if(!header.classList.contains("header--static"))
+  window.addEventListener("scroll", headerScroll)
+
+
+const more = document.querySelector(".more");
+function moreToggle(){
+  more.classList.toggle("more--closed")
+}

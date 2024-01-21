@@ -9,7 +9,7 @@
   height: 8rem;
   font-size: 1.6rem;
   font-family: "Nunito", sans-serif;
-  padding: 1rem;
+  padding: 0 1rem !important;
   background-color: $primary-light;
   color: $primary-accent;
   transition: 0.5s;
@@ -27,7 +27,9 @@
 
   &__logo{
     height: 100%;
-    margin-left: -1rem;
+    margin-right: calc(4vw - 1rem);
+    user-select: none;
+    -webkit-user-drag: none;
   }
 
   &__nav{
@@ -68,5 +70,78 @@
     @include full-size-absolute;
     @include left-clip;
     background-color: $primary-dark;
+  }
+
+  @media (min-width: 1275px) {
+    &__post{
+      gap: 0;
+    }
+    &__post-item--more{
+      display: none;
+    }
+  }
+  @media (max-width: 1275px){
+    &__nav-item--about{display: none;}
+  }
+  @media (max-width: 925px) {
+    &__nav-item--contacts{display: none;}
+  }
+  @media (max-width: 700px) {
+    &__nav-item{
+      display: none;
+    }
+    &__background{
+      clip-path: polygon(60% 0, 100% 0, 100% 100%, 45% 100%);
+    }
+    &__post{
+      gap: 2rem;
+      margin-right: -1rem;
+    }
+  }
+}
+.more{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  transition: 0.2s all;
+
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+
+  &--closed{
+    display: none;
+    grid-template-columns: 1fr 0;
+  }
+
+  &__background{
+    background-color: rgba($black, 0.2);
+  }
+  &__elements{
+    position: relative;
+    background-color: $primary;
+    padding: $medium-margin $large-margin;
+    text-align: center;   
+  }
+  &__close{
+    position: absolute;
+    top: 0;
+    left: 0.8rem;
+    font-size: 2.5rem !important;
+  }
+  &__list{
+    list-style: none;
+  }
+
+  @media (max-width: 1000px){
+    grid-template-columns: 5fr 4fr;
+  }
+  @media (max-width: 620px){
+    grid-template-columns: 1fr 2fr;
+  }
+  @media (max-width: 420px){
+    grid-template-columns: 0 1fr;
   }
 }
