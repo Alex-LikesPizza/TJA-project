@@ -45,4 +45,10 @@
       color: $black;
     }
   }
+  &--dark{
+    background-color: darken($primary, 12%);
+    &:hover{
+      background-color: darken($primary, 20%);
+    }
+  }
 }

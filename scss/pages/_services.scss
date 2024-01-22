@@ -1,0 +1,39 @@
+.main--services{
+  @include margin-border;
+}
+.services{
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  justify-content: space-between;
+
+  &__item{
+    @include level-up;
+    position: relative;
+    padding: $normal-margin;
+    width: calc(50% - 0.5rem);
+    height: 20rem;
+    border-radius: $medium-radius;
+    
+    
+    &--canvas{
+      background-position: left;
+      background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-canvas.png");
+    }
+  }
+  &__subtext{
+    width: 50%;
+    position: absolute;
+    bottom: $normal-margin;
+    right: $normal-margin;
+  }
+  &__button{
+    width: 100%;
+  }
+  &__item-background{
+    @include full-size-absolute;
+    clip-path: polygon(calc(100% - 3rem) 0, 100% 0, 100% 100%, 0 100%, 0% calc(100% - 2rem));
+    background-color: $primary;
+
+  }
+}
