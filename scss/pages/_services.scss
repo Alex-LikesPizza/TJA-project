@@ -14,11 +14,32 @@
     width: calc(50% - 0.5rem);
     height: 20rem;
     border-radius: $medium-radius;
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;
     
     
     &--canvas{
-      background-position: left;
       background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-canvas.png");
+    }
+    &--mural{
+      background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-mural.png");
+    }
+    &--interior{
+      background-position: bottom;
+      background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-interior.png");
+    }
+    &--furniture{
+      background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-furniture.png");
+    }
+    &--makeover{
+      background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-makeover.png");
+    }
+    &--mosaic{
+      background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-mosaic.png");
+    }
+    &--tapestry{
+      background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-tapestry.png");
     }
   }
   &__subtext{
@@ -26,14 +47,19 @@
     position: absolute;
     bottom: $normal-margin;
     right: $normal-margin;
+    &::before{
+      content: "";
+      margin-left: 4ch;
+    }
   }
+  
   &__button{
     width: 100%;
   }
   &__item-background{
     @include full-size-absolute;
     clip-path: polygon(calc(100% - 3rem) 0, 100% 0, 100% 100%, 0 100%, 0% calc(100% - 2rem));
-    background-color: $primary;
+    background-color: rgba($primary, 0.7);
 
   }
 }

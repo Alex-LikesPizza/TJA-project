@@ -1,4 +1,5 @@
 const header = document.querySelector("#header");
+
 const headerScroll = () => {
   const pageYOffset = window.scrollY;
   
@@ -7,6 +8,7 @@ const headerScroll = () => {
     header.style.paddingBottom =  "1rem";
     header.style.height = "8rem";
     header.style.fontSize = "1.6rem"
+
   }
   else{
     header.style.paddingTop =  "0.2rem";
@@ -16,10 +18,11 @@ const headerScroll = () => {
   }
 }
 if(!header.classList.contains("header--static"))
-  window.addEventListener("scroll", headerScroll)
+
+window.addEventListener("scroll", headerScroll);
 
 
 const more = document.querySelector(".more");
 function moreToggle(){
-  more.classList.toggle("more--closed")
+  more.classList.toggle("more--closed");
 }
