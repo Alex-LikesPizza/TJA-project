@@ -44,8 +44,30 @@
     <div class="header__background"></div>
   </header>
 
-  <main>
+  <main class="main--contacts">
     
+    <form method="POST" class="contact-form" id="contact-form">
+      <h2 class="contact-form__title">Formular de Contactare</h2>
+      <div class="contact-form__container">
+        <div class="contact-form__input-container">         
+          <label class="contact-form__label" for="contact-form--name">Nume:</label>
+          <input type="text" class="contact-form__input" id="contact-form--name">
+        </div>
+        <div class="contact-form__input-container">       
+          <label class="contact-form__label" for="contact-form--surname">Prenume:</label>
+          <input type="text" class="contact-form__input" id="contact-form--surname">
+        </div>
+        <div class="contact-form__input-container">       
+          <label class="contact-form__label" for="contact-form--email">Email:</label>
+          <input type="email" class="contact-form__input" id="contact-form--email">
+        </div>
+        <div class="contact-form__input-container">       
+          <label class="contact-form__label" for="contact-form--message">Message:</label>
+          <textarea class="contact-form__input" id="contact-form--message" rows="5">a</textarea>
+        </div>
+        <button type="submit" class="contact-form__submit button button--dark">Trimite</button>
+      </div>
+    </form>
     
   </main>
 
