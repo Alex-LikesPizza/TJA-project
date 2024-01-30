@@ -1,7 +1,7 @@
 .main--contacts{
   @include margin-border;
 }
-.contact-form {
+.form {
   background-color: $primary;
   padding: $normal-margin;
   border-radius: $normal-margin $normal-margin $small-margin $small-margin;
@@ -34,6 +34,18 @@
     border: 1px solid #ccc;
     border-radius: $small-margin;
     margin-top: $small-margin;
+    outline-color: darken($primary-dark, 6%);
+    outline-offset: -3px;
+    &--message{
+      resize: vertical;
+    }
+  }
+  &__select{
+
+    &:active{
+      border-bottom-left-radius: none;
+      border-bottom-right-radius: none;
+    }
   }
 
   &__submit{
