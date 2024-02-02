@@ -1,0 +1,2 @@
+# TJA ENTRY: Bellatrix Bisantin Art
+This website was specially crafted for an independent company that sells art's stuff and services. I made this website for the Tekwill Junior Ambassadors competition.

@@ -1,0 +1,24 @@
+{
+  "name": "tja-entry-bellatrix-bisantin-art",
+  "version": "1.0.0",
+  "description": "This is a project I made for the TJA competition",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "node-sass dist/scss/index.scss dist/css/style.css -w"
+  },
+  "keywords": [
+    "shop",
+    "art",
+    "painting"
+  ],
+  "author": "alexandru13321@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "node-sass": "^9.0.0"
+  }
+}
