@@ -1,18 +1,3 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js'
-import { getStorage } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-storage.js'
-
-
-import firebaseConfig from "../keys.js";
-const app = initializeApp(firebaseConfig);
-const database = getFirestore(app);
-const storage = getStorage(app);
-
-const messagesRef = collection(database, "messages");
-const serviceRequestsRef = collection(database, "serviceRequests");
-
-
-
 const DOM_FORM = document.getElementById("form");
 const DOM_NAME = document.getElementById("form--name");
 const DOM_EMAIL = document.getElementById("form--email");
@@ -20,6 +5,7 @@ const DOM_NUMBER = document.getElementById("form--tel");
 const DOM_CATEGORY = document.getElementById("form--category");
 const DOM_SERVICE = document.getElementById("form--service");
 const DOM_MESSAGE = document.getElementById("form--message");
+const DOM_BUTTON = document.getElementById("form--submit");
 
 const data = {
   name: '',
@@ -38,6 +24,26 @@ const data = {
   }
 };
 
+window.addEventListener("DOMContentLoaded", () => {
+  const stringifiedData = localStorage.getItem("BBA_form-data");
+  const data = JSON.parse(stringifiedData);
+  
+  if(!data) return;
+  
+  DOM_NAME.value = data.name;
+  DOM_EMAIL.value = data.email;
+  DOM_NUMBER.value = data.number;
+  DOM_MESSAGE.value = data.message;
+  if(data.category){
+    DOM_CATEGORY.value = data.category;
+  }
+  else{
+    DOM_CATEGORY.value = "service";
+    DOM_SERVICE.value = data.service;
+    DOM_SERVICE.parentElement.style.display = "block";
+  }
+});
+
 DOM_CATEGORY.addEventListener("change", (e) => {
   if(DOM_CATEGORY.value === "service"){
     DOM_SERVICE.parentElement.style.display = "block";
@@ -45,47 +51,50 @@ DOM_CATEGORY.addEventListener("change", (e) => {
   else{
     DOM_SERVICE.parentElement.style.display = "none";
   }
-})
-DOM_FORM.addEventListener("submit", (e) => {
-  e.preventDefault();
+});
 
+const getProcessedData = () => {
   data.getData();
+  let parseData = {};
   if(data.category !== "service"){
-    addDoc(messagesRef, {
+    parseData = {
       name: data.name,
       email: data.email,
       number: data.number,
       category: data.category,
       message: data.message
-    })
-      .then(docRef => {
-        // docRef - data ref
-        console.log(`%c #${docRef.id} a fost trimis cu succes`, "color: green");
-        DOM_FORM.reset();
-      })
-      .catch(err => {
-        alert("Nu sa putut conecta cu baza de date. Încercați mai târziu.");
-        console.error(err);
-      });
+    }
   }
   else{
-    addDoc(serviceRequestsRef, {
+    parseData = {
       name: data.name,
       email: data.email,
       number: data.number,
       service: data.service,
       message: data.message
-    })
-      .then(docRef => {
-        // docRef - data ref
-        console.log(`%c #${docRef.id} a fost trimis cu succes`, "color: green");
-        DOM_FORM.reset();
-      })
-      .catch(err => {
-        alert("Nu sa putut conecta cu baza de date. Încercați mai târziu.");
-        console.error(err);
-      });
+    }
   }
+  return parseData;
+}
+DOM_FORM.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const data = getProcessedData();
+  console.log(data);
+  DOM_BUTTON.setAttribute("disabled", true);
+  DOM_BUTTON.style.cursor = "not-allowed";
+
+  localStorage.setItem("BBA_form-data", null);
 });
 
-
+const updateData = () => {
+  const processedData = getProcessedData();
+  const stringifiedData = JSON.stringify(processedData);
+  localStorage.setItem("BBA_form-data", stringifiedData);
+} 
+DOM_NAME.addEventListener("change", updateData);
+DOM_EMAIL.addEventListener("change", updateData);
+DOM_NUMBER.addEventListener("change", updateData);
+DOM_CATEGORY.addEventListener("change", updateData);
+DOM_SERVICE.addEventListener("change", updateData);
+DOM_MESSAGE.addEventListener("change", updateData);

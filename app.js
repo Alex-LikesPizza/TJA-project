@@ -12,6 +12,7 @@ const routes = {
   pages: require("./routes/pages"),
   scripts: {
     components: require("./routes/components"),
+    pages: require("./routes/scripts")
   },
   imports: {
     splide: require("./routes/splide")
@@ -30,6 +31,7 @@ app.use(routes.css);
 app.use(routes.imports.splide);
 app.use(routes.images);
 app.use(routes.scripts.components);
+app.use(routes.scripts.pages);
 
 
 app.listen(PORT);
