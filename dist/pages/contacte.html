@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/components/header.js" defer></script>
+  <script src="../js/pages/contacts.js"></script>
   <title>Contacte</title>
 </head>
 <body>
@@ -45,25 +46,48 @@
   </header>
 
   <main class="main--contacts">
-    
-    <form method="POST" class="contact-form" id="contact-form">
-      <h2 class="contact-form__title">Formular de Contactare</h2>
-      <div class="contact-form__container">
-        <div class="contact-form__input-container">         
-          <label class="contact-form__label" for="contact-form--name">Nume:</label>
-          <input type="text" class="contact-form__input contact-form__input--surname" id="contact-form--name" placeholder="Ex: Mihai">
-        </div>
-        <div class="contact-form__input-container">       
-          <label class="contact-form__label" for="contact-form--email">Email-ul dvs:</label>
-          <input type="email" class="contact-form__input" id="contact-form--email" placeholder="Ex: example@domain.com">
-        </div>
-        <div class="contact-form__input-container">       
-          <label class="contact-form__label" for="contact-form--message">Mesaj:</label>
-          <textarea class="contact-form__input" id="contact-form--message" rows="5"></textarea>
-        </div>
-        <button type="submit" class="contact-form__submit button button--dark">Trimite</button>
-      </div>
-    </form>
+
+    <section class="contacts">
+      <ul class="contacts__items">
+        <li class="contacts__item" id="contacts__item--email">
+          <a href="#">
+            <p class="contacts__item-title">
+              <span class="u-higher-tenth u-inline"><i class="bi bi-envelope"></i></span>
+              Email
+            </p> 
+            <p class="contacts__item-text">example@domain.com</p>
+          </a>
+        </li>
+        <li class="contacts__item" id="contacts__item--phone">
+          <a href="#">
+            <p class="contacts__item-title">
+              <span class="u-higher-tenth u-inline"><i class="bi bi-telephone"></i></span>
+              Telefon
+            </p> 
+            <p class="contacts__item-text">+40 123 456 789</p>
+          </a>
+        </li>
+        <li class="contacts__item" id="contacts__item--facebook">
+          <a href="#">
+            <p class="contacts__item-title">
+              <span class="u-higher-tenth u-inline"><i class="bi bi-facebook"></i></span>
+              Facebook
+            </p> 
+            <p class="contacts__item-text">bellatrix bizantin art</p>
+          </a>
+        </li>
+        <li class="contacts__item" id="contacts__item--address">
+          <a href="#">
+            <p class="contacts__item-title"> 
+              <span class="u-higher-tenth u-inline"><i class="bi bi-geo-alt"></i></span>
+              Adresa
+            </p> 
+            <p class="contacts__item-text">București, bd. lui Ivan Turbincă 12/3</p>
+          </a>
+        </li>
+      </ul>
+    </section>
+
     
   </main>
 

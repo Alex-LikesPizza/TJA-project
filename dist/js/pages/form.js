@@ -88,8 +88,11 @@ DOM_FORM.addEventListener("submit", (e) => {
     },
     body: JSON.stringify(data)
   })
-    .then(response => response.json())
-    .then(data => {
+  .then(response => response.json())
+  .then(data => {
+      DOM_FORM.reset();
+      DOM_BUTTON.removeAttribute("disabled");
+      DOM_BUTTON.style.cursor = "pointer";
 
       console.log(data);
     })
@@ -97,10 +100,10 @@ DOM_FORM.addEventListener("submit", (e) => {
       console.error('Error:', error.message);
     });
 
-  // DOM_BUTTON.setAttribute("disabled", true);
-  // DOM_BUTTON.style.cursor = "not-allowed";
+  DOM_BUTTON.setAttribute("disabled", true);
+  DOM_BUTTON.style.cursor = "not-allowed";
 
-  // localStorage.setItem("BBA_form-data", null);
+  localStorage.setItem("BBA_form-data", null);
 });
 
 const updateData = () => {
