@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const data = JSON.parse(stringifiedData);
   
   if(!data) return;
-  
+
   DOM_NAME.value = data.name;
   DOM_EMAIL.value = data.email;
   DOM_NUMBER.value = data.number;
@@ -80,11 +80,27 @@ DOM_FORM.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const data = getProcessedData();
-  console.log(data);
-  DOM_BUTTON.setAttribute("disabled", true);
-  DOM_BUTTON.style.cursor = "not-allowed";
+  const url = '/server';
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json())
+    .then(data => {
 
-  localStorage.setItem("BBA_form-data", null);
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('Error:', error.message);
+    });
+
+  // DOM_BUTTON.setAttribute("disabled", true);
+  // DOM_BUTTON.style.cursor = "not-allowed";
+
+  // localStorage.setItem("BBA_form-data", null);
 });
 
 const updateData = () => {

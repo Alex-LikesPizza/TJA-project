@@ -18,12 +18,11 @@ const routes = {
     splide: require("./routes/splide")
   },
   images: require("./routes/images"),
-  css: require("./routes/css")
+  css: require("./routes/css"),
+  server: require("./routes/server")
 
 
 }
-
-app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(routes.index);
 app.use(routes.pages);
@@ -32,6 +31,7 @@ app.use(routes.imports.splide);
 app.use(routes.images);
 app.use(routes.scripts.components);
 app.use(routes.scripts.pages);
+app.use(routes.server);
 
 
 app.listen(PORT);
