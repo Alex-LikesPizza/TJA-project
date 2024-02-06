@@ -1,8 +1,9 @@
+.main--home{
+ @include margin-border;
+}
 .section__home{
   padding: 1rem;
   background-color: darken($primary-extra-light, 1%);
-  width: calc(100% - 2rem);
-  margin: 0 auto;
   position: relative;
   border-radius: $strong-radius $strong-radius $normal-radius $normal-radius;
   overflow: hidden;
@@ -49,8 +50,62 @@
         transform: translateX(9rem) translateY(-1rem) rotate(10deg);
       }
     }
+    &:hover .home__image-ornament{
+      opacity: 1;
+      &--1{
+        transform: translateX(-5rem) translateY(8rem);
+      }
+      &--2{
+        transform: translateX(13rem) translateY(-12rem) rotate(35deg);
+      }
+      &--3{
+        transform: translateX(13rem) translateY(3rem) rotate(-15deg);
+      }
+      &--4{
+        transform: translateX(-12rem) translateY(-13rem);
+      }
+      &--5{
+        transform: translateX(-20rem) translateY(2rem) rotate(60deg);
+      }
+    }
   }
-  
+
+  &__image-ornament{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5rem;
+    height: 5rem;
+    outline-width: 0.3rem;
+    outline-style: solid;
+    transition: 0.4s all;
+    opacity: 0;
+
+    &--1{
+      outline-color: $pastel-red;
+      border-radius: 50%;
+    }
+    &--2{
+      outline-color: $pasted-yellow;
+      border-radius: $light-radius;
+    }
+    &--3{
+      outline-color: $pastel-blue;
+      border-radius: $light-radius;
+    }
+    &--4{
+      outline-color: $pastel-purple;
+      border-radius: 50%;
+    }
+    &--5{
+      outline-color: $pastel-green;
+      border-radius: $light-radius;
+    }
+
+
+  }
+
   &__image{
     position: relative;
     width: 16rem;
@@ -111,7 +166,13 @@
   }
   @media (max-width: 520px) {
     &__image-container{
-      display: none;
+      scale: 0.6;
+    }
+  }
+  @media (max-width: 420px) {
+    &__image-container{
+      scale: 0.4;
+      margin: -5rem 0;
     }
   }
 }

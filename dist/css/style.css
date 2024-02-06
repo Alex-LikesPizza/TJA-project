@@ -378,11 +378,13 @@ p {
     .button--dark:hover {
       background-color: #d49f72; }
 
+.main--home {
+  width: calc(100% - 2rem);
+  margin: 1rem auto; }
+
 .section__home {
   padding: 1rem;
   background-color: #f8efe9;
-  width: calc(100% - 2rem);
-  margin: 0 auto;
   position: relative;
   border-radius: 1rem 1rem 0.3rem 0.3rem;
   overflow: hidden; }
@@ -420,6 +422,44 @@ p {
       z-index: 1; }
     .home__image-container:hover .home__image--3 {
       transform: translateX(9rem) translateY(-1rem) rotate(10deg); }
+    .home__image-container:hover .home__image-ornament {
+      opacity: 1; }
+      .home__image-container:hover .home__image-ornament--1 {
+        transform: translateX(-5rem) translateY(8rem); }
+      .home__image-container:hover .home__image-ornament--2 {
+        transform: translateX(13rem) translateY(-12rem) rotate(35deg); }
+      .home__image-container:hover .home__image-ornament--3 {
+        transform: translateX(13rem) translateY(3rem) rotate(-15deg); }
+      .home__image-container:hover .home__image-ornament--4 {
+        transform: translateX(-12rem) translateY(-13rem); }
+      .home__image-container:hover .home__image-ornament--5 {
+        transform: translateX(-20rem) translateY(2rem) rotate(60deg); }
+  .home__image-ornament {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5rem;
+    height: 5rem;
+    outline-width: 0.3rem;
+    outline-style: solid;
+    transition: 0.4s all;
+    opacity: 0; }
+    .home__image-ornament--1 {
+      outline-color: #FF9999;
+      border-radius: 50%; }
+    .home__image-ornament--2 {
+      outline-color: #FFFF99;
+      border-radius: 0.2rem; }
+    .home__image-ornament--3 {
+      outline-color: #9999FF;
+      border-radius: 0.2rem; }
+    .home__image-ornament--4 {
+      outline-color: #CC99FF;
+      border-radius: 50%; }
+    .home__image-ornament--5 {
+      outline-color: #99FF99;
+      border-radius: 0.2rem; }
   .home__image {
     position: relative;
     width: 16rem;
@@ -464,7 +504,11 @@ p {
       scale: 0.8; } }
   @media (max-width: 520px) {
     .home__image-container {
-      display: none; } }
+      scale: 0.6; } }
+  @media (max-width: 420px) {
+    .home__image-container {
+      scale: 0.4;
+      margin: -5rem 0; } }
 
 .products-main {
   width: calc(100% - 2rem);
