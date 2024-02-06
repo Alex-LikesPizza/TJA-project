@@ -24,26 +24,6 @@ const data = {
   }
 };
 
-window.addEventListener("DOMContentLoaded", () => {
-  const stringifiedData = localStorage.getItem("BBA_form-data");
-  const data = JSON.parse(stringifiedData);
-  
-  if(!data) return;
-
-  DOM_NAME.value = data.name;
-  DOM_EMAIL.value = data.email;
-  DOM_NUMBER.value = data.number;
-  DOM_MESSAGE.value = data.message;
-  if(data.category !== "service"){
-    DOM_CATEGORY.value = data.category;
-  }
-  else{
-    DOM_CATEGORY.value = "service";
-    DOM_SERVICE.value = data.service;
-    DOM_SERVICE.parentElement.style.display = "block";
-  }
-});
-
 DOM_CATEGORY.addEventListener("change", (e) => {
   if(DOM_CATEGORY.value === "service"){
     DOM_SERVICE.parentElement.style.display = "block";
@@ -80,6 +60,21 @@ DOM_FORM.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const data = getProcessedData();
+
+  for(const key in data){
+    if(data[key].trim() === ""){
+      alert("Vă rugăm să umpleți toate rândurile");
+      return;
+    };
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailRegex.test(data.email)){
+    alert("Vă rugăm să introduceți o adresă validă");
+    return;
+  }
+
+
   const url = '/server';
   fetch(url, {
     method: 'POST',
@@ -117,3 +112,23 @@ DOM_NUMBER.addEventListener("change", updateData);
 DOM_CATEGORY.addEventListener("change", updateData);
 DOM_SERVICE.addEventListener("change", updateData);
 DOM_MESSAGE.addEventListener("change", updateData);
+
+window.addEventListener("DOMContentLoaded", () => {
+  const stringifiedData = localStorage.getItem("BBA_form-data");
+  const data = JSON.parse(stringifiedData);
+  
+  if(!data) return;
+
+  DOM_NAME.value = data.name;
+  DOM_EMAIL.value = data.email;
+  DOM_NUMBER.value = data.number;
+  DOM_MESSAGE.value = data.message;
+  if(data.category){
+    DOM_CATEGORY.value = data.category;
+  }
+  else{
+    DOM_CATEGORY.value = "service";
+    DOM_SERVICE.value = data.service;
+    DOM_SERVICE.parentElement.style.display = "block";
+  }
+});

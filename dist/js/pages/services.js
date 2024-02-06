@@ -1,12 +1,9 @@
-
-
 const sendRequest = (value) => {
   const data = {
     name: "",
     email: "",
     number: "",
     message: "",
-    category: "service",
     service: value
   };
   const strData = JSON.stringify(data);
