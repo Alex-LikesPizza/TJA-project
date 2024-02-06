@@ -574,7 +574,8 @@ p {
     width: 0;
     overflow: hidden;
     cursor: pointer;
-    user-select: none; }
+    user-select: none;
+    white-space: nowrap; }
   .contacts__item:hover .contacts__item-after {
     width: 10rem;
     height: 3rem; }

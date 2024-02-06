@@ -2,7 +2,7 @@
   @include margin-border;
 }
 .contacts{
-
+  
 
   &__items{
     list-style: none;
@@ -52,6 +52,7 @@
       overflow: hidden;
       cursor: pointer;
       user-select: none;
+      white-space: nowrap;
     }
     &:hover &-after{
       width: 10rem;

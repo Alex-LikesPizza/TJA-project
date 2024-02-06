@@ -34,7 +34,7 @@ window.addEventListener("DOMContentLoaded", () => {
   DOM_EMAIL.value = data.email;
   DOM_NUMBER.value = data.number;
   DOM_MESSAGE.value = data.message;
-  if(data.category){
+  if(data.category !== "service"){
     DOM_CATEGORY.value = data.category;
   }
   else{
