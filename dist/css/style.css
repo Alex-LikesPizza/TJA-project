@@ -404,7 +404,9 @@ p {
   padding: 5rem 0;
   padding-left: 2rem;
   position: relative; }
-  .home h4 {
+  .home__text {
+    padding-bottom: 8rem; }
+  .home__subtitle {
     font-size: 1.5rem; }
   .home__text-container {
     height: 100%;
@@ -494,7 +496,11 @@ p {
   @media (max-width: 1400px) {
     .home {
       flex-direction: column;
-      padding: 2rem 0.5rem; } }
+      padding: 2rem 0.5rem; }
+      .home__text {
+        padding: 0; }
+      .home__title {
+        text-align: center; } }
   @media (max-width: 680px) {
     .home h4 {
       font-size: 1.2rem; }
@@ -582,16 +588,43 @@ p {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 0 4rem;
   gap: 1rem 0; }
 
 .contacts__item {
   position: relative;
   text-align: center;
-  background-color: #f8ebdf;
   border: 1px solid #44372f;
   border-radius: 0.2rem;
-  width: calc(25% - 0.5rem); }
+  width: calc(25% - 0.5rem);
+  transition: 0.3s all;
+  overflow: hidden; }
+  .contacts__item > * {
+    z-index: 1;
+    position: relative; }
+  .contacts__item:nth-child(2n) {
+    background-color: #f8ebdf; }
+    .contacts__item:nth-child(2n)::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
+      background-color: #f2e1d4;
+      z-index: 0; }
+  .contacts__item:nth-child(2n - 1) {
+    background-color: #f2e1d4; }
+    .contacts__item:nth-child(2n - 1)::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(0 0, 100% 100%, 100% 0);
+      background-color: #f8ebdf;
+      z-index: 0; }
   .contacts__item > a {
     display: inline-block;
     padding: 1rem;
@@ -620,12 +653,39 @@ p {
     cursor: pointer;
     user-select: none;
     white-space: nowrap; }
+  .contacts__item:hover {
+    transform: translateY(-4px); }
   .contacts__item:hover .contacts__item-after {
     width: 10rem;
     height: 3rem; }
   @media (max-width: 1150px) {
     .contacts__item {
       width: calc(50% - 0.5rem); } }
+  @media (max-width: 525px) {
+    .contacts__item {
+      width: 100%; } }
+
+.contacts__map-container {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ecd4c0;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  width: 50%;
+  border-radius: 0.2rem;
+  transition: 0.3s all;
+  box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2); }
+  .contacts__map-container:hover {
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2);
+    transform: translateX(-50%) translateY(-4px); }
+
+.contacts__map {
+  width: 100%;
+  height: 20rem; }
+
+.contacts__map-link {
+  color: gray; }
 
 .product-main {
   width: calc(100% - 2rem);

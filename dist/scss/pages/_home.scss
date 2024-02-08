@@ -22,7 +22,11 @@
   padding-left: 2rem;
   position: relative;
 
-  & h4{
+
+  &__text{
+    padding-bottom: 8rem;
+  }
+  &__subtitle{
     font-size: 1.5rem;
   }
   
@@ -152,6 +156,12 @@
   @media (max-width: 1400px) {
     flex-direction: column;
     padding: 2rem 0.5rem;
+    &__text{
+      padding: 0;
+    }
+    &__title{
+      text-align: center;
+    }
   }
   @media (max-width: 680px) {
     & h4{

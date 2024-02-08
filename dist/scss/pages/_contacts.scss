@@ -2,6 +2,7 @@
   @include margin-border;
 }
 .contacts{
+
   
 
   &__items{
@@ -9,17 +10,38 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 0 4rem;
     gap: 1rem 0;
   }
   &__item{
     position: relative;
     text-align: center;
-    background-color: $primary-light;
     border: 1px solid $primary-accent;
     border-radius: $light-radius;
     width: calc(25% - 0.5rem);
+    transition: 0.3s all;
+    @include level-up;
+    overflow: hidden;
 
+    &:nth-child(2n){
+      background-color: $primary-light;
+      &::after{
+        content: "";
+        @include full-size-absolute;
+        @include half-clip;
+        background-color: lighten($primary, 5%);
+        z-index: 0;
+      }
+    }
+    &:nth-child(2n - 1){
+      background-color: lighten($primary, 5%);
+      &::after{
+        content: "";
+        @include full-size-absolute;
+        @include mirrored-half-clip;
+        background-color: $primary-light;
+        z-index: 0;
+      }
+    }
     &>a{
       display: inline-block;
       padding: $medium-margin;
@@ -54,6 +76,9 @@
       user-select: none;
       white-space: nowrap;
     }
+    &:hover{
+      transform: translateY(-4px);
+    }
     &:hover &-after{
       width: 10rem;
       height: 3rem;
@@ -62,5 +87,32 @@
     @media (max-width: 1150px) {
       width: calc(50% - 0.5rem);
     }
+    @media (max-width: 525px) {
+      width: 100%;
+    }
+  }
+
+  &__map-container{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $primary;
+    padding: $small-margin;
+    margin-top: $normal-margin;
+    width: 50%;
+    border-radius: $light-radius;
+    transition: 0.3s all;
+    box-shadow: $medium-shadow;
+    &:hover{
+      box-shadow: $light-shadow;
+      transform: translateX(-50%) translateY(-4px);
+    }
+  }
+  &__map{
+    width: 100%;
+    height: 20rem;
+  }
+  &__map-link{
+    color: gray;
   }
 }
