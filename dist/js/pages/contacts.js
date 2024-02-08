@@ -11,12 +11,12 @@ function handleEmailClick(id, text) {
   const DOM_ELEMENT = document.getElementById(id);
   const afterContent = document.createElement('span');
   afterContent.classList.add("contacts__item-after")
-  afterContent.textContent = "Click to copy";
+  afterContent.textContent = "Click & copy";
   DOM_ELEMENT.appendChild(afterContent);
   
   function clickHandler() {
       copyToClipboard(text);
-      afterContent.textContent = "Copied";
+      afterContent.textContent = "Copiat";
       afterContent.removeEventListener("click", clickHandler);
 
       setTimeout(() => {

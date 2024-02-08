@@ -3,7 +3,7 @@ h1, h2, h3, h4, h5, h6{
 }
 h1{
   color: $primary-accent;
-  font-size: 3.2rem;
+  font-size: 2.8rem;
 }
 h2{
   color: $primary-accent;
@@ -67,5 +67,11 @@ p{
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
+  }
+  &--center{
+    text-align: center;
+  }
+  &--underline{
+    text-decoration: underline;
   }
 }
