@@ -1,6 +1,3 @@
-.main--contacts{
-  @include margin-border;
-}
 .contacts{
   width: 95%;
   margin: 0 auto;
@@ -101,6 +98,7 @@
     background-color: $primary;
     padding: $small-margin;
     margin-top: $normal-margin;
+    padding-bottom: 0;
     width: 100%;
     border-radius: $light-radius;
     transition: 0.3s all;
@@ -112,7 +110,7 @@
   }
   &__map{
     width: 100%;
-    height: 25rem;
+    height: 65vh;
   }
   &__map-link{
     color: gray;

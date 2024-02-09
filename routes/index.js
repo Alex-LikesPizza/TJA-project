@@ -6,7 +6,7 @@ const route = express.Router();
 const distPath = path.join(__dirname, '..', 'dist');
 const homePath = path.join(distPath, "index.html");
 
-route.use("/index.html", async (req, res, next) => {
+route.use("/", async (req, res, next) => {
   try {
     const fileBuffer = await fs.readFile(homePath, 'utf8');
     res.setHeader('Content-Type', 'text/html');

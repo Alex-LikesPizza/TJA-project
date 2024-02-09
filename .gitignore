@@ -1,2 +1,6 @@
 /node_modules
-/keys
+
+
+
+#   KEYS
+firebaseConfig.js

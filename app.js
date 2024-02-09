@@ -23,7 +23,6 @@ const routes = {
 
 }
 
-app.use(routes.index);
 app.use(routes.pages);
 app.use(routes.css);
 app.use(routes.imports.splide);
@@ -31,6 +30,7 @@ app.use(routes.images);
 app.use(routes.scripts.components);
 app.use(routes.scripts.pages);
 app.use(routes.server);
+app.use(routes.index);
 
 
 app.listen(PORT);
