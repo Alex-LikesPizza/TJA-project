@@ -24,7 +24,18 @@
   &--bordered{
     outline-width: 1px;
     outline-style: solid;
-    color: $primary-accent;
+    outline-color: $primary-accent;
+    background: none;
+    
+    &:hover{
+      background-color: darken($primary, 4%);
+      outline: none;
+    }
+  }
+  &--bordered-wide{
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: $primary-accent;
     background: none;
     
     &:hover{

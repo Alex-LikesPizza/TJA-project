@@ -7,6 +7,14 @@ const DOM_SERVICE = document.getElementById("form--service");
 const DOM_MESSAGE = document.getElementById("form--message");
 const DOM_BUTTON = document.getElementById("form--submit");
 
+const DOM_MODAL_NAME = document.getElementById("form-modal--name");
+const DOM_MODAL_EMAIL = document.getElementById("form-modal--email");
+const DOM_MODAL_NUMBER = document.getElementById("form-modal--phone");
+const DOM_MODAL_CATEGORY = document.getElementById("form-modal--category");
+const DOM_MODAL_SERVICE = document.getElementById("form-modal--service");
+const DOM_MODAL_MESSAGE = document.getElementById("form-modal--message");
+const DOM_MODAL_SUBMIT = document.getElementById("form-modal--submit")
+
 const data = {
   name: '',
   email: '',
@@ -35,7 +43,7 @@ DOM_CATEGORY.addEventListener("change", (e) => {
 
 const getProcessedData = () => {
   data.getData();
-  let parseData = {};
+  let parseData;
   if(data.category !== "service"){
     parseData = {
       name: data.name,
@@ -56,25 +64,58 @@ const getProcessedData = () => {
   }
   return parseData;
 }
+const writeModalForm = () => {
+  DOM_MODAL_NAME.value = data.name;
+  DOM_MODAL_EMAIL.value = data.email;
+  DOM_MODAL_NUMBER.value = data.number;
+  DOM_MODAL_MESSAGE.value = data.message;
+
+  let categoryValue;
+  let serviceValue;
+
+  for(const option of DOM_CATEGORY.options){
+    if(option.value === data.category) categoryValue = option.textContent.trim();
+  }
+  for(const option of DOM_SERVICE.options){
+    if(option.value === data.service) serviceValue = option.textContent.trim();
+  }
+
+
+  DOM_MODAL_CATEGORY.value = categoryValue;
+  DOM_MODAL_SERVICE.value = serviceValue;
+
+  if(data.category === "service"){
+    DOM_MODAL_CATEGORY.parentElement.style.display = "none";
+    DOM_MODAL_SERVICE.parentElement.style.display = "block";
+  }
+  else{
+    DOM_MODAL_SERVICE.parentElement.style.display = "none"
+    DOM_MODAL_CATEGORY.parentElement.style.display = "block";
+  }
+}
+
 DOM_FORM.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const data = getProcessedData();
-
+  data.getData();
   for(const key in data){
+    if(typeof(data[key]) !== "string") continue;
     if(data[key].trim() === ""){
-      alert("Vă rugăm să umpleți toate rândurile");
+      alert("Vă rugăm să umpleți toate rândurile" + key);
       return;
     };
   }
-
+  
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if(!emailRegex.test(data.email)){
     alert("Vă rugăm să introduceți o adresă validă");
     return;
   }
-
-
+  writeModalForm();
+  openModal("modal--submit");
+});
+DOM_MODAL_SUBMIT.addEventListener("click", () => {
+  const data = getProcessedData();
   const url = '/server';
   fetch(url, {
     method: 'POST',
@@ -85,21 +126,20 @@ DOM_FORM.addEventListener("submit", (e) => {
   })
   .then(response => response.json())
   .then(data => {
-      DOM_FORM.reset();
-      DOM_BUTTON.removeAttribute("disabled");
-      DOM_BUTTON.style.cursor = "pointer";
-
-      console.log(data);
-    })
-    .catch(error => {
-      console.error('Error:', error.message);
-    });
-
-  DOM_BUTTON.setAttribute("disabled", true);
-  DOM_BUTTON.style.cursor = "not-allowed";
+    DOM_FORM.reset();
+    DOM_MODAL_SUBMIT.removeAttribute("disabled");
+    DOM_MODAL_SUBMIT.style.cursor = "pointer";
+    closeModal();
+  })
+  .catch(error => {
+    console.error('Error:', error.message);
+  });
+  
+  DOM_MODAL_SUBMIT.setAttribute("disabled", true);
+  DOM_MODAL_SUBMIT.style.cursor = "not-allowed";
 
   localStorage.setItem("BBA_form-data", null);
-});
+})
 
 const updateData = () => {
   const processedData = getProcessedData();

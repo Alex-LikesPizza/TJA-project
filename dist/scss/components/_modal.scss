@@ -1,15 +1,18 @@
 .modal{
-  display: flex;
-  @include full-size-absolute;
+  display: none;
   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   justify-content: center;
   align-items: center;
   z-index: 101;
 
   &__background{
-    position: absolute;
-    background-color: rgba($black, 0.2);
-    height: 100%;
-    width: 100%;
+    @include full-size-absolute;
+    position: fixed;
+    display: none;
+    background-color: rgba($black, 0.4);
+    z-index: 100;
   }
 }

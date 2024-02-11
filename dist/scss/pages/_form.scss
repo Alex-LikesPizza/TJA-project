@@ -27,6 +27,7 @@
 
   &__label {
     font-size: 1.2rem;
+    margin-top: $small-margin;
   }
 
   &__input {
@@ -36,7 +37,7 @@
     padding: $small-margin;
     border: 1px solid #ccc;
     border-radius: $small-margin;
-    margin-top: $small-margin;
+    margin-top: $xsmall-margin;
     outline-color: darken($primary-dark, 6%);
     outline-offset: -3px;
     &--message{
@@ -54,4 +55,56 @@
   &__submit{
     width: clamp(10ch, 50%, 50%);
   }
+}
+
+.form-modal{
+  background-color: $primary-light;
+  outline: 4px solid $primary-dark;
+  border-radius: $medium-radius;
+  padding: $normal-margin;
+  max-height: 70vh;
+  overflow-y: scroll;
+  
+
+  &__title{
+    text-align: center;
+  }
+  &__buttons{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: $normal-margin;
+    padding: $normal-margin;
+
+    &--save{
+      width: 50%;
+      max-width: 10rem;
+    }
+    &--cancel{
+      width: 50%;
+      max-width: 7rem;
+    }
+  }
+  & input, & textarea{
+    cursor: default;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border: 3px solid transparent;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+  }
+  -moz-scrollbar-width: thin;
+  -moz-scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
 }

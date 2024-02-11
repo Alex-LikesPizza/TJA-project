@@ -8,7 +8,19 @@ const { getFirestore, collection, addDoc, serverTimestamp } = require("firebase/
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
-
+const postData = (data) => {
+  
+  let col;
+  if (data.category !== "service") {
+    col = collection(database, "messages");
+  } else {
+    col = collection(database, "serviceRequests");
+  }
+  addDoc(col, { 
+    timestamp: serverTimestamp(), 
+    ...data 
+  });
+}
 
 route.post("/server", async (req, res, next) => {
   let rawData = '';
@@ -19,18 +31,7 @@ route.post("/server", async (req, res, next) => {
   req.on('end', async () => { 
     try {
       const data = JSON.parse(rawData);
-
-      let col;
-      if (data.category) {
-        col = collection(database, "messages");
-      } else {
-        col = collection(database, "serviceRequests");
-      }
-
-      await addDoc(col, { 
-        timestamp: serverTimestamp(), 
-        ...data 
-      });
+      postData(data);
 
       res.json({ message: 'Data received and written successfully' });
     } catch (error) {

@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/components/header.js" defer></script>
-  <script type="module" src="../js/pages/form.js" defer></script>
-  <script src="../js/components/modal.js"></script>
+  <script src="../js/pages/form.js" defer></script>
+  <script src="../js/components/modal.js" defer></script>
   <title>Formular de contactare</title>
 </head>
 <body>
@@ -155,10 +155,42 @@
       </div>
     </form>
     
-    <div class="modal">
-
-
-
+    <div class="modal" id="modal--submit">
+      <div class="form-modal">
+        <h3 class="form-modal__title">
+          Verificați datele!
+        </h3>
+        <div class="form-modal__data">
+          <div class="form-modal__field-container">
+            <label class="form__label">Nume:</label>
+            <input type="text" id="form-modal--name" class="form__input" readonly>
+          </div>
+          <div class="form-modal__field-container">
+            <label class="form__label">Email:</label>
+            <input type="text" id="form-modal--email" class="form__input" readonly>
+          </div>
+          <div class="form-modal__field-container">
+            <label class="form__label">Telefon:</label>
+            <input type="text" id="form-modal--phone" class="form__input" readonly>
+          </div>
+          <div class="form-modal__field-container">
+            <label class="form__label">Categorie:</label>
+            <input type="text" id="form-modal--category" class="form__input" readonly>
+          </div>
+          <div class="form-modal__field-container">
+            <label class="form__label">Serviciu:</label>
+            <input type="text" id="form-modal--service" class="form__input" readonly>
+          </div>
+          <div class="form-modal__field-container">
+            <label class="form__label">Mesaj:</label>
+            <textarea type="text" id="form-modal--message" class="form__input form__input--message" readonly></textarea>
+          </div>
+        </div>
+        <div class="form-modal__buttons">
+          <button onclick="closeModal()" class="form-modal__buttons--cancel button button--bordered button--bordered">Anulează</button>
+          <button id="form-modal--submit" class="form-modal__buttons--save button">Salvează</button>
+        </div>
+      </div>
     </div>
   </main>
 
