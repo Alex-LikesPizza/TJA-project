@@ -98,6 +98,7 @@ DOM_FORM.addEventListener("submit", (e) => {
   e.preventDefault();
 
   data.getData();
+  console.log(getProcessedData());
   for(const key in data){
     if(typeof(data[key]) !== "string") continue;
     if(data[key].trim() === ""){
@@ -115,14 +116,15 @@ DOM_FORM.addEventListener("submit", (e) => {
   openModal("modal--submit");
 });
 DOM_MODAL_SUBMIT.addEventListener("click", () => {
-  const data = getProcessedData();
+  const parseData = getProcessedData();
+  
   const url = '/server';
   fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(parseData)
   })
   .then(response => response.json())
   .then(data => {

@@ -11,15 +11,21 @@ const database = getFirestore(app);
 const postData = (data) => {
   
   let col;
-  if (data.category !== "service") {
+  const sendData = {}
+  sendData.name = data.name;
+  sendData.email = data.email;
+  sendData.number = data.number;
+  sendData.message = data.message;
+  sendData.timestamp = serverTimestamp(); 
+  if (data.category !== undefined) {
     col = collection(database, "messages");
+    sendData.category = data.category;
   } else {
     col = collection(database, "serviceRequests");
+    sendData.service = data.service;
   }
-  addDoc(col, { 
-    timestamp: serverTimestamp(), 
-    ...data 
-  });
+  console.log(sendData);
+  addDoc(col, {...sendData});
 }
 
 route.post("/server", async (req, res, next) => {
