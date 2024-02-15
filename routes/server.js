@@ -47,8 +47,7 @@ route.post("/server", async (req, res, next) => {
   });
 });
 route.get("/server", (req, res, next) => {
-
-  
+     
 });
 
 module.exports = route;
