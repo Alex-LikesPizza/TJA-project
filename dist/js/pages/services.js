@@ -40,6 +40,10 @@ window.addEventListener("DOMContentLoaded", () => {
       element: document.getElementById("services--mosaic"),
       value: "mosaic"
     },
+    other: {
+      element: document.getElementById("services--other"),
+      value: "other"
+    },
   }
   for(const key in DOM_SERVICES){
     DOM_SERVICES[key].element.addEventListener("click", () => {

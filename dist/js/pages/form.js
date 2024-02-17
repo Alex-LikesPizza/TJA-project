@@ -131,6 +131,7 @@ DOM_MODAL_SUBMIT.addEventListener("click", () => {
     DOM_FORM.reset();
     DOM_MODAL_SUBMIT.removeAttribute("disabled");
     DOM_MODAL_SUBMIT.style.cursor = "pointer";
+    localStorage.setItem("BBA_form-data", null);
     closeModal();
   })
   .catch(error => {
@@ -140,7 +141,6 @@ DOM_MODAL_SUBMIT.addEventListener("click", () => {
   DOM_MODAL_SUBMIT.setAttribute("disabled", true);
   DOM_MODAL_SUBMIT.style.cursor = "not-allowed";
 
-  localStorage.setItem("BBA_form-data", null);
 })
 
 const updateData = () => {

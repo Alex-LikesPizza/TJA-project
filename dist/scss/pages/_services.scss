@@ -38,6 +38,9 @@
     &--tapestry{
       background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-tapestry.png");
     }
+    &--other{
+      background-color: $primary-dark;
+    }
   }
   &__subtext{
     width: 50%;

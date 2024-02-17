@@ -1024,6 +1024,8 @@ p {
       background-image: linear-gradient(to bottom right, rgba(236, 212, 192, 0.3), rgba(236, 212, 192, 0.8)), url("../images/services-mosaic.png"); }
     .services__item--tapestry {
       background-image: linear-gradient(to bottom right, rgba(236, 212, 192, 0.3), rgba(236, 212, 192, 0.8)), url("../images/services-tapestry.png"); }
+    .services__item--other {
+      background-color: #d9bba5; }
   .services__subtext {
     width: 50%;
     position: absolute;
