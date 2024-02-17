@@ -768,7 +768,10 @@ p {
     flex-wrap: wrap;
     gap: 1rem 0;
     width: 100%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    background-color: #ecd4c0;
+    padding: 0.5rem;
+    border-radius: 1rem 1rem 0.3rem 0.3rem; }
   .contacts__item {
     position: relative;
     text-align: center;
@@ -782,7 +785,7 @@ p {
       position: relative; }
     .contacts__item:nth-child(2n) {
       background-color: #f8ebdf; }
-      .contacts__item:nth-child(2n)::after {
+      .contacts__item:nth-child(2n):not(.contacts__item--form)::after {
         content: "";
         position: absolute;
         top: 0;
@@ -794,7 +797,7 @@ p {
         z-index: 0; }
     .contacts__item:nth-child(2n - 1) {
       background-color: #f2e1d4; }
-      .contacts__item:nth-child(2n - 1)::after {
+      .contacts__item:nth-child(2n - 1):not(.contacts__item--form)::after {
         content: "";
         position: absolute;
         top: 0;
@@ -804,6 +807,8 @@ p {
         clip-path: polygon(0 0, 100% 100%, 100% 0);
         background-color: #f8ebdf;
         z-index: 0; }
+    .contacts__item--form {
+      width: 100%; }
     .contacts__item > a {
       display: inline-block;
       padding: 1rem;
@@ -839,10 +844,32 @@ p {
       height: 3rem; }
     @media (max-width: 1150px) {
       .contacts__item {
-        width: calc(50% - 0.5rem); } }
+        width: calc(50% - 0.5rem); }
+        .contacts__item--form {
+          width: 100%; }
+          .contacts__item--form::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            background-color: #f8ebdf;
+            z-index: 0; } }
     @media (max-width: 525px) {
       .contacts__item {
-        width: 100%; } }
+        width: 100%; }
+        .contacts__item--form::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          clip-path: polygon(0 0, 100% 100%, 0% 100%);
+          background-color: #f8ebdf;
+          z-index: 0; } }
   .contacts__map-container {
     position: relative;
     left: 50%;

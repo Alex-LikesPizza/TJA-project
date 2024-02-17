@@ -10,6 +10,9 @@
     gap: 1rem 0;
     width: 100%;
     margin: 0 auto;
+    background-color: $primary;
+    padding: $small-margin;
+    border-radius: $strong-radius $strong-radius $normal-radius $normal-radius;
   }
   &__item{
     position: relative;
@@ -23,7 +26,7 @@
 
     &:nth-child(2n){
       background-color: $primary-light;
-      &::after{
+      &:not(.contacts__item--form)::after{
         content: "";
         @include full-size-absolute;
         @include half-clip;
@@ -33,13 +36,16 @@
     }
     &:nth-child(2n - 1){
       background-color: lighten($primary, 5%);
-      &::after{
+      &:not(.contacts__item--form)::after{
         content: "";
         @include full-size-absolute;
         @include mirrored-half-clip;
         background-color: $primary-light;
         z-index: 0;
       }
+    }
+    &--form{
+      width: 100%;
     }
     &>a{
       display: inline-block;
@@ -85,9 +91,26 @@
 
     @media (max-width: 1150px) {
       width: calc(50% - 0.5rem);
+      &--form{
+        width: 100%;
+        &::after{
+          content: "";
+          @include full-size-absolute;
+          @include top-triangle-clip;
+          background-color: $primary-light;
+          z-index: 0;
+        }
+      }
     }
     @media (max-width: 525px) {
       width: 100%;
+      &--form::after{
+        content: "";
+        @include full-size-absolute;
+        @include reverse-half-clip;
+        background-color: $primary-light;
+        z-index: 0;
+      }
     }
   }
 
