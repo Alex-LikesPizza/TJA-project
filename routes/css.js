@@ -3,12 +3,13 @@ const path = require("path");
 const express = require("express");
 const route = express.Router();
 
-const distPath = path.join(__dirname, '..', 'dist');
-const cssPath = path.join(distPath, "css/style.css");
+const cssPath = path.join(__dirname, '..', 'dist', 'css');
 
-route.get("/css/style.css", async (req, res, next) => {
+route.get("/css/:FileName", async (req, res, next) => {
+  const fileName = req.originalUrl.split('/').pop();
+  const filePath = path.join(cssPath, fileName);
   try {
-    const fileBuffer = await fs.readFile(cssPath, 'utf8');
+    const fileBuffer = await fs.readFile(filePath);
     res.setHeader('Content-Type', 'text/css');
     res.send(fileBuffer);
   } catch (error) {
