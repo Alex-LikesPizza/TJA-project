@@ -30,9 +30,14 @@
   }
   &__title{
     font-size: 2.4rem;
+    animation: fade-left 0.3s ease-out;
   }
   &__subtitle{
     font-size: 1.2rem;
+    animation: fade-left 0.3s ease-out 0.2s backwards;
+  }
+  &__button{
+    animation: fade-in 0.3s ease-out 0.4s backwards;
   }
   &__text-container{
     height: 100%;
@@ -45,6 +50,7 @@
     width: 16rem;
     height: 21.3rem;
     margin: 3rem 10rem;
+    animation: fade-in 0.5s ease 0.6s backwards;
     
     &:hover .home__image{
       &--1{

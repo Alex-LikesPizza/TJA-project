@@ -1,0 +1,54 @@
+@keyframes float-right{
+  from{
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  10%{
+    transform: translateX(100%);
+    opacity: 1;
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+@keyframes float-left{
+  from{
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  10%{
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+@keyframes fade-down{
+  from{
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-left{
+  from{
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fade-in {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}

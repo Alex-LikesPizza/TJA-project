@@ -3,6 +3,7 @@
   flex-flow: row wrap;
   gap: 1rem;
   justify-content: space-between;
+  overflow: hidden;
 
   &__item{
     @include level-up;
@@ -18,27 +19,44 @@
     
     &--canvas{
       background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-canvas.png");
+      animation: float-left 0.4s ease;
+      animation-fill-mode: backwards;
     }
     &--mural{
+      animation: float-right 0.4s ease;
+      animation-fill-mode: backwards;
       background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-mural.png");
     }
     &--interior{
       background-position: bottom;
+      animation: float-left 0.4s ease 0.1s;
+      animation-fill-mode: backwards;
       background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-interior.png");
     }
     &--furniture{
+      animation: float-right 0.4s ease 0.1s;
+      animation-fill-mode: backwards;
       background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-furniture.png");
     }
     &--makeover{
+      animation-delay: 0.4s;
+      animation: float-left 0.4s ease 0.2s;
+      animation-fill-mode: backwards;
       background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-makeover.png");
     }
-    &--mosaic{
-      background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-mosaic.png");
-    }
     &--tapestry{
+      animation: float-right 0.4s ease 0.2s;
+      animation-fill-mode: backwards;
       background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-tapestry.png");
     }
+    &--mosaic{
+      animation: float-left 0.4s ease 0.3s;
+      animation-fill-mode: backwards;
+      background-image: linear-gradient(to bottom right, rgba($primary, 0.3), rgba($primary, 0.8)), url("../images/services-mosaic.png");
+    }
     &--other{
+      animation: float-right 0.4s ease 0.3s;
+      animation-fill-mode: backwards;
       background-color: $primary-dark;
     }
   }

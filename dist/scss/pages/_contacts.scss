@@ -1,7 +1,10 @@
 .contacts{
   width: 95%;
   margin: 0 auto;
-
+  
+  & h2{
+    animation: fade-down 0.3s ease-out;
+  }
   &__items{
     list-style: none;
     display: flex;
@@ -13,6 +16,7 @@
     background-color: $primary;
     padding: $small-margin;
     border-radius: $strong-radius $strong-radius $normal-radius $normal-radius;
+    animation: fade-down 0.3s ease-out;
   }
   &__item{
     position: relative;
@@ -89,7 +93,7 @@
       height: 3rem;
     }
 
-    @media (max-width: 1150px) {
+    @media (max-width: 1600px) {
       width: calc(50% - 0.5rem);
       &--form{
         width: 100%;
@@ -126,6 +130,7 @@
     border-radius: $light-radius;
     transition: 0.3s all;
     box-shadow: $medium-shadow;
+    animation: fade-in 0.3s ease;
     &:hover{
       box-shadow: $light-shadow;
       transform: translateX(-50%) translateY(-4px);

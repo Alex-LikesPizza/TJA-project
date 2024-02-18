@@ -1,5 +1,47 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400&display=swap");
+@keyframes float-right {
+  from {
+    transform: translateX(120%);
+    opacity: 0; }
+  10% {
+    transform: translateX(100%);
+    opacity: 1; }
+  to {
+    transform: translateX(0); } }
+
+@keyframes float-left {
+  from {
+    transform: translateX(-120%);
+    opacity: 0; }
+  10% {
+    transform: translateX(-100%);
+    opacity: 1; }
+  to {
+    transform: translateX(0); } }
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-50%); }
+  to {
+    opacity: 1;
+    transform: translateY(0); } }
+
+@keyframes fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(50%); }
+  to {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 *,
 *::after,
 *::before {
@@ -442,9 +484,13 @@ p {
     padding: 0 2rem 5rem 2rem;
     max-width: 50%; }
   .home__title {
-    font-size: 2.4rem; }
+    font-size: 2.4rem;
+    animation: fade-left 0.3s ease-out; }
   .home__subtitle {
-    font-size: 1.2rem; }
+    font-size: 1.2rem;
+    animation: fade-left 0.3s ease-out 0.2s backwards; }
+  .home__button {
+    animation: fade-in 0.3s ease-out 0.4s backwards; }
   .home__text-container {
     height: 100%;
     display: flex;
@@ -453,7 +499,8 @@ p {
     position: relative;
     width: 16rem;
     height: 21.3rem;
-    margin: 3rem 10rem; }
+    margin: 3rem 10rem;
+    animation: fade-in 0.5s ease 0.6s backwards; }
     .home__image-container:hover .home__image--1 {
       transform: translateX(-9rem) translateY(1rem) rotate(-10deg); }
     .home__image-container:hover .home__image--2 {
@@ -761,6 +808,8 @@ p {
 .contacts {
   width: 95%;
   margin: 0 auto; }
+  .contacts h2 {
+    animation: fade-down 0.3s ease-out; }
   .contacts__items {
     list-style: none;
     display: flex;
@@ -771,7 +820,8 @@ p {
     margin: 0 auto;
     background-color: #ecd4c0;
     padding: 0.5rem;
-    border-radius: 1rem 1rem 0.3rem 0.3rem; }
+    border-radius: 1rem 1rem 0.3rem 0.3rem;
+    animation: fade-down 0.3s ease-out; }
   .contacts__item {
     position: relative;
     text-align: center;
@@ -842,7 +892,7 @@ p {
     .contacts__item:hover .contacts__item-after {
       width: 10rem;
       height: 3rem; }
-    @media (max-width: 1150px) {
+    @media (max-width: 1600px) {
       .contacts__item {
         width: calc(50% - 0.5rem); }
         .contacts__item--form {
@@ -881,7 +931,8 @@ p {
     width: 100%;
     border-radius: 0.2rem;
     transition: 0.3s all;
-    box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2); }
+    box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2);
+    animation: fade-in 0.3s ease; }
     .contacts__map-container:hover {
       box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2);
       transform: translateX(-50%) translateY(-4px); }
@@ -1023,7 +1074,8 @@ p {
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
-  justify-content: space-between; }
+  justify-content: space-between;
+  overflow: hidden; }
   .services__item {
     position: relative;
     padding: 1rem;
@@ -1037,21 +1089,38 @@ p {
       z-index: 1;
       position: relative; }
     .services__item--canvas {
-      background-image: linear-gradient(to bottom right, rgba(236, 212, 192, 0.3), rgba(236, 212, 192, 0.8)), url("../images/services-canvas.png"); }
+      background-image: linear-gradient(to bottom right, rgba(236, 212, 192, 0.3), rgba(236, 212, 192, 0.8)), url("../images/services-canvas.png");
+      animation: float-left 0.4s ease;
+      animation-fill-mode: backwards; }
     .services__item--mural {
+      animation: float-right 0.4s ease;
+      animation-fill-mode: backwards;
       background-image: linear-gradient(to bottom right, rgba(236, 212, 192, 0.3), rgba(236, 212, 192, 0.8)), url("../images/services-mural.png"); }
     .services__item--interior {
       background-position: bottom;
+      animation: float-left 0.4s ease 0.1s;
+      animation-fill-mode: backwards;
       background-image: linear-gradient(to bottom right, rgba(236, 212, 192, 0.3), rgba(236, 212, 192, 0.8)), url("../images/services-interior.png"); }
     .services__item--furniture {
+      animation: float-right 0.4s ease 0.1s;
+      animation-fill-mode: backwards;
       background-image: linear-gradient(to bottom right, rgba(236, 212, 192, 0.3), rgba(236, 212, 192, 0.8)), url("../images/services-furniture.png"); }
     .services__item--makeover {
+      animation-delay: 0.4s;
+      animation: float-left 0.4s ease 0.2s;
+      animation-fill-mode: backwards;
       background-image: linear-gradient(to bottom right, rgba(236, 212, 192, 0.3), rgba(236, 212, 192, 0.8)), url("../images/services-makeover.png"); }
-    .services__item--mosaic {
-      background-image: linear-gradient(to bottom right, rgba(236, 212, 192, 0.3), rgba(236, 212, 192, 0.8)), url("../images/services-mosaic.png"); }
     .services__item--tapestry {
+      animation: float-right 0.4s ease 0.2s;
+      animation-fill-mode: backwards;
       background-image: linear-gradient(to bottom right, rgba(236, 212, 192, 0.3), rgba(236, 212, 192, 0.8)), url("../images/services-tapestry.png"); }
+    .services__item--mosaic {
+      animation: float-left 0.4s ease 0.3s;
+      animation-fill-mode: backwards;
+      background-image: linear-gradient(to bottom right, rgba(236, 212, 192, 0.3), rgba(236, 212, 192, 0.8)), url("../images/services-mosaic.png"); }
     .services__item--other {
+      animation: float-right 0.4s ease 0.3s;
+      animation-fill-mode: backwards;
       background-color: #d9bba5; }
   .services__subtext {
     width: 50%;
