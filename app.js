@@ -18,7 +18,8 @@ const routes = {
   },
   images: require("./routes/images"),
   css: require("./routes/css"),
-  server: require("./routes/server")
+  server: require("./routes/server"),
+  console: require("./routes/console")
 
 
 }
@@ -30,6 +31,7 @@ app.use(routes.images);
 app.use(routes.scripts.components);
 app.use(routes.scripts.pages);
 app.use(routes.server);
+app.use(routes.console);
 app.use(routes.index);
 
 
