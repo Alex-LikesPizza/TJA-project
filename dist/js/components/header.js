@@ -18,8 +18,7 @@ const headerScroll = () => {
   }
 }
 if(!header.classList.contains("header--static"))
-
-window.addEventListener("scroll", headerScroll);
+  window.addEventListener("scroll", headerScroll);
 
 
 const more = document.querySelector(".more");

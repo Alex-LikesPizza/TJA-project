@@ -1,10 +1,16 @@
 .main--form{
   @include margin-border;
+  background-color: $primary-light;
+  padding: $normal-margin $small-margin;
+  border-radius: $strong-radius;
+  background-image: linear-gradient(to left, rgba($primary-light, 0.8), rgba($primary-light, 0.8)), url('../images/form-image.jpg');
+  background-position: center;
+  background-size: cover;
 }
 .form {
   background-color: $primary;
   padding: $normal-margin;
-  border-radius: $normal-margin $normal-margin $small-margin $small-margin;
+  border-radius: $normal-radius;
   width: fit-content;
   margin: 0 auto;
 
@@ -54,6 +60,13 @@
 
   &__submit{
     width: clamp(10ch, 50%, 50%);
+  }
+  
+  @media (max-width: 660px) {
+    padding: $normal-margin;
+    &__input{
+      width: clamp(10ch, 60vw, 70ch);
+    }
   }
 }
 
