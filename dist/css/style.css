@@ -241,7 +241,7 @@ p {
   position: relative;
   display: flex;
   justify-content: space-around;
-  background-color: #d9bba5;
+  background-color: #dec3b0;
   width: calc(100% - 2rem);
   margin: 1rem auto;
   margin-bottom: 2rem;
@@ -249,7 +249,8 @@ p {
   border-radius: 0.3rem 0.3rem 1rem 1rem;
   color: #44372f;
   font-size: 1.2rem;
-  min-height: 10rem; }
+  min-height: 10rem;
+  overflow: hidden; }
   .footer > * {
     z-index: 1;
     position: relative; }
@@ -259,10 +260,16 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    clip-path: polygon(0 0, 50% 100%, 100% 0);
-    background-color: #dec3b0; }
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% calc(100% - 2rem));
+    background-color: #d9bba5; }
   .footer__list {
     list-style: none; }
+  .footer__disclamer {
+    position: absolute;
+    bottom: 0.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #44372f; }
 
 .card {
   position: relative;

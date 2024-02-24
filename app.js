@@ -1,10 +1,7 @@
-const http = require("http");
+// const serverless = require('serverless-http');
 const express = require("express");
 
 const app = express();
-const server = http.createServer(app);
-
-const PORT = 3000;
 
 const routes = {
   index: require("./routes/index"),
@@ -35,4 +32,5 @@ app.use(routes.console);
 app.use(routes.index);
 
 
-app.listen(PORT);
+// module.exports.handler = serverless(app);
+app.listen(3000);
