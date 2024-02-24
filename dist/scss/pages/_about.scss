@@ -22,14 +22,18 @@
   &__front-text{
     z-index: 2;
     max-width: 40%;
+    margin-left: 5rem;
     h1 {
       font-size: 5.4rem;
+      animation: float-left 0.3s ease-out backwards;
     }
     p {
+      animation: float-left 0.3s ease-out 0.14s backwards;
       font-size: 1.2rem;
     }
     @media (max-width: 1200px) {
       max-width: 80%;
+      margin-left: 0;
     }
     @media (max-width: 700px) {
       h1{
@@ -42,6 +46,7 @@
   }
   &__front-image{
     max-width: 70%;
+    animation: fade-in 0.3s ease-out 0.28s backwards;
     @media (max-width: 1200px) {
       position: absolute;
       opacity: 0.7;
@@ -50,10 +55,10 @@
   }
   
   &__section-container{
-    margin-top: 1rem;
+    margin: 1rem 0.8rem 2rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 1.8rem;
     
     @media (max-width: 700px){
       display: flex;
@@ -67,6 +72,7 @@
     background-color: $primary-light;
     border-radius: $light-radius;
     overflow: hidden;
+    box-shadow: 0.8rem 0.6rem 0 $primary-dark;
     &:nth-child(1){
       border-top-left-radius: $normal-radius;
     }
@@ -74,10 +80,10 @@
       border-top-right-radius: $normal-radius;
     }
     &:nth-last-child(1){
-      border-bottom-right-radius: $strong-radius;
+      border-bottom-right-radius: $normal-radius;
     }
     &:nth-last-child(2){
-      border-bottom-left-radius: $strong-radius;
+      border-bottom-left-radius: $normal-radius;
     }
     &--double{
       grid-column: span 2;
@@ -92,8 +98,10 @@
   }
   &__list{
     background-color: $primary-light;
-    padding: $small-margin;
-    padding-left: calc(#{$small-margin} + #{$normal-margin});
+    padding: $normal-margin;
+    padding-top: 0;
+    margin-top: 0;
+    padding-left: calc(#{$normal-margin} + #{$normal-margin});
   }
 
 }

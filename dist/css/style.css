@@ -56,7 +56,8 @@ body {
   line-height: 1.7;
   color: #131112;
   background-color: #FAF9F9;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  overflow-x: hidden; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Nunito', sans-serif; }
@@ -839,31 +840,36 @@ p {
       background-color: #f2e1d4; }
   .about__front-text {
     z-index: 2;
-    max-width: 40%; }
+    max-width: 40%;
+    margin-left: 5rem; }
     .about__front-text h1 {
-      font-size: 5.4rem; }
+      font-size: 5.4rem;
+      animation: float-left 0.3s ease-out backwards; }
     .about__front-text p {
+      animation: float-left 0.3s ease-out 0.14s backwards;
       font-size: 1.2rem; }
     @media (max-width: 1200px) {
       .about__front-text {
-        max-width: 80%; } }
+        max-width: 80%;
+        margin-left: 0; } }
     @media (max-width: 700px) {
       .about__front-text h1 {
         font-size: 3rem; }
       .about__front-text p {
         font-size: 0.9rem; } }
   .about__front-image {
-    max-width: 70%; }
+    max-width: 70%;
+    animation: fade-in 0.3s ease-out 0.28s backwards; }
     @media (max-width: 1200px) {
       .about__front-image {
         position: absolute;
         opacity: 0.7;
         max-width: 100%; } }
   .about__section-container {
-    margin-top: 1rem;
+    margin: 1rem 0.8rem 2rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem; }
+    gap: 1.8rem; }
     @media (max-width: 700px) {
       .about__section-container {
         display: flex;
@@ -873,15 +879,16 @@ p {
   .about__section {
     background-color: #f8ebdf;
     border-radius: 0.2rem;
-    overflow: hidden; }
+    overflow: hidden;
+    box-shadow: 0.8rem 0.6rem 0 #d9bba5; }
     .about__section:nth-child(1) {
       border-top-left-radius: 0.3rem; }
     .about__section:nth-child(2) {
       border-top-right-radius: 0.3rem; }
     .about__section:nth-last-child(1) {
-      border-bottom-right-radius: 1rem; }
+      border-bottom-right-radius: 0.3rem; }
     .about__section:nth-last-child(2) {
-      border-bottom-left-radius: 1rem; }
+      border-bottom-left-radius: 0.3rem; }
     .about__section--double {
       grid-column: span 2; }
   .about__title {
@@ -891,12 +898,15 @@ p {
     padding: 0.5rem; }
   .about__list {
     background-color: #f8ebdf;
-    padding: 0.5rem;
-    padding-left: calc(0.5rem + 1rem); }
+    padding: 1rem;
+    padding-top: 0;
+    margin-top: 0;
+    padding-left: calc(1rem + 1rem); }
 
 .contacts {
-  width: 95%;
-  margin: 0 auto; }
+  padding: 1rem;
+  background-color: #f8ebdf;
+  border-radius: 1rem; }
   .contacts h2 {
     animation: fade-down 0.3s ease-out; }
   .contacts__items {

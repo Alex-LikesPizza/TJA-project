@@ -1,6 +1,7 @@
 .contacts{
-  width: 95%;
-  margin: 0 auto;
+  padding: 1rem;
+  background-color: $primary-light;
+  border-radius: $strong-radius;
   
   & h2{
     animation: fade-down 0.3s ease-out;
