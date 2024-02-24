@@ -1,0 +1,99 @@
+.about{
+  display: flex;
+  &__front{
+    height: 80vh;
+    background-color: $primary-light;
+    border-radius: $strong-radius $strong-radius $normal-radius $normal-radius;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $normal-margin;
+    overflow: hidden;
+    @include level-up;
+
+    &::after{
+      content: "";
+      @include full-size-absolute;
+      @include half-clip;
+      background-color: lighten($primary, 5%);
+    }
+  }
+  &__front-text{
+    z-index: 2;
+    max-width: 40%;
+    h1 {
+      font-size: 5.4rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    @media (max-width: 1200px) {
+      max-width: 80%;
+    }
+    @media (max-width: 700px) {
+      h1{
+        font-size: 3rem;
+      }
+      p{
+        font-size: 0.9rem;
+      }
+    }
+  }
+  &__front-image{
+    max-width: 70%;
+    @media (max-width: 1200px) {
+      position: absolute;
+      opacity: 0.7;
+      max-width: 100%;
+    }
+  }
+  
+  &__section-container{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    
+    @media (max-width: 700px){
+      display: flex;
+      flex-flow: column;
+      p{
+        font-size: 0.9rem;
+      }
+    }
+  }
+  &__section{
+    background-color: $primary-light;
+    border-radius: $light-radius;
+    overflow: hidden;
+    &:nth-child(1){
+      border-top-left-radius: $normal-radius;
+    }
+    &:nth-child(2){
+      border-top-right-radius: $normal-radius;
+    }
+    &:nth-last-child(1){
+      border-bottom-right-radius: $strong-radius;
+    }
+    &:nth-last-child(2){
+      border-bottom-left-radius: $strong-radius;
+    }
+    &--double{
+      grid-column: span 2;
+    }
+  }
+  &__title{
+    background-color: $primary;
+    text-align: center;
+  }
+  &__text{
+    padding: $small-margin;
+  }
+  &__list{
+    background-color: $primary-light;
+    padding: $small-margin;
+    padding-left: calc(#{$small-margin} + #{$normal-margin});
+  }
+
+}
