@@ -5,10 +5,10 @@ const  firebaseConfig = require("../keys/firebaseConfig");
 const { initializeApp } = require("firebase/app");
 const { getFirestore, collection, addDoc, serverTimestamp } = require("firebase/firestore");
 
-const app = initializeApp(firebaseConfig);
+let app = initializeApp(firebaseConfig);;
 const database = getFirestore(app);
 
-const postData = (data) => {
+const postData = async (data) => {
   
   let col;
   const sendData = {}
@@ -24,19 +24,19 @@ const postData = (data) => {
     col = collection(database, "serviceRequests");
     sendData.service = data.service;
   }
-  console.log(sendData);
-  addDoc(col, {...sendData})
-    .then(success, () => {
-      console.log(success);
-    })
-    .catch(err, () => {
-      console.log(err);
-    });
+  try {
+    const docRef = await addDoc(col, {...sendData});
+    console.log("Document written with ID: ", docRef.id);
+    return true;
+  } catch (error) {
+    console.error("Error adding document: ", error);
+    return false;
+  }
 }
 
 route.post("/server", async (req, res, next) => {
   let rawData = '';
-  console.log("Reached Server!");
+  console.log("------New Request------");
 
   req.on('data', (chunk) => {
     rawData += chunk;
@@ -44,9 +44,12 @@ route.post("/server", async (req, res, next) => {
   req.on('end', async () => { 
     try {
       const data = JSON.parse(rawData);
-      postData(data);
-
-      res.json({ message: 'Data received and written successfully' });
+      const success = await postData(data);
+      if (success) {
+        res.json({ message: 'Data received and written successfully' });
+      } else {
+        res.status(500).json({ error: 'Failed to write data to Firebase' });
+      }
     } catch (error) {
       console.error('Error:', error.message);
       res.status(400).json({ error: 'Invalid JSON' });

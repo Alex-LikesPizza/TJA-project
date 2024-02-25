@@ -3,5 +3,6 @@
 
 
 #   KEYS
-firebaseConfig.js
-admins.js
+/keys
+# Local Netlify folder
+.netlify

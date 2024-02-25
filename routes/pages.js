@@ -5,7 +5,7 @@ const route = express.Router();
 
 const pagesPath = path.join(__dirname, '..', 'dist/pages');
 
-route.get("/pages/:fileName", async (req, res, next) => {
+route.get("/pagini/:fileName", async (req, res, next) => {
   try {
     const fileName = req.originalUrl.split('/').pop();
     const filePath = path.join(pagesPath, fileName);
