@@ -25,11 +25,18 @@ const postData = (data) => {
     sendData.service = data.service;
   }
   console.log(sendData);
-  addDoc(col, {...sendData});
+  addDoc(col, {...sendData})
+    .then(success, () => {
+      console.log(success);
+    })
+    .catch(err, () => {
+      console.log(err);
+    });
 }
 
 route.post("/server", async (req, res, next) => {
   let rawData = '';
+  console.log("Reached Server!");
 
   req.on('data', (chunk) => {
     rawData += chunk;
@@ -45,9 +52,6 @@ route.post("/server", async (req, res, next) => {
       res.status(400).json({ error: 'Invalid JSON' });
     }
   });
-});
-route.get("/server", (req, res, next) => {
-     
 });
 
 module.exports = route;
