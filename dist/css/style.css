@@ -20,6 +20,16 @@
   to {
     transform: translateX(0); } }
 
+@keyframes float-out-left {
+  from {
+    transform: translateX(0); }
+  90% {
+    transform: translateX(100%);
+    opacity: 1; }
+  to {
+    transform: translateX(120%);
+    opacity: 0; } }
+
 @keyframes fade-down {
   from {
     opacity: 0;
@@ -181,16 +191,13 @@ p {
     height: 100%;
     clip-path: polygon(100% 100%, 100% 0, 80% 0, 70% 100%);
     background-color: #d9bba5; }
-  @media (min-width: 1275px) {
+  @media (min-width: 925px) {
     .header__post {
       gap: 0; }
     .header__post-item--more {
       display: none; } }
-  @media (max-width: 1275px) {
-    .header__nav-item--about {
-      display: none; } }
   @media (max-width: 925px) {
-    .header__nav-item--contacts {
+    .header__nav-item--about {
       display: none; } }
   @media (max-width: 700px) {
     .header__nav-item {
@@ -461,6 +468,22 @@ p {
     display: none;
     background-color: rgba(19, 17, 18, 0.4);
     z-index: 100; }
+
+#popup {
+  position: fixed;
+  display: none;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background-color: #ecd4c0;
+  z-index: 99;
+  font-size: 1.4rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.3rem;
+  border-top-left-radius: 1rem; }
+  #popup.success {
+    background-color: #c7ecac; }
+  #popup.fail {
+    background-color: #e89f9f; }
 
 .main--default {
   width: calc(100% - 2rem);
@@ -1221,6 +1244,9 @@ p {
       animation: float-right 0.4s ease 0.3s;
       animation-fill-mode: backwards;
       background-color: #d9bba5; }
+    @media (max-width: 900px) {
+      .services__item {
+        width: 100%; } }
   .services__subtext {
     width: 50%;
     position: absolute;
@@ -1229,6 +1255,12 @@ p {
     .services__subtext::before {
       content: "";
       margin-left: 4ch; }
+    @media (max-width: 1100px) {
+      .services__subtext {
+        width: 65%; } }
+    @media (max-width: 550px) {
+      .services__subtext {
+        font-size: 0.8rem; } }
   .services__button {
     margin-top: 0.5rem;
     width: 100%; }
@@ -1238,8 +1270,11 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    clip-path: polygon(calc(100% - 3rem) 0, 100% 0, 100% 100%, 0 100%, 0% calc(100% - 2rem));
+    clip-path: polygon(calc(100% - 3rem) 0, 100% 0, 100% 100%, 0 100%, 0% calc(100% - 3rem));
     background-color: rgba(236, 212, 192, 0.7); }
+    @media (max-width: 1100px) and (min-width: 900px) {
+      .services__item-background {
+        clip-path: polygon(calc(100% - 2rem) 0, 100% 0, 100% 100%, 0 100%, 0% calc(100% - 6rem)); } }
 
 .main--form {
   width: calc(100% - 2rem);

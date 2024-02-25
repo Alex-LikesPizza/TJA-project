@@ -1,0 +1,18 @@
+#popup{
+  position: fixed;
+  display: none;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background-color: $primary;
+  z-index: 99;
+  font-size: 1.4rem;
+  padding: 1rem 1.5rem;
+  border-radius: $normal-radius;
+  border-top-left-radius: $strong-radius;
+  &.success{
+    background-color: $success;
+  }
+  &.fail{
+    background-color: $fail;
+  }
+}

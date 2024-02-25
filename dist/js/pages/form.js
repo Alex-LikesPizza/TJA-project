@@ -117,7 +117,7 @@ DOM_FORM.addEventListener("submit", (e) => {
 });
 DOM_MODAL_SUBMIT.addEventListener("click", () => {
   const parseData = getProcessedData();
-  
+
   const url = '/server';
   fetch(url, {
     method: 'POST',
@@ -128,16 +128,21 @@ DOM_MODAL_SUBMIT.addEventListener("click", () => {
   })
   .then(response => response.json())
   .then(data => {
-    DOM_FORM.reset();
+    DOM_FORM.reset(); 
     DOM_MODAL_SUBMIT.removeAttribute("disabled");
     DOM_MODAL_SUBMIT.style.cursor = "pointer";
     localStorage.setItem("BBA_form-data", null);
     closeModal();
+    showPopup("Mesajul a fost transmis cu succes!", true, 5000);
   })
   .catch(error => {
+    DOM_MODAL_SUBMIT.removeAttribute("disabled");
+    DOM_MODAL_SUBMIT.style.cursor = "pointer";
     console.error('Error:', error.message);
+    showPopup("A apărut o eroare la transmiterea mesajului. Verificați conexiunea și încercați din nou.", false, 5000);
+    closeModal();
   });
-  
+
   DOM_MODAL_SUBMIT.setAttribute("disabled", true);
   DOM_MODAL_SUBMIT.style.cursor = "not-allowed";
 

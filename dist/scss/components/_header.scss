@@ -72,7 +72,7 @@
     background-color: $primary-dark;
   }
 
-  @media (min-width: 1275px) {
+  @media (min-width: 925px) {
     &__post{
       gap: 0;
     }
@@ -80,11 +80,8 @@
       display: none;
     }
   }
-  @media (max-width: 1275px){
-    &__nav-item--about{display: none;}
-  }
   @media (max-width: 925px) {
-    &__nav-item--contacts{display: none;}
+    &__nav-item--about{display: none;}
   }
   @media (max-width: 700px) {
     &__nav-item{
