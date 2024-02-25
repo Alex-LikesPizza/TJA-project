@@ -8,7 +8,7 @@ const sendRequest = (value) => {
   };
   const strData = JSON.stringify(data);
   localStorage.setItem("BBA_form-data", strData);
-  location.href = "../pages/formular.html";
+  location.href = "../pagini/formular.html";
 }
 window.addEventListener("DOMContentLoaded", () => {
   DOM_SERVICES = {

@@ -107,6 +107,11 @@ DOM_FORM.addEventListener("submit", (e) => {
     };
   }
   
+  const phoneRegex = /^\+?\d{10,}$/;
+  if (!phoneRegex.test(data.number)) {
+    alert("Vă rugăm să introduceți un număr valid");
+    return;
+  } 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if(!emailRegex.test(data.email)){
     alert("Vă rugăm să introduceți o adresă validă");
