@@ -107,7 +107,7 @@ DOM_FORM.addEventListener("submit", (e) => {
     };
   }
   
-  const phoneRegex = /^\+?\d{10,}$/;
+  const phoneRegex = /^\+?\d(?:\s*\d){8,}$/;
   if (!phoneRegex.test(data.number)) {
     alert("Vă rugăm să introduceți un număr valid");
     return;
@@ -183,4 +183,4 @@ window.addEventListener("DOMContentLoaded", () => {
     DOM_SERVICE.value = data.service;
     DOM_SERVICE.parentElement.style.display = "block";
   }
-});
+});  
