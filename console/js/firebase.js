@@ -48,7 +48,7 @@ window.addEventListener("DOMContentLoaded", () => {
       messagesDOM.appendChild(item);
 
       const deleteDOM = document.getElementById(doc.id);
-      deleteDOM.addEventListener("click", () => {deleteItem("messages", doc.id)});
+      deleteDOM.addEventListener("click", () => {deleteItem("messages", doc.id, data.name)});
     })
   });
   onSnapshot(servicesQuery, (querySnapshot) => {
@@ -93,12 +93,13 @@ window.addEventListener("DOMContentLoaded", () => {
       servicesDOM.appendChild(item);
 
       const deleteDOM = document.getElementById(doc.id);
-      deleteDOM.addEventListener("click", () => {deleteItem("serviceRequests", doc.id)});
+      deleteDOM.addEventListener("click", () => {deleteItem("serviceRequests", doc.id, data.name)});
     })
   });
 });
 
-function deleteItem(collection, docId){
+function deleteItem(collection, docId, name){
+  if(!confirm("Doriți să ștergeți mesajul proprietarului: " + name))return;
   const docRef = doc(db, collection, docId);
   deleteDoc(docRef);
   console.log("deleted", docId)

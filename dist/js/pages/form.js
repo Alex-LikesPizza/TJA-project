@@ -98,7 +98,6 @@ DOM_FORM.addEventListener("submit", (e) => {
   e.preventDefault();
 
   data.getData();
-  console.log(getProcessedData());
   for(const key in data){
     if(typeof(data[key]) !== "string") continue;
     if(data[key].trim() === ""){
@@ -137,6 +136,7 @@ DOM_MODAL_SUBMIT.addEventListener("click", () => {
     DOM_MODAL_SUBMIT.removeAttribute("disabled");
     DOM_MODAL_SUBMIT.style.cursor = "pointer";
     localStorage.setItem("BBA_form-data", null);
+    DOM_SERVICE.parentElement.style.display = "none";
     closeModal();
     showPopup("Mesajul a fost transmis cu succes!", true, 5000);
   })

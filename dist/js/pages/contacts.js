@@ -30,7 +30,7 @@ function handleEmailClick(id, text) {
 
 window.addEventListener("DOMContentLoaded", () => {
   handleEmailClick("contacts__item--email", "bellatrixbizantinart@gmail.com");
-  handleEmailClick("contacts__item--phone", "+40 685 661 331");
+  handleEmailClick("contacts__item--phone", "+40 724 711 844");
   handleEmailClick("contacts__item--facebook", "bellatrix bisantin art");
-  handleEmailClick("contacts__item--address", "Bd. Theodor Pallady 2, București");
+  handleEmailClick("contacts__item--address", "Cluj-Napoca, Piața Unirii");
 });

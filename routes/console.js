@@ -11,6 +11,11 @@ const consolePagePath = path.join(__dirname, '..', 'console/pages/console.html')
 const cssPath = path.join(__dirname, "..", "console/css");
 const jsPath = path.join(__dirname, "..", "console/js");
 route.post("/console/console.html", async (req, res, next) => {
+  if(req.session.isAdmin){
+    res.redirect("./console.html");
+    res.end();
+    return;
+  }
   let body = '';
   req.on('data', (chunk) => {
     body += chunk.toString();
@@ -39,7 +44,8 @@ route.get("/console/console.html", async (req, res, next) => {
     res.redirect("./authorize.html");
   }
 });
-route.get("/console/authorize.html", async (req, res, next) => {
+route.use("/console/authorize.html", async (req, res, next) => {
+  req.session.isAdmin = false;
   try {
     const fileBuffer = await fs.readFile(authorizePagePath, 'utf8');
 
@@ -76,5 +82,8 @@ route.get("/console/css/:FileName", async (req, res, next) => {
     res.status(404).send("File not found");
   }
 });
+route.get("/console", (req, res, next) => {
+  res.redirect("/console/console.html");
+})
 
 module.exports = route;

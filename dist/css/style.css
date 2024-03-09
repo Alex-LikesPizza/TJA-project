@@ -931,7 +931,8 @@ p {
     .contacts__item-title {
       font-size: 1.8rem; }
     .contacts__item-text {
-      font-size: 1.2rem; }
+      font-size: 1.2rem;
+      word-break: break-word; }
     .contacts__item-after {
       display: flex;
       font-size: 1.6rem;
@@ -970,7 +971,7 @@ p {
             clip-path: polygon(0 0, 50% 100%, 100% 0);
             background-color: #f8ebdf;
             z-index: 0; } }
-    @media (max-width: 525px) {
+    @media (max-width: 750px) {
       .contacts__item {
         width: 100%; }
         .contacts__item--form::after {
