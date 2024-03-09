@@ -4,5 +4,6 @@
 
 #   KEYS
 /keys
+firebaseConfig.js
 # Local Netlify folder
 .netlify

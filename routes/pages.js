@@ -3,7 +3,7 @@ const path = require("path");
 const express = require("express");
 const route = express.Router();
 
-const pagesPath = path.join(__dirname, '..', 'dist/pages');
+const pagesPath = path.join(__dirname, '..', 'dist/pagini');
 
 route.get("/pagini/:fileName", async (req, res, next) => {
   try {

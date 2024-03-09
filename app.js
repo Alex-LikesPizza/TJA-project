@@ -1,5 +1,8 @@
 // const serverless = require('serverless-http');
 const express = require("express");
+const session = require('express-session');
+
+const sessionKey = require('./keys/sessionKey');
 
 const app = express();
 
@@ -20,7 +23,11 @@ const routes = {
 
 
 }
-
+app.use(session({
+  secret: sessionKey,
+  resave: false,
+  saveUninitialized: true,
+}));
 app.use(routes.pages);
 app.use(routes.css);
 app.use(routes.imports.splide);
