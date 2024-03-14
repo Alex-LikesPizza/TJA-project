@@ -778,6 +778,9 @@ p {
         grid-column: 4;
         grid-row: 1 / span 2; } }
 
+.main--about {
+  overflow-x: hidden; }
+
 .about {
   display: flex; }
   .about__front {
@@ -829,43 +832,34 @@ p {
         position: absolute;
         opacity: 0.7;
         max-width: 100%; } }
-  .about__section-container {
-    margin: 1rem 0.8rem 2rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.8rem; }
-    @media (max-width: 700px) {
-      .about__section-container {
-        display: flex;
-        flex-flow: column; }
-        .about__section-container p {
-          font-size: 0.9rem; } }
   .about__section {
-    background-color: #f8ebdf;
-    border-radius: 0.2rem;
-    overflow: hidden;
-    box-shadow: 0.8rem 0.6rem 0 #d9bba5; }
-    .about__section:nth-child(1) {
-      border-top-left-radius: 0.3rem; }
-    .about__section:nth-child(2) {
-      border-top-right-radius: 0.3rem; }
-    .about__section:nth-last-child(1) {
-      border-bottom-right-radius: 0.3rem; }
-    .about__section:nth-last-child(2) {
-      border-bottom-left-radius: 0.3rem; }
-    .about__section--double {
-      grid-column: span 2; }
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    margin-top: 1rem;
+    border-radius: 0.3rem; }
+    .about__section > * {
+      width: calc(50% - 1rem); }
+    .about__section--left {
+      background-image: linear-gradient(to right, #ecd4c0, rgba(248, 235, 223, 0.1)); }
+    .about__section--right {
+      background-image: linear-gradient(to left, #ecd4c0, rgba(248, 235, 223, 0.1));
+      flex-direction: row-reverse; }
+      .about__section--right .about__image {
+        box-shadow: -1rem 1rem #d9bba5; }
   .about__title {
-    background-color: #ecd4c0;
-    text-align: center; }
+    text-align: center;
+    margin-top: 2rem; }
   .about__text {
-    padding: 0.5rem; }
-  .about__list {
-    background-color: #f8ebdf;
-    padding: 1rem;
-    padding-top: 0;
-    margin-top: 0;
-    padding-left: calc(1rem + 1rem); }
+    font-size: 1.2rem; }
+  .about__image {
+    width: 25rem;
+    height: 25rem;
+    margin: 0 auto;
+    box-shadow: 1rem 1rem #d9bba5;
+    transform: translateY(-0.5rem);
+    border-radius: 0.2rem;
+    object-fit: cover; }
 
 .contacts {
   padding: 1rem;

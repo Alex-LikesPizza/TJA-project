@@ -17,8 +17,10 @@ const headerScroll = () => {
     header.style.fontSize = "1.4rem"
   }
 }
-if(!header.classList.contains("header--static"))
+if(!header.classList.contains("header--static")){
   window.addEventListener("scroll", headerScroll);
+  window.addEventListener("DOMContentLoaded", headerScroll)
+}
 
 
 const more = document.querySelector(".more");

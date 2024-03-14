@@ -1,9 +1,7 @@
+#   MISC
 /node_modules
-
-
 
 #   KEYS
 /keys
-firebaseConfig.js
-# Local Netlify folder
+# PREPROCESSORS
 .netlify
