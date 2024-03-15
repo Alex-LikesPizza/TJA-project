@@ -17,6 +17,9 @@ app.use(session({
 }));
 app.use(routes.server);
 app.use(routes.console);
+app.use(() => {
+  
+})
 
 
 module.exports.handler = serverless(app);

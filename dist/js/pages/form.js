@@ -101,7 +101,7 @@ DOM_FORM.addEventListener("submit", (e) => {
   for(const key in data){
     if(typeof(data[key]) !== "string") continue;
     if(data[key].trim() === ""){
-      alert("Vă rugăm să umpleți toate rândurile" + key);
+      alert("Vă rugăm să umpleți toate rândurile");
       return;
     };
   }
@@ -119,16 +119,24 @@ DOM_FORM.addEventListener("submit", (e) => {
   writeModalForm();
   openModal("modal--submit");
 });
+
+let messageStatus = "waiting";
 DOM_MODAL_SUBMIT.addEventListener("click", () => {
   const parseData = getProcessedData();
 
   const url = '/server';
+  const timeout = 10_000;
+
+  const controller = new AbortController();
+  const signal = controller.signal;
+  messageStatus = "pending";
   fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(parseData)
+    body: JSON.stringify(parseData),
+    signal
   })
   .then(response => response.json())
   .then(data => {
@@ -139,19 +147,25 @@ DOM_MODAL_SUBMIT.addEventListener("click", () => {
     DOM_SERVICE.parentElement.style.display = "none";
     closeModal();
     showPopup("Mesajul a fost transmis cu succes!", true, 5000);
+    messageStatus = "waiting";
   })
   .catch(error => {
+    messageStatus = "waiting";
+    console.error('Error: ' + error.message);
+    showPopup("A apărut o eroare. Verificați conexiunea și încercați din nou", false, 5000);
     DOM_MODAL_SUBMIT.removeAttribute("disabled");
     DOM_MODAL_SUBMIT.style.cursor = "pointer";
-    console.error('Error:', error.message);
-    showPopup("A apărut o eroare la transmiterea mesajului. Verificați conexiunea și încercați din nou.", false, 5000);
     closeModal();
   });
+  setTimeout(() => {
+    if(messageStatus === "pending") {
+      controller.abort();
+    }
+  }, timeout);
 
   DOM_MODAL_SUBMIT.setAttribute("disabled", true);
   DOM_MODAL_SUBMIT.style.cursor = "not-allowed";
-
-})
+});
 
 const updateData = () => {
   const processedData = getProcessedData();

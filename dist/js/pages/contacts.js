@@ -21,7 +21,7 @@ function handleEmailClick(id, text) {
 
       setTimeout(() => {
           afterContent.addEventListener("click", clickHandler);
-          afterContent.textContent = "Click to copy";
+          afterContent.textContent = "Click & copy";
       }, 1000);
   }
 

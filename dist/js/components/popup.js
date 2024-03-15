@@ -1,8 +1,10 @@
 function showPopup(message, isSuccess, time = 3000) {
   var popup = document.getElementById("popup");
   popup.innerText = message;
-  isSuccess === true && popup.classList.add("success");
-  isSuccess === false && popup.classList.add("fail");
+  popup.classList.remove("success");
+  popup.classList.remove("fail");
+  if(isSuccess === true) popup.classList.add("success");
+  else if(isSuccess === false) popup.classList.add("fail");
   popup.style.display = "block";
   popup.style.animation = "float-right 0.3s ease-out backwards";
   setTimeout(function() {

@@ -6,11 +6,13 @@ const route = express.Router();
 const users = require("../keys/admins");
 const firebaseConfig = require("../keys/firebaseConfig");
 
-const authorizePagePath = path.join(__dirname, '..', 'console/pages/authorize.html');
-const consolePagePath = path.join(__dirname, '..', 'console/pages/console.html');
-const cssPath = path.join(__dirname, "..", "console/css");
-const jsPath = path.join(__dirname, "..", "console/js");
-route.post("/console/console.html", async (req, res, next) => {
+const authorizePagePath = path.join(__dirname, '../console/pages/authorize.html');
+const consolePagePath = path.join(__dirname, '../console/pages/console.html');
+const cssPath = path.join(__dirname, "../console/css");
+const jsPath = path.join(__dirname, "../console/js");
+
+
+route.post("/console/pages/console.html", async (req, res, next) => {
   if(req.session.isAdmin){
     res.redirect("./console.html");
     res.end();
@@ -34,7 +36,8 @@ route.post("/console/console.html", async (req, res, next) => {
     res.redirect("./console.html");
   });
 });
-route.get("/console/console.html", async (req, res, next) => {
+route.get("/console/pages/console.html", async (req, res, next) => {
+  console.log(authorizePagePath);
   if(req.session.isAdmin) {
     const fileBuffer = await fs.readFile(consolePagePath, 'utf8');
     res.setHeader("Content-Type", "text/html");
@@ -44,7 +47,7 @@ route.get("/console/console.html", async (req, res, next) => {
     res.redirect("./authorize.html");
   }
 });
-route.use("/console/authorize.html", async (req, res, next) => {
+route.use("/console/pages/authorize.html", async (req, res, next) => {
   req.session.isAdmin = false;
   try {
     const fileBuffer = await fs.readFile(authorizePagePath, 'utf8');
@@ -53,6 +56,7 @@ route.use("/console/authorize.html", async (req, res, next) => {
     res.send(fileBuffer);
   } catch (error) {
     res.status(404).send("Failed to open");
+    console.log(error);
   }
 });
 route.get("/console/js/firebaseConfig.js",  (req, res, next) => {
@@ -83,7 +87,7 @@ route.get("/console/css/:FileName", async (req, res, next) => {
   }
 });
 route.get("/console", (req, res, next) => {
-  res.redirect("/console/console.html");
+  res.redirect("/console/pages/console.html");
 })
 
 module.exports = route;
