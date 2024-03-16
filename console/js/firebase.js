@@ -2,7 +2,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebas
 import { getFirestore, onSnapshot, collection, query, orderBy, doc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js';
 
 
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);  // included in head of html
 const db = getFirestore(app);
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -23,9 +23,9 @@ window.addEventListener("DOMContentLoaded", () => {
         day: 'numeric'
       };
       let category = "Nesetat";
-      if(category === "question") category = "Întrebare";
-      if(category === "sugestion") category = "Sugestie";
-      if(category === "other") category = "Altele";
+      if(data.category === "question") category = "Întrebare";
+      if(data.category === "sugestion") category = "Sugestie";
+      if(data.category === "other") category = "Altele";
       const formattedDate = dateObject.toLocaleDateString("ro-RO", options);
 
       const item = document.createElement("div");
