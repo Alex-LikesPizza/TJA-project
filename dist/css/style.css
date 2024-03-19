@@ -70,22 +70,19 @@ body {
   overflow-x: hidden; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Nunito', sans-serif; }
+  font-family: 'Nunito', sans-serif;
+  color: #44372f; }
 
 h1 {
-  color: #44372f;
   font-size: 2.4rem; }
 
 h2 {
-  color: #44372f;
   font-size: 2rem; }
 
 h3 {
-  color: #44372f;
   font-size: 1.4rem; }
 
 h4 {
-  color: #44372f;
   font-size: 1.2rem;
   font-weight: 500; }
 
@@ -109,11 +106,17 @@ a {
       right: auto;
       width: 100%; }
 
+span {
+  font: inherit; }
+
 hr {
   border: 1px solid #44372f; }
 
 p {
   font-family: 'Open Sans', sans-serif; }
+
+.text--sticky {
+  text-wrap: nowrap; }
 
 .text--color-rainbow {
   font-family: inherit;
@@ -520,12 +523,16 @@ p {
     padding: 0 2rem 5rem 2rem;
     max-width: 50%; }
   .home__title {
-    font-size: 2.4rem;
+    font-size: 3.8rem;
+    font-family: 'Nunito', sans-serif;
     animation: fade-left 0.3s ease-out; }
   .home__subtitle {
     font-size: 1.2rem;
     animation: fade-left 0.3s ease-out 0.2s backwards; }
   .home__button {
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
     animation: fade-in 0.3s ease-out 0.4s backwards; }
   .home__text-container {
     height: 100%;
@@ -815,7 +822,7 @@ p {
     max-width: 40%;
     margin-left: 5rem; }
     .about__front-text h1 {
-      font-size: 5.4rem;
+      font-size: 3.6rem;
       animation: float-left 0.3s ease-out backwards; }
     .about__front-text p {
       animation: float-left 0.3s ease-out 0.14s backwards;

@@ -29,7 +29,8 @@
     max-width: 50%;
   }
   &__title{
-    font-size: 2.4rem;
+    font-size: 3.8rem;
+    font-family: 'Nunito', sans-serif;
     animation: fade-left 0.3s ease-out;
   }
   &__subtitle{
@@ -37,6 +38,9 @@
     animation: fade-left 0.3s ease-out 0.2s backwards;
   }
   &__button{
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
     animation: fade-in 0.3s ease-out 0.4s backwards;
   }
   &__text-container{

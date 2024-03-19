@@ -1,20 +1,17 @@
 h1, h2, h3, h4, h5, h6{
   font-family: 'Nunito', sans-serif;
+  color: $primary-accent;
 }
 h1{
-  color: $primary-accent;
   font-size: 2.4rem;
 }
 h2{
-  color: $primary-accent;
   font-size: 2rem;
 }
 h3{
-  color: $primary-accent;
   font-size: 1.4rem;
 }
 h4{
-  color: $primary-accent;
   font-size: 1.2rem;
   font-weight: 500;
 }
@@ -43,6 +40,9 @@ a{
     }
   }
 }
+span{
+  font: inherit;
+}
 
 hr{
   border: 1px solid $primary-accent;
@@ -52,6 +52,10 @@ p{
 }
 
 .text{
+
+  &--sticky{
+    text-wrap: nowrap;
+  }
   &--color-rainbow{
     font-family: inherit;
     background-image: linear-gradient(
