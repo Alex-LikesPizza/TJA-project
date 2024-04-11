@@ -8,9 +8,10 @@
   transition: 0.2s all;
   cursor: pointer;
   box-shadow: $light-shadow;
+  text-align: center;
 
   &:hover{
-    background-color: darken($primary, 10%);
+    background-color: darken($primary, 5%);
   }
   &--no-button{
     border: none;
@@ -60,6 +61,12 @@
     background-color: darken($primary, 12%);
     &:hover{
       background-color: darken($primary, 20%);
+    }
+  }
+  &--light{
+    background-color: $primary-light;
+    &:hover{
+      background-color: darken($primary-light, 4%);
     }
   }
 }

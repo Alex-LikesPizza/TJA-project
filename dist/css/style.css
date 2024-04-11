@@ -419,9 +419,10 @@ p {
   font-size: 1.1rem;
   transition: 0.2s all;
   cursor: pointer;
-  box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2); }
+  box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2);
+  text-align: center; }
   .button:hover {
-    background-color: #e0b999; }
+    background-color: #e6c7ac; }
   .button--no-button {
     border: none;
     background: none;
@@ -459,6 +460,10 @@ p {
     background-color: #deb491; }
     .button--dark:hover {
       background-color: #d49f72; }
+  .button--light {
+    background-color: #f8ebdf; }
+    .button--light:hover {
+      background-color: #f4e1ce; }
 
 .modal {
   display: none;
@@ -533,7 +538,6 @@ p {
     font-size: 1.2rem;
     animation: fade-left 0.3s ease-out 0.2s backwards; }
   .home__button {
-    margin: 1rem;
     padding: 0.5rem 1rem;
     font-size: 1.2rem;
     animation: fade-in 0.3s ease-out 0.4s backwards; }
@@ -633,20 +637,22 @@ p {
         max-width: 80%;
         text-align: center; }
       .home__button {
-        width: 100%; } }
+        width: 50%; } }
   @media (max-width: 680px) {
     .home__text {
       max-width: 95%; }
     .home__subtitle {
       font-size: 1.1rem; }
     .home__image-container {
-      scale: 0.8; } }
+      scale: 0.8; }
+    .home__button {
+      width: 100%; } }
   @media (max-width: 520px) {
     .home__image-container {
       scale: 0.6;
       margin: -1rem 0 -3rem 0; }
     .home__title {
-      font-size: 1.9rem; }
+      font-size: 2.5rem; }
     .home__subtitle {
       font-size: 1rem; } }
   @media (max-width: 420px) {
@@ -1327,15 +1333,15 @@ p {
 
 .main--cart {
   width: calc(100% - 2rem);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr; }
+  margin: 0 auto; }
+
+.cart-container {
+  display: flex; }
 
 .cart {
   position: relative;
-  display: flex;
-  justify-content: center;
-  min-width: 43rem; }
+  min-width: 43rem;
+  max-width: 60%; }
   .cart__pre-title {
     text-align: center; }
   .cart__list {
@@ -1391,7 +1397,74 @@ p {
     .cart__remove:hover {
       color: #807a7d; }
 
-.saved {
-  width: 100%; }
-  .saved__main-title {
-    text-align: center; }
+.cart-total {
+  width: 40%; }
+  .cart-total__card {
+    width: 90%;
+    min-height: 4rem;
+    margin: auto;
+    background-color: #f2e1d4;
+    border-radius: 0.3rem;
+    padding: 1rem 2rem;
+    line-height: 2.5rem; }
+  .cart-total__code > .cart-total__field {
+    margin-bottom: -0.2rem;
+    line-height: 1.4rem; }
+  .cart-total__search {
+    font-size: 0.9rem;
+    height: 1.5rem;
+    width: clamp(15ch, 30%, 70ch);
+    border-radius: 0.2rem;
+    border: 1px solid #d9ced3;
+    background-color: #FAF9F9;
+    outline: none;
+    color: #131112;
+    padding: 0.2rem;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2);
+    transition: 0.4s all; }
+    .cart-total__search:focus {
+      background-color: color-mix(in srgb, #FAF9F9 85%, #d9bba5); }
+  .cart-total__apply-code {
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    line-height: 1.45rem;
+    font-size: 1.1rem;
+    background-color: #ad7e63;
+    color: #FAF9F9;
+    display: inline-block;
+    width: fit-content;
+    border: none;
+    padding: 0 0.4rem;
+    border-radius: 0.2rem 1rem 1rem 0.2rem;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2);
+    transition: 0.2s all;
+    transform: translateY(0.1rem); }
+    .cart-total__apply-code:hover {
+      background-color: #a27155;
+      transform: translateX(0.2rem) translateY(0.1rem); }
+  .cart-total__field {
+    font-size: 1.2rem; }
+    .cart-total__field--important {
+      font-weight: 600; }
+  .cart-total__hr {
+    margin-top: 0.5rem;
+    border-color: #ecd4c0; }
+  .cart-total__total {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 600; }
+  .cart-total__button {
+    width: max-content; }
+
+@media (max-width: 1100px) {
+  .cart-container {
+    flex-direction: column; }
+  .cart-total {
+    margin-top: 1rem;
+    width: 100%; }
+    .cart-total__card {
+      width: 100%; }
+  .cart {
+    max-width: 100%; } }

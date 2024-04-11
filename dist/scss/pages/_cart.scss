@@ -1,15 +1,14 @@
 .main--cart{
   width: calc(100% - 2rem);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
 }
-
+.cart-container{
+  display: flex;
+}
 .cart{
   position: relative;
-  display: flex;
-  justify-content: center;
   min-width: 43rem;
+  max-width: 60%;
 
   &__pre-title{
     text-align: center;
@@ -84,5 +83,99 @@
     &:hover{
       color: $gray;
     }
+  }
+}
+.cart-total{
+  width: 40%;
+
+  &__card{
+    width: 90%;
+    min-height: 4rem;
+    margin: auto;
+    background-color: lighten($primary, 5%);
+    border-radius: $normal-radius;
+    padding: 1rem 2rem;
+    line-height: 2.5rem;
+  }
+  &__code > &__field{
+    margin-bottom: -0.2rem;
+    line-height: 1.4rem;
+  }
+  &__search{
+    font-size: 0.9rem;
+    height: 1.5rem;
+    width: clamp(15ch, 30%, 70ch);
+    border-radius: $light-radius;
+    border: 1px solid $light-gray;
+    background-color: $white;
+    outline: none;
+    color: $black;
+    padding: 0.2rem;
+    box-shadow: $light-shadow;
+    transition: 0.4s all;
+
+    &:focus{
+      background-color: color-mix(in srgb, $white 85%, $primary-dark);
+    }
+  }
+  &__apply-code{
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    line-height: 1.45rem;
+    font-size: 1.1rem;
+    background-color: $primary-extra-dark;
+    color: $white;
+    display: inline-block;
+    width: fit-content;
+    border: none;
+    padding: 0 0.4rem;
+    border-radius: $light-radius $strong-radius $strong-radius $light-radius;
+    box-shadow: $light-shadow;
+    transition: 0.2s all;
+    transform: translateY(0.1rem);
+
+    &:hover{
+      background-color: darken($primary-extra-dark, 5%);
+      transform: translateX(0.2rem) translateY(0.1rem);
+    }
+  }
+
+  &__field{
+    font-size: 1.2rem;
+    &--important{
+      font-weight: 600;
+    }
+  }
+  &__hr{
+    margin-top: 0.5rem;
+    border-color: $primary
+  }
+  &__total{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  
+  &__button{
+    width: max-content;
+  }
+}
+
+@media (max-width: 1100px) {
+  .cart-container{
+    flex-direction: column;
+  }
+  .cart-total{
+    margin-top: 1rem;
+    width: 100%;
+    &__card{
+      width: 100%;
+    }
+  }
+  .cart{
+    max-width: 100%;
+
   }
 }

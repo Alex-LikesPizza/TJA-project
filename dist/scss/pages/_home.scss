@@ -38,7 +38,6 @@
     animation: fade-left 0.3s ease-out 0.2s backwards;
   }
   &__button{
-    margin: 1rem;
     padding: 0.5rem 1rem;
     font-size: 1.2rem;
     animation: fade-in 0.3s ease-out 0.4s backwards;
@@ -178,7 +177,7 @@
       text-align: center;
     }
     &__button{
-      width: 100%;
+      width: 50%;
     }
   }
   @media (max-width: 680px) {
@@ -191,6 +190,9 @@
     &__image-container{
       scale: 0.8;
     }
+    &__button{
+      width: 100%;
+    }
   }
   @media (max-width: 520px) {
     &__image-container{
@@ -198,7 +200,7 @@
       margin: -1rem 0 -3rem 0;
     }
     &__title{
-      font-size: 1.9rem;
+      font-size: 2.5rem;
     }
     &__subtitle{
       font-size: 1rem;
