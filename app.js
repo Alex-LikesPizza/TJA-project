@@ -40,4 +40,4 @@ app.use(routes.index);
 
 
 // module.exports.handler = serverless(app);
-app.listen(3300);
+app.listen(3000);

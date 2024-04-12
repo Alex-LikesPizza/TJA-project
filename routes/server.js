@@ -56,5 +56,25 @@ route.post("/server", async (req, res, next) => {
     }
   });
 });
+route.post("/productsOrder", async (req, res) => {
+  let rawData = '';
+  console.log("------New Request------");
+
+  req.on('data', (chunk) => {
+    rawData += chunk;
+  });
+  req.on('end', async () => { 
+    try{
+      const data = JSON.parse(rawData);
+      console.log(data); // TODO: Add firebase upload
+      
+      res.json({message: " data uploaded successfully"});
+    }
+    catch(error){
+      console.error('Error:', error.message);
+      res.status(400).json({ error: 'Invalid JSON' });
+    }
+  });
+});
 
 module.exports = route;

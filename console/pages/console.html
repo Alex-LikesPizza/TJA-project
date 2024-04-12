@@ -26,10 +26,42 @@
   <main class="console-container">
     <div class="console__sidebar">
       <div onclick="changeTo('services')" id="sidebar--services" class="sidebar__item sidebar__item--selected">Servicii în așteptare</div>
+      <div onclick="changeTo('product-orders')" id="sidebar--product-orders" class="sidebar__item">Solicitări de produse</div>
       <div onclick="changeTo('messages')" id="sidebar--messages" class="sidebar__item">Mesaje</div>
+      <div onclick="changeTo('add-product')" id="sidebar--add-product" class="sidebar__item">Adaugă un produs</div>
     </div>
     <div class="console" id="services"></div>
-    <div class="console" id="messages"><h2>Nu aveți niciun mesaj.</h2></div>
+    <div class="console" id="messages"><h2></h2></div>
+    <div class="console" id="product-orders"><h2>Hello Orders!</h2></div>
+    <div class="console" id="add-product">
+      <form class="upload">
+        <p class="upload__title">Încarcă un produs</p>
+        <div class="upload__field-container">
+          <label for="upload--title">Titlu</label>
+          <input type="text" class="upload__field" id="upload--title">
+        </div>
+        <div class="upload__field-container">
+          <label for="upload--description">Descriere</label>
+          <textarea id="upload--description" cols="30" rows="5"></textarea>
+        </div>
+        <div class="upload__field-container">
+          <label for="upload--price">Preț</label>
+          <input type="number" id="upload--price" min="1"> lei
+        </div>
+        <div class="upload__field-container">
+          <label for="upload--file">Imagine</label>
+          <label for="upload--file" class="upload__file--button"><i class="bi bi-cloud-arrow-up-fill"></i> Alege un fișier</label>
+          <input type="file" id="upload--file">
+          <div class="upload__image-preview">
+            <p>Nu a fost ales nici un fișier...</p>
+          </div>
+        </div>
+
+        <button class="upload__submit">
+          <i class="bi bi-upload"></i> Încarcă
+        </button>
+      </form>
+    </div>
   </main>
 </body>
 </html>
