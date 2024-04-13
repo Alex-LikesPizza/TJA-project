@@ -37,7 +37,6 @@ route.post("/console/pages/console.html", async (req, res, next) => {
   });
 });
 route.get("/console/pages/console.html", async (req, res, next) => {
-  console.log(authorizePagePath);
   if(req.session.isAdmin) {
     const fileBuffer = await fs.readFile(consolePagePath, 'utf8');
     res.setHeader("Content-Type", "text/html");

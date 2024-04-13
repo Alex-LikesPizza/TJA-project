@@ -8,6 +8,7 @@
 
   <script src="../js/firebaseConfig.js"></script>
   <script src="../js/console.js" defer></script>
+  <script src="../js/addProduct.js" defer></script>
   <script type="module" src="../js/firebase.js" defer></script>
   <title>Consolă</title>
 </head>
@@ -34,6 +35,33 @@
     <div class="console" id="messages"><h2></h2></div>
     <div class="console" id="product-orders"><h2>Hello Orders!</h2></div>
     <div class="console" id="add-product">
+      <div class="block-card">
+        <label for="upload--file" id="upload--image-label">
+          <img  class="block-card__image" id="upload--image" loading="lazy" alt="Nu a fost selectat nici un fișier...">
+        </label>
+        <div class="block-card__stats">
+          <label for="upload--title">
+            <h3 class="block-card__title">Titlu</h3>
+          </label>
+          <label for="upload--description">
+            <p class="block-card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. In, sint distinctio. Dicta reprehenderit, ad deleniti nemo doloremque quisquam error exercitationem. Lorem ipsum dolor sit amet consectetur adipisicing elit...
+            </p>
+          </label>
+          <div class="block-card__purchase">
+            <label for="upload--price"><p class="block-card__price">100.00 lei</p></label>
+            <button class="block-card__button button button--bordered">
+              <i class="bi bi-bookmark"></i>
+            </button>
+            <button class="block-card__button button button--bordered">
+              <i class="bi bi-zoom-in"></i>Vezi pagina
+            </button>
+            <button class="block-card__button button">
+              <i class="bi bi-plus-circle"></i> Adaugă în coș
+            </button>
+          </div>
+        </div>
+      </div>
+
       <form class="upload">
         <p class="upload__title">Încarcă un produs</p>
         <div class="upload__field-container">
@@ -46,22 +74,21 @@
         </div>
         <div class="upload__field-container">
           <label for="upload--price">Preț</label>
-          <input type="number" id="upload--price" min="1"> lei
+          <input type="number" id="upload--price" min="1" step="1"> lei
         </div>
         <div class="upload__field-container">
           <label for="upload--file">Imagine</label>
-          <label for="upload--file" class="upload__file--button"><i class="bi bi-cloud-arrow-up-fill"></i> Alege un fișier</label>
+          <label for="upload--file" class="upload__file--button"><i class="bi bi-cloud-arrow-up-fill"></i> <span id="upload--image-title">Alege un fișier</span></label>
           <input type="file" id="upload--file">
-          <div class="upload__image-preview">
-            <p>Nu a fost ales nici un fișier...</p>
-          </div>
         </div>
-
+        
         <button class="upload__submit">
           <i class="bi bi-upload"></i> Încarcă
         </button>
       </form>
+      <canvas style="display: none;" id="canvas"></canvas>
     </div>
+    
   </main>
 </body>
 </html>

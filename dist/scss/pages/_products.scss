@@ -64,7 +64,13 @@
     grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
     gap: 1rem 0.4rem;
     margin-top: $normal-margin;
-    
+  }
+
+
+  @media (max-width: 1370px) {
+    &__gallery{
+      grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    }
   }
 }
 

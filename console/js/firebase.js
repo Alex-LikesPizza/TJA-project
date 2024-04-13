@@ -2,7 +2,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebas
 import { getFirestore, onSnapshot, collection, query, orderBy, doc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js';
 
 
-const app = initializeApp(firebaseConfig);  // included in head of html
+const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -96,6 +96,24 @@ window.addEventListener("DOMContentLoaded", () => {
       deleteDOM.addEventListener("click", () => {deleteItem("serviceRequests", doc.id, data.name)});
     })
   });
+
+  const formUploadDOM = document.querySelector(".upload");
+  formUploadDOM.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let isValid = true;
+    for(let key in productData){
+      if(productData[key] === undefined)
+  
+        isValid = false;
+    }
+    if(!productData.image.src) isValid = false;
+    if(!isValid){
+      alert("Completează toate câmpurile");
+      return;
+    }
+  
+    submitProduct(productData);
+  });
 });
 
 function deleteItem(collection, docId, name){
@@ -103,4 +121,8 @@ function deleteItem(collection, docId, name){
   const docRef = doc(db, collection, docId);
   deleteDoc(docRef);
   console.log("deleted", docId)
+}
+
+function submitProduct(data){
+  console.log(data);
 }

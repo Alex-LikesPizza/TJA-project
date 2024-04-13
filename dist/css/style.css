@@ -358,8 +358,7 @@ p {
 
 .block-card {
   height: 18rem;
-  min-width: 40rem;
-  max-width: 100%;
+  width: 100%;
   display: flex;
   background-color: #f8ebdf;
   border: 1px solid #ecd4c0;
@@ -370,7 +369,8 @@ p {
   box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2);
   position: relative; }
   .block-card__stats {
-    padding: 0.5rem; }
+    padding: 0.5rem;
+    width: 100%; }
   .block-card__title {
     font-size: 1.6rem;
     text-align: center; }
@@ -399,9 +399,8 @@ p {
   .block-card__button {
     display: inline-block; }
   .block-card__image {
-    height: 100%;
-    max-width: 40rem;
-    min-width: 20rem;
+    height: 18rem;
+    width: 18rem;
     object-fit: cover;
     object-position: center; }
   .block-card:hover {
@@ -409,6 +408,11 @@ p {
     border-color: #e3bfa1; }
     .block-card:hover .block-card__description::after {
       filter: brightness(0.98); }
+  @media (max-width: 1370px) {
+    .block-card {
+      flex-direction: column;
+      height: 40rem;
+      width: 18rem; } }
 
 .button {
   border-radius: 0.3rem;
@@ -1273,6 +1277,9 @@ p {
     grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
     gap: 1rem 0.4rem;
     margin-top: 1rem; }
+  @media (max-width: 1370px) {
+    .products__gallery {
+      grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); } }
 
 .product {
   display: flex;
