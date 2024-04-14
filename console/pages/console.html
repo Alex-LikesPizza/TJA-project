@@ -35,9 +35,10 @@
     <div class="console" id="messages"><h2></h2></div>
     <div class="console" id="product-orders"><h2>Hello Orders!</h2></div>
     <div class="console" id="add-product">
+      <h2 class="upload__title">Încarcă un produs</h2>
       <div class="block-card">
-        <label for="upload--file" id="upload--image-label">
-          <img  class="block-card__image" id="upload--image" loading="lazy" alt="Nu a fost selectat nici un fișier...">
+        <label for="upload--file" class="upload__image-label">
+          <img  class="block-card__image upload--image">
         </label>
         <div class="block-card__stats">
           <label for="upload--title">
@@ -63,7 +64,7 @@
       </div>
 
       <form class="upload">
-        <p class="upload__title">Încarcă un produs</p>
+
         <div class="upload__field-container">
           <label for="upload--title">Titlu</label>
           <input type="text" class="upload__field" id="upload--title">
@@ -76,12 +77,23 @@
           <label for="upload--price">Preț</label>
           <input type="number" id="upload--price" min="1" step="1"> lei
         </div>
-        <div class="upload__field-container">
+        <div style="width: fit-content;" class="upload__field-container">
           <label for="upload--file">Imagine</label>
           <label for="upload--file" class="upload__file--button"><i class="bi bi-cloud-arrow-up-fill"></i> <span id="upload--image-title">Alege un fișier</span></label>
           <input type="file" id="upload--file">
+          <label style="margin-top: 1rem; margin-bottom: 1rem;" for="upload--file" class="upload__image-label">
+            <img class="block-card__image upload--image">
+          </label>
+          <label class="upload__label--secondary" for="upload--file-scale">Dimensiune: </label>
+          <input type="range" class="upload__range" id="upload--file-scale" value="0" step="5"> <br>
+          <label class="upload__label--secondary" for="upload--file-alignment-left">Aliniere X: </label>
+          <input type="range" class="upload__range" id="upload--file-alignment-left" value="50" step="5"> <br>
+          <label class="upload__label--secondary" for="upload--file-alignment-top">Aliniere Y: </label>
+          <input type="range" class="upload__range" id="upload--file-alignment-top" value="50" step="5"> <br>
+          
         </div>
         
+
         <button class="upload__submit">
           <i class="bi bi-upload"></i> Încarcă
         </button>

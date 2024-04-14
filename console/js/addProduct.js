@@ -7,13 +7,16 @@ const descriptionPreviewDOM = document.querySelector(".block-card__description")
 const pricePreviewDOM = document.querySelector(".block-card__price");
 
 const fileUploadDOM = document.getElementById("upload--file");
-const fileImageDOM = document.getElementById("upload--image");
+const fileImagesDOM = document.querySelectorAll(".upload--image");
 
 const productData = {
   title: undefined,
   description: undefined,
   price: undefined,
-  image: new Image(),
+  scale: undefined,
+  offsetX: undefined,
+  offsetY: undefined,
+  imageUrl: undefined,
 }
 
 titleUploadDOM.addEventListener("input", (e) => {
@@ -43,12 +46,14 @@ fileUploadDOM.addEventListener("input", (e) => {
     img.src = e.target.result;
     img.onload = () => {
       getCompressedImageURL(img, (url) => {
-        fileImageDOM.src = url;
-        productData.image.src = url;
+        fileImagesDOM.forEach(image => {
+          image.src = url;
+
+        })
+        productData.imageUrl = url;
       });
     };
   };
-
 });
 
 

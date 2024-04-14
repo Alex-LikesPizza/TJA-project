@@ -88,6 +88,13 @@
   width: 18rem;
   object-fit: cover;
   object-position: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.block-card__image:not([src]){
+  visibility: hidden;
 }
 .block-card:hover {
   background-color: #f6e6d7;
@@ -355,9 +362,14 @@
     display: block;
     font-size: 1.3rem;
   }
+  .upload__label--secondary{
+    font-size: 1.2rem;
+    display: inline-block;
+  }
 }
 .upload__title {
-  font-size: 1.5rem;
+  margin-top: 1rem;
+  font-size: 1.8rem;
   font-weight: 600;
   text-align: center;
 }
@@ -380,10 +392,17 @@
 #upload--file {
   display: none;
 }
-#upload--image-label {
+
+.upload__range{
+  accent-color: var(--primary-extra-dark);
+  width: 100%;
+}
+.upload__image-label {
+  overflow: hidden;
   background-color: var(--primary);
   min-width: 18rem;
   min-height: 18rem;
+  position: relative;
 }
 .upload__file--button {
   display: inline-block;

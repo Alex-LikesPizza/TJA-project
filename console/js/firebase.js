@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js';
-import { getFirestore, onSnapshot, collection, query, orderBy, doc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js';
+import { getFirestore, onSnapshot, collection, query, orderBy, doc, deleteDoc, addDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js';
 
 
 const app = initializeApp(firebaseConfig);
@@ -106,7 +106,6 @@ window.addEventListener("DOMContentLoaded", () => {
   
         isValid = false;
     }
-    if(!productData.image.src) isValid = false;
     if(!isValid){
       alert("Completează toate câmpurile");
       return;
@@ -123,6 +122,25 @@ function deleteItem(collection, docId, name){
   console.log("deleted", docId)
 }
 
-function submitProduct(data){
-  console.log(data);
+const productsCollection = collection(db, "products");
+
+async function submitProduct(data){
+  try{
+    const response = await addDoc(productsCollection, data);
+    console.log(response);
+  }
+  catch(err){
+    console.error(err.message);
+  }
+}
+
+async function getProductData(id){
+  try{
+    const docRef = doc(productsCollection, id);
+    const docSnap= await getDoc(docRef);
+    return docSnap.data();
+  }
+  catch(err){
+    console.error(err.message);
+  }
 }
