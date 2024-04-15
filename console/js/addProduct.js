@@ -17,7 +17,9 @@ const productData = {
   offsetX: undefined,
   offsetY: undefined,
   imageUrl: undefined,
+  uncompressedImageUrl: undefined,
 }
+const image = new Image();
 
 titleUploadDOM.addEventListener("input", (e) => {
   titlePreviewDOM.textContent = titleUploadDOM.value;
@@ -40,30 +42,52 @@ fileUploadDOM.addEventListener("input", (e) => {
   document.getElementById("upload--image-title").textContent = file.name;
   const reader = new FileReader();
   reader.readAsDataURL(file);
-
+  
   reader.onload = function (e) {
-    const img = new Image();
-    img.src = e.target.result;
-    img.onload = () => {
-      getCompressedImageURL(img, (url) => {
-        fileImagesDOM.forEach(image => {
-          image.src = url;
-
-        })
-        productData.imageUrl = url;
+    image.src = e.target.result;
+    productData.uncompressedImageUrl = e.target.result;
+    image.onload = () => {
+      getCompressedImageURL((url) => {
+          fileImagesDOM.forEach(image => {
+            image.src = url;
+          });
+          productData.imageUrl = url;
       });
     };
   };
 });
 
+const scaleUploadDOM = document.getElementById("upload--file-scale");
+const offsetXUploadDOM = document.getElementById("upload--file-alignment-left");
+const offsetYUploadDOM = document.getElementById("upload--file-alignment-top");
+
+function fileModifier(){
+  const scale = parseInt(scaleUploadDOM.value);
+  const offsetX = parseInt(offsetXUploadDOM.value);
+  const offsetY = parseInt(offsetYUploadDOM.value);
+  getCompressedImageURL((url) => {
+    fileImagesDOM.forEach(image => {
+      image.src = url;
+    });
+    productData.imageUrl = url;
+  }, {scale, offsetX, offsetY});
+  
+}
+scaleUploadDOM.addEventListener("input", fileModifier);
+offsetXUploadDOM.addEventListener("input", fileModifier);
+offsetYUploadDOM.addEventListener("input", fileModifier);
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-function getCompressedImageURL(image, callback){
+
+function getCompressedImageURL(callback, modifier = {scale: 0, offsetX: 0, offsetY: 0}){
   const maxWidth = 800;
   const maxHeight = 800;
   let width = image.width;
   let height = image.height;
+  
+  const offsetX = (scaledWidth - width) * (modifier.offsetX / 100);
+  const offsetY = (scaledHeight - height) * (modifier.offsetY / 100);
   if (width > height) {
     if (width > maxWidth) {
       height *= maxWidth / width;
@@ -75,10 +99,15 @@ function getCompressedImageURL(image, callback){
       height = maxHeight;
     }
   }
+
   canvas.width = width;
   canvas.height = height;
-  ctx.drawImage(image, 0, 0, width, height);
+  
+  const scaledWidth = width * (1 + modifier.scale / 100);
+  const scaledHeight = height * (1 + modifier.scale / 100);
+
+
+  ctx.drawImage(image, -offsetX, -offsetY, scaledWidth, scaledHeight);
   const compressedDataURL = canvas.toDataURL('image/jpeg');
   callback(compressedDataURL);
 };
-;
