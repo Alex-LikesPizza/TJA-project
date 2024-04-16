@@ -80,34 +80,26 @@ offsetYUploadDOM.addEventListener("input", fileModifier);
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-function getCompressedImageURL(callback, modifier = {scale: 0, offsetX: 0, offsetY: 0}){
-  const maxWidth = 800;
-  const maxHeight = 800;
-  let width = image.width;
-  let height = image.height;
+function getCompressedImageURL(callback, modifier = {scale: 100, offsetX: 0, offsetY: 0}){
+  const canvasSize = 800;
+  canvas.width = canvasSize;
+  canvas.height = canvasSize;
+  let imageSize = Math.min(image.width, image.height);
+  const rand = imageSize / canvasSize;
+  const scale = ((modifier.scale / 100));
+
+
+  imageSize *= scale;
+
+  const offsetX = (image.width - canvasSize * rand) * modifier.offsetX / 100;
+  const offsetY = (image.height - canvasSize * rand) * modifier.offsetY / 100;
+
+  console.log(image.height, canvasSize, image.height - canvasSize);
+
   
-  const offsetX = (scaledWidth - width) * (modifier.offsetX / 100);
-  const offsetY = (scaledHeight - height) * (modifier.offsetY / 100);
-  if (width > height) {
-    if (width > maxWidth) {
-      height *= maxWidth / width;
-      width = maxWidth;
-    }
-  } else {
-    if (height > maxHeight) {
-      width *= maxHeight / height;
-      height = maxHeight;
-    }
-  }
-
-  canvas.width = width;
-  canvas.height = height;
   
-  const scaledWidth = width * (1 + modifier.scale / 100);
-  const scaledHeight = height * (1 + modifier.scale / 100);
 
-
-  ctx.drawImage(image, -offsetX, -offsetY, scaledWidth, scaledHeight);
+  ctx.drawImage(image, offsetX, offsetY, imageSize, imageSize, 0, 0, canvas.width, canvas.height);
   const compressedDataURL = canvas.toDataURL('image/jpeg');
   callback(compressedDataURL);
 };
