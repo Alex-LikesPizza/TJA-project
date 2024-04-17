@@ -47,12 +47,7 @@ fileUploadDOM.addEventListener("input", (e) => {
     image.src = e.target.result;
     productData.uncompressedImageUrl = e.target.result;
     image.onload = () => {
-      getCompressedImageURL((url) => {
-          fileImagesDOM.forEach(image => {
-            image.src = url;
-          });
-          productData.imageUrl = url;
-      });
+      fileModifier();
     };
   };
 });
@@ -62,10 +57,11 @@ const offsetXUploadDOM = document.getElementById("upload--file-alignment-left");
 const offsetYUploadDOM = document.getElementById("upload--file-alignment-top");
 
 function fileModifier(){
+  if(!image.src) return;
   const scale = parseInt(scaleUploadDOM.value);
   const offsetX = parseInt(offsetXUploadDOM.value);
   const offsetY = parseInt(offsetYUploadDOM.value);
-  getCompressedImageURL((url) => {
+  getModifiedImage((url) => {
     fileImagesDOM.forEach(image => {
       image.src = url;
     });
@@ -80,24 +76,18 @@ offsetYUploadDOM.addEventListener("input", fileModifier);
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-function getCompressedImageURL(callback, modifier = {scale: 100, offsetX: 0, offsetY: 0}){
+function getModifiedImage(callback, modifier = {scale: 100, offsetX: 50, offsetY: 50}){
   const canvasSize = 800;
   canvas.width = canvasSize;
   canvas.height = canvasSize;
   let imageSize = Math.min(image.width, image.height);
+  const scale = ((modifier.scale / 100) / 2) + 0.5;
   const rand = imageSize / canvasSize;
-  const scale = ((modifier.scale / 100));
-
 
   imageSize *= scale;
 
-  const offsetX = (image.width - canvasSize * rand) * modifier.offsetX / 100;
-  const offsetY = (image.height - canvasSize * rand) * modifier.offsetY / 100;
-
-  console.log(image.height, canvasSize, image.height - canvasSize);
-
-  
-  
+  const offsetX = (image.width - canvasSize * rand * scale) * modifier.offsetX / 100;
+  const offsetY = (image.height - canvasSize * rand * scale) * modifier.offsetY / 100;
 
   ctx.drawImage(image, offsetX, offsetY, imageSize, imageSize, 0, 0, canvas.width, canvas.height);
   const compressedDataURL = canvas.toDataURL('image/jpeg');

@@ -396,6 +396,7 @@
 .upload__range{
   accent-color: var(--primary-extra-dark);
   width: 100%;
+  user-drag: none;
 }
 .upload__image-label {
   overflow: hidden;
