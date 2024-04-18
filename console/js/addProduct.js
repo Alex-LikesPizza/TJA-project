@@ -13,11 +13,8 @@ const productData = {
   title: undefined,
   description: undefined,
   price: undefined,
-  scale: undefined,
-  offsetX: undefined,
-  offsetY: undefined,
-  imageUrl: undefined,
-  uncompressedImageUrl: undefined,
+  image: undefined,
+  previewImage: undefined,
 }
 const image = new Image();
 
@@ -39,13 +36,15 @@ priceUploadDOM.addEventListener("input", (e) => {
 fileUploadDOM.addEventListener("input", (e) => {
   const file = e.target.files[0];
   if (!file) return;
+  productData.image = file;
+  
+
   document.getElementById("upload--image-title").textContent = file.name;
   const reader = new FileReader();
   reader.readAsDataURL(file);
   
   reader.onload = function (e) {
     image.src = e.target.result;
-    productData.uncompressedImageUrl = e.target.result;
     image.onload = () => {
       fileModifier();
     };
@@ -61,11 +60,11 @@ function fileModifier(){
   const scale = parseInt(scaleUploadDOM.value);
   const offsetX = parseInt(offsetXUploadDOM.value);
   const offsetY = parseInt(offsetYUploadDOM.value);
-  getModifiedImage((url) => {
+  getModifiedImage((url, file) => {
     fileImagesDOM.forEach(image => {
       image.src = url;
     });
-    productData.imageUrl = url;
+    productData.previewImage = file;
   }, {scale, offsetX, offsetY});
   
 }
@@ -90,6 +89,10 @@ function getModifiedImage(callback, modifier = {scale: 100, offsetX: 50, offsetY
   const offsetY = (image.height - canvasSize * rand * scale) * modifier.offsetY / 100;
 
   ctx.drawImage(image, offsetX, offsetY, imageSize, imageSize, 0, 0, canvas.width, canvas.height);
-  const compressedDataURL = canvas.toDataURL('image/jpeg');
-  callback(compressedDataURL);
+  let compressedDataURL = canvas.toDataURL('image/jpeg');
+  let file;
+  canvas.toBlob((blob) => {
+    file = new File([blob], 'canvas_image.png', { type: 'image/png' });
+  });
+  callback(compressedDataURL, file);
 };

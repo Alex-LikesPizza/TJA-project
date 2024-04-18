@@ -82,6 +82,7 @@
 }
 .block-card__button {
   display: inline-block;
+  font-family: "Open Sans", sans-serif;
 }
 .block-card__image {
   height: 18rem;
@@ -347,7 +348,7 @@
     gap: 2rem;
   }
 }
-.console:not(#add-product) {
+.console:not(#services) {
   display: none;
 }
 
@@ -396,7 +397,7 @@
 .upload__range{
   accent-color: var(--primary-extra-dark);
   width: 100%;
-  user-drag: none;
+  -webkit-user-drag: none;
 }
 .upload__image-label {
   overflow: hidden;

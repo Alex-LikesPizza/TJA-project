@@ -1,7 +1,8 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js';
-import { getFirestore, onSnapshot, collection, query, orderBy, doc, deleteDoc, addDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js';
-
-
+import {
+  onSnapshot, collection, query, orderBy, doc, deleteDoc, addDoc, getDoc, 
+  getFirestore
+} from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js';
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -96,31 +97,50 @@ window.addEventListener("DOMContentLoaded", () => {
       deleteDOM.addEventListener("click", () => {deleteItem("serviceRequests", doc.id, data.name)});
     })
   });
-
-  const formUploadDOM = document.querySelector(".upload");
-  formUploadDOM.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let isValid = true;
-    for(let key in productData){
-      if(productData[key] === undefined)
-  
-        isValid = false;
-    }
-    if(!isValid){
-      alert("Completează toate câmpurile");
-      return;
-    }
-  
-    submitProduct(productData);
-  });
 });
-
 function deleteItem(collection, docId, name){
   if(!confirm("Doriți să ștergeți mesajul proprietarului: " + name))return;
   const docRef = doc(db, collection, docId);
   deleteDoc(docRef);
   console.log("deleted", docId)
 }
+
+const formUploadDOM = document.querySelector(".upload");
+formUploadDOM.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  for(let key in productData){
+    if(productData[key] !== undefined)
+      alert("Completează toate câmpurile");
+      return;
+  }
+  try{
+    productData.imageDownloadURL = await uploadImage(productData.image);
+    productData.previewImageDownloadURL = await uploadImage(productData.previewImage);
+    delete productData.image;
+    delete productData.previewImage;
+  }
+  catch(err){
+    console.error(err.message);
+  }
+  
+  submitProduct(productData);
+});
+
+async function uploadImage(file) {
+  try {
+    const storageRef = ref(storage, 'images/' + file.name);
+    await uploadBytes(storageRef, file);
+    const downloadURL = await getDownloadURL(storageRef);
+
+    await addDoc(collection(db, 'images'), {
+      name: file.name,
+      url: downloadURL
+    });
+  } catch (error) {
+    console.error('Error uploading image:', error.message);
+  }
+}
+
 
 const productsCollection = collection(db, "products");
 
