@@ -65,6 +65,7 @@ function fileModifier(){
       image.src = url;
     });
     productData.previewImage = file;
+    renameImages();
   }, {scale, offsetX, offsetY});
   
 }
@@ -92,7 +93,30 @@ function getModifiedImage(callback, modifier = {scale: 100, offsetX: 50, offsetY
   let compressedDataURL = canvas.toDataURL('image/jpeg');
   let file;
   canvas.toBlob((blob) => {
-    file = new File([blob], 'canvas_image.png', { type: 'image/png' });
+    file = new File([blob], "c_img.png", { type: 'image/png' });
+    callback(compressedDataURL, file);
   });
-  callback(compressedDataURL, file);
 };
+
+
+function renameImages(){
+  let imageName = productData.image.name;
+  let imagePreviewName = productData.image.name;
+  let code = generateRandomCode(12);
+  imageName = imageName.slice(0, -4) + "-ID" + code + ".png";
+  imagePreviewName = imagePreviewName.slice(0, -4) + "-preview" + "-ID" + code + ".png"
+  
+  productData.image = new File([productData.image], imageName, { type: productData.image.type });
+  productData.previewImage = new File([productData.previewImage], imagePreviewName, { type: productData.previewImage.type });
+
+}
+
+function generateRandomCode(length) {
+  let result = '';
+  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}

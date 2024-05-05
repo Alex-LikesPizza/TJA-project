@@ -1,10 +1,15 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js';
 import {
-  onSnapshot, collection, query, orderBy, doc, deleteDoc, addDoc, getDoc, 
-  getFirestore
+  onSnapshot, collection, query, orderBy, doc, deleteDoc, addDoc, getDoc, getFirestore
 } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js';
+
+
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
+
+const storage = getStorage(app);
 
 window.addEventListener("DOMContentLoaded", () => {
   const messagesDOM = document.getElementById("messages");
@@ -109,9 +114,10 @@ const formUploadDOM = document.querySelector(".upload");
 formUploadDOM.addEventListener("submit", async (e) => {
   e.preventDefault();
   for(let key in productData){
-    if(productData[key] !== undefined)
-      alert("Completează toate câmpurile");
+    if(productData[key] === undefined){
+      alert("Completează toate câmpurile " + key);
       return;
+    }
   }
   try{
     productData.imageDownloadURL = await uploadImage(productData.image);
@@ -132,10 +138,7 @@ async function uploadImage(file) {
     await uploadBytes(storageRef, file);
     const downloadURL = await getDownloadURL(storageRef);
 
-    await addDoc(collection(db, 'images'), {
-      name: file.name,
-      url: downloadURL
-    });
+    return downloadURL;
   } catch (error) {
     console.error('Error uploading image:', error.message);
   }
@@ -157,7 +160,7 @@ async function submitProduct(data){
 async function getProductData(id){
   try{
     const docRef = doc(productsCollection, id);
-    const docSnap= await getDoc(docRef);
+    const docSnap = await getDoc(docRef);
     return docSnap.data();
   }
   catch(err){
