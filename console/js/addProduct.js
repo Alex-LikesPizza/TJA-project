@@ -102,10 +102,11 @@ function getModifiedImage(callback, modifier = {scale: 100, offsetX: 50, offsetY
 function renameImages(){
   let imageName = productData.image.name;
   let imagePreviewName = productData.image.name;
-  let code = generateRandomCode(12);
-  imageName = imageName.slice(0, -4) + "-ID" + code + ".png";
-  imagePreviewName = imagePreviewName.slice(0, -4) + "-preview" + "-ID" + code + ".png"
-  
+  let code = generateRandomCode(8);
+  let beenUpdated = imageName.slice(-15, -12) === "-ID";
+  imageName = imageName.slice(0, beenUpdated? -15 : -4) + "-ID" + code + ".png";
+  imagePreviewName = imagePreviewName.slice(0, beenUpdated? -15 : -4) + "-preview" + "-ID" + code + ".png"
+
   productData.image = new File([productData.image], imageName, { type: productData.image.type });
   productData.previewImage = new File([productData.previewImage], imagePreviewName, { type: productData.previewImage.type });
 

@@ -3,7 +3,7 @@ const route = express.Router();
 
 const  firebaseConfig = require("../keys/firebaseConfig");
 const { initializeApp } = require("firebase/app");
-const { getFirestore, collection, addDoc, serverTimestamp } = require("firebase/firestore");
+const { getFirestore, collection, addDoc, serverTimestamp, getDocs } = require("firebase/firestore");
 
 let app = initializeApp(firebaseConfig);;
 const database = getFirestore(app);
@@ -33,7 +33,25 @@ const postData = async (data) => {
     return false;
   }
 }
-
+const getGallery = async () => {
+  const querySnapshot = await getDocs(collection(database, "products"));
+  const products = [];
+  querySnapshot.forEach((doc) => {
+    products.push({ id: doc.id, ...doc.data() });
+  });
+  return JSON.stringify(products);
+};
+route.get("/productsGallery",  async (req, res, next) => {
+  res.setHeader('Content-Type', 'application/json');
+  try{
+    let jsonData = await getGallery();
+    res.end(jsonData);
+  }
+  catch(err){
+    console.log(err);
+    res.status(500).json({ error: "Failed to fetch products." });
+  }
+});
 route.post("/server", async (req, res, next) => {
   let rawData = '';
   console.log("------New Request------");
@@ -66,7 +84,7 @@ route.post("/productsOrder", async (req, res) => {
   req.on('end', async () => { 
     try{
       const data = JSON.parse(rawData);
-      console.log(data); // TODO: Add firebase upload
+      // TODO: Add firebase upload
       
       res.json({message: " data uploaded successfully"});
     }
@@ -76,5 +94,7 @@ route.post("/productsOrder", async (req, res) => {
     }
   });
 });
+
+
 
 module.exports = route;
