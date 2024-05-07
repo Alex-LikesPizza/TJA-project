@@ -13,7 +13,7 @@ fetch('/productsGallery')
         <li data-id="${product.id}">
           <div class="block-card">
             <a href="./produs.html">
-              <img class="block-card__image" src="../images/sample1.jpg" loading="lazy" alt="example">
+              <img class="block-card__image" src="${product.previewImageDownloadURL}" loading="lazy" alt="example">
             </a>
             <div class="block-card__stats">
               <h3 class="block-card__title">${product.title}</h3>
