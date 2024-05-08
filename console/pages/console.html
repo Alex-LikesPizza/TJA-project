@@ -26,17 +26,18 @@
   </header>
   <main class="console-container">
     <div class="console__sidebar">
-      <div onclick="changeTo('services')" id="sidebar--services" class="sidebar__item sidebar__item--selected">Servicii în așteptare</div>
-      <div onclick="changeTo('product-orders')" id="sidebar--product-orders" class="sidebar__item">Solicitări de produse</div>
       <div onclick="changeTo('messages')" id="sidebar--messages" class="sidebar__item">Mesaje</div>
+      <div onclick="changeTo('services')" id="sidebar--services" class="sidebar__item">Servicii în așteptare</div>
+      <div onclick="changeTo('product-orders')" id="sidebar--product-orders" class="sidebar__item">Solicitări de produse</div>
       <div onclick="changeTo('add-product')" id="sidebar--add-product" class="sidebar__item">Adaugă un produs</div>
+      <div onclick="changeTo('products')" id="sidebar--products" class="sidebar__item">Produse</div>
     </div>
     <div class="console" id="services"></div>
-    <div class="console" id="messages"><h2></h2></div>
+    <div class="console" id="messages"></div>
     <div class="console" id="product-orders"><h2>Hello Orders!</h2></div>
     <div class="console" id="add-product">
-      <h2 class="upload__title">Încarcă un produs</h2>
-      <div class="block-card">
+      <h3 class="upload__title">Încarcă un produs</h3>
+      <div class="block-card  block-card--center">
         <label for="upload--file" class="upload__image-label">
           <img  class="block-card__image upload--image">
         </label>
@@ -93,12 +94,16 @@
           
         </div>
         
-
         <button class="upload__submit">
           <i class="bi bi-upload"></i> Încarcă
         </button>
       </form>
       <canvas style="display: none;" id="canvas"></canvas>
+    </div>
+    <div class="console" id="products">
+      <ul class="products-container">
+
+      </ul>
     </div>
     
   </main>

@@ -1,6 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js';
 import {
-  onSnapshot, collection, query, orderBy, doc, deleteDoc, addDoc, getDoc, getFirestore
+  onSnapshot, collection, query, orderBy, doc, deleteDoc, addDoc, getDocs, getFirestore
 } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js';
 
@@ -156,14 +156,56 @@ async function submitProduct(data){
     console.error(err.message);
   }
 }
+const productsContainerDOM = document.querySelector(".products-container");
+const productsRef = collection(db, 'products');
 
-async function getProductData(id){
-  try{
-    const docRef = doc(productsCollection, id);
-    const docSnap = await getDoc(docRef);
-    return docSnap.data();
-  }
-  catch(err){
-    console.error(err.message);
+async function displayProducts() {
+  const querySnapshot = await getDocs(productsRef);
+  productsContainerDOM.innerHTML = querySnapshot.empty? "<h2>Nu aveți nici un produs.</h2>" : "";
+  querySnapshot.forEach((doc) => {
+    const product = doc.data();
+    const li = document.createElement('li');
+    li.classList.add('product__container');
+    li.innerHTML = `
+      <div class="block-card block-card--wide block-card--center">
+        <div class="upload__image-label">
+          <img class="block-card__image upload--image" src="${product.previewImageDownloadURL}" alt="${product.title}">
+        </div>
+        <div class="block-card__stats">
+          <h3 class="block-card__title">${product.title}</h3>
+          <p class="block-card__description">${product.description}</p>
+          <div class="block-card__purchase">
+            <p class="block-card__price">${product.price} lei</p>
+            <button class="block-card__button button button--bordered">
+              <i class="bi bi-zoom-in"></i>Vezi pagina
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="product__delete" data-id="${doc.id}" data-title="${product.title}">
+        <i class="bi bi-trash-fill"></i>
+      </div>`;
+    productsContainerDOM.appendChild(li);
+  });
+
+  const deleteButtons = document.querySelectorAll('.product__delete');
+  deleteButtons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      const docId = button.dataset.id;
+      const title = button.dataset.title;
+      await deleteProduct(docId, title);
+    });
+  });
+}
+async function deleteProduct(docId, title) {
+  if(!confirm(`Doriți să ștergeți "${title}" din data de baze?`)) return;
+  try {
+    await deleteDoc(doc(db, 'products', docId));
+    await displayProducts();
+
+  } catch (error) {
+    console.error('Error deleting document: ', error);
   }
 }
+
+displayProducts();

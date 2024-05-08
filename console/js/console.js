@@ -2,7 +2,8 @@ const sections = [
   "services",
   "messages",
   "product-orders",
-  "add-product"
+  "add-product",
+  "products"
 ]
 function changeTo(setting){
   const sectionDOM = document.getElementById(setting)
@@ -15,3 +16,4 @@ function changeTo(setting){
   sectionDOM.style.display = "block";
   sectionButtonDOM.classList.add("sidebar__item--selected")
 }
+changeTo("products");

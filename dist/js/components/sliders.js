@@ -19,3 +19,14 @@ if(document.querySelector("#slider--recomended") != null)
 if(document.querySelector("#slider--similar") != null)
   sliderFactory("#slider--similar", {}).mount();
 ;
+
+let hiddenSliders = ["recents", "recomended", "similar"];
+
+function hideSliders(){
+  for(let str of hiddenSliders){
+    const elem = document.querySelector("#slider--" + str);
+    if(elem === null) continue;
+    elem.style.display = "none";
+  }
+}
+hideSliders();
