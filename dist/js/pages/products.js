@@ -10,11 +10,8 @@ fetch('/productsGallery')
     products.forEach(product => {
       const listItem = document.createElement('li');
       listItem.innerHTML = `
-        <li data-id="${product.id}">
           <div class="block-card">
-            <a href="./produs.html">
-              <img class="block-card__image" src="${product.previewImageDownloadURL}" loading="lazy" alt="example">
-            </a>
+            <img onclick="visitProductPage('${product.id}')" class="block-card__image" src="${product.previewImageDownloadURL}" loading="lazy" alt="example">
             <div class="block-card__stats">
               <h3 class="block-card__title">${product.title}</h3>
               <p class="block-card__description">${product.description}</p>
@@ -23,16 +20,15 @@ fetch('/productsGallery')
                 <button class="block-card__button button button--bordered">
                   <i class="bi bi-bookmark"></i>
                 </button>
-                <button class="block-card__button button button--bordered">
-                  <i class="bi bi-zoom-in"></i><a href="./produs.html"> Vezi pagina</a>
+                <button onclick="visitProductPage('${product.id}')" class="block-card__button button button--bordered">
+                  <i class="bi bi-zoom-in"></i>Vezi pagina
                 </button>
-                <button class="block-card__button button">
+                <button onclick="addToCart('${product.id}')" class="block-card__button button" id="button-${product.id}">
                   <i class="bi bi-plus-circle"></i> Adaugă în coș
                 </button>
               </div>
             </div>
           </div>
-        </li>
       `;
       galleryDOM.appendChild(listItem);
     });
@@ -40,3 +36,25 @@ fetch('/productsGallery')
   .catch(error => {
     console.error('Error fetching products:', error.message);
   });
+
+function visitProductPage(productId){
+  localStorage.setItem("BBA_PRODUCT_VISIT_KEY", productId);
+  location.href = "./produs.html";
+}
+function addToCart(productId){
+  const CART_STRING = localStorage.getItem("BBA_CART");
+  let cart;
+  if(!CART_STRING) cart = [];
+  else{
+    const CART_JSON = JSON.parse(CART_STRING);
+    cart = [...CART_JSON];
+  }
+  const isInCart = cart.findIndex((cartProductId) => productId === cartProductId) !== -1;
+  if(isInCart) return;
+  cart.unshift(productId);
+  localStorage.setItem("BBA_CART", JSON.stringify(cart));
+
+  const buttonDOM = document.getElementById("button-" + productId);
+  buttonDOM.innerHTML = `<i class="bi bi-check2-circle"></i> Adăugat cu succes`;
+  window.updateCartCounter();
+}

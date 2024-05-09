@@ -27,3 +27,20 @@ const more = document.querySelector(".more");
 function moreToggle(){
   more.classList.toggle("more--closed");
 }
+
+const cartCountDOM = document.createElement("div");
+cartCountDOM.classList.add("header__cart-after");
+document.getElementById("header__cart").appendChild(cartCountDOM);
+updateCartCounter();
+function updateCartCounter(){
+  const CART_JSON = JSON.parse(localStorage.getItem("BBA_CART"));
+  let count;
+  if(!CART_JSON) count = 0;
+  else count = CART_JSON.length;
+
+  cartCountDOM.textContent = count;
+  if(count === 0) cartCountDOM.style.display = "none";
+  else{
+    cartCountDOM.style.display = "block";
+  }
+}

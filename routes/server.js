@@ -3,7 +3,7 @@ const route = express.Router();
 
 const  firebaseConfig = require("../keys/firebaseConfig");
 const { initializeApp } = require("firebase/app");
-const { getFirestore, collection, addDoc, serverTimestamp, getDocs } = require("firebase/firestore");
+const { getFirestore, collection, addDoc, serverTimestamp, getDocs, getDoc, doc} = require("firebase/firestore");
 
 let app = initializeApp(firebaseConfig);;
 const database = getFirestore(app);
@@ -41,6 +41,29 @@ const getGallery = async () => {
   });
   return JSON.stringify(products);
 };
+const getProduct = async (id) => {
+  try{
+    const location = doc(database, "products", id);
+    const productData = await getDoc(location);
+    const docData = {id: productData.id, ...productData.data()};
+    return docData;
+  }
+  catch(err){
+    console.error(err)
+  }
+}
+
+route.get("/productData",  async (req, res, next) => {
+  const productId = req.query.id;
+  try{
+    let jsonData = await getProduct(productId);
+    res.end(JSON.stringify(jsonData));
+  }
+  catch(err){
+    console.log(err);
+  }
+});
+
 route.get("/productsGallery",  async (req, res, next) => {
   res.setHeader('Content-Type', 'application/json');
   try{

@@ -151,3 +151,19 @@
     grid-template-columns: 0 1fr;
   }
 }
+#header__cart{
+  position: relative;
+}
+.header__cart-after{
+  position: absolute;
+  display: flex;
+  text-align: center;
+  top: 0.4rem;
+  right: -0.8rem;
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  height: 1.6rem;
+  width: 1.6rem;
+  background-color: $primary-light;
+  border-radius: 50%;
+}

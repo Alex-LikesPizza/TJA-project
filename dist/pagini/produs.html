@@ -15,7 +15,8 @@
   <script src="../imports/splide/splide.min.js"></script>
   <script src="../js/components/header.js" defer></script>
   <script src="../js/components/sliders.js" defer></script>
-  <script src="../js/pages/product.js"></script>
+  <script src="../js/components/product.js" defer></script>
+  <script src="../js/pages/product.js" defer></script>
 
   <title>Bellatrix Bizantin Art - Produse</title>
 </head>
@@ -58,16 +59,16 @@
   <main class="main--default">
     <div class="product">
       <div class="product__info">
-        <h2 class="product__title">Parrot on a stick</h2>
-        <p class="product__paragraph">&emsp;Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod totam hic nostrum reprehenderit ad. Natus dicta laborum autem. Reiciendis, recusandae.</p>
+        <h2 class="product__title"><span id="product--title"></span></h2>
+        <p class="product__paragraph"><span id="product--description"></span></p>
         <div class="product__purchase-info">
-          <p class="prssoduct__price">120.00 lei</p>
-          <p class="product__status product__status--available">Valabil</p>
+          <p class="prssoduct__price"><span id="product--price"></span> lei</p>
+          <!-- <p class="product__status product__status--available">Valabil</p> -->
         </div>
         <button class="product__purchase"><div class="bi bi-plus-circle"></div> Adaugă în coș</button>
       </div>
       <div class="product__image-container">
-        <img class="product__image" src="../images/sample3.jpg">
+        <img id="product--image" class="product__image">
       </div>
     </div>
 
