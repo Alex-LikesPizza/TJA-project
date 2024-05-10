@@ -67,9 +67,9 @@
   }
 
 
-  @media (max-width: 1370px) {
+  @media (max-width: 1440px) {
     &__gallery{
-      grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     }
   }
 }

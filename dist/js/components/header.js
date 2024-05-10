@@ -28,15 +28,16 @@ function moreToggle(){
   more.classList.toggle("more--closed");
 }
 
-const cartCountDOM = document.createElement("div");
+
+let cartCountDOM = document.createElement("div");
 cartCountDOM.classList.add("header__cart-after");
 document.getElementById("header__cart").appendChild(cartCountDOM);
+cartCountDOM = document.querySelector(".header__cart-after");
 updateCartCounter();
 function updateCartCounter(){
-  const CART_JSON = JSON.parse(localStorage.getItem("BBA_CART"));
-  let count;
-  if(!CART_JSON) count = 0;
-  else count = CART_JSON.length;
+  const CART_STRING = localStorage.getItem("BBA_CART");
+  const CART_JSON = CART_STRING !== ""? JSON.parse(CART_STRING) : [];
+  let count = CART_JSON.length;
 
   cartCountDOM.textContent = count;
   if(count === 0) cartCountDOM.style.display = "none";
