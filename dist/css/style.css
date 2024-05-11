@@ -1375,13 +1375,15 @@ p {
     text-align: center; }
   .cart__list {
     list-style: none;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1rem;
-    width: 100%; }
+    margin-right: 1rem; }
+    @media (max-width: 1440px) {
+      .cart__list {
+        grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); } }
   .cart__item {
     position: relative;
-    width: 100%;
     border-radius: 0.3rem;
     overflow: hidden;
     box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2); }
@@ -1429,9 +1431,6 @@ p {
 .cart-total {
   width: 40%; }
   .cart-total__card {
-    width: 90%;
-    min-height: 4rem;
-    margin: auto;
     background-color: #f2e1d4;
     border-radius: 0.3rem;
     padding: 1rem 2rem;
@@ -1487,7 +1486,7 @@ p {
   .cart-total__button {
     width: max-content; }
 
-@media (max-width: 1100px) {
+@media (max-width: 1060px) {
   .cart-container {
     flex-direction: column; }
   .cart-total {
