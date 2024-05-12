@@ -9,6 +9,8 @@ fetch('/productsGallery')
   .then(products => {
     products.forEach(product => {
       const listItem = document.createElement('li');
+      const cart = getCart();
+      const inCartIndex = cart.findIndex((cartProductId) => product.id === cartProductId);
       listItem.innerHTML = `
           <div class="block-card">
             <img onclick="visitProductPage('${product.id}')" class="block-card__image" src="${product.previewImageDownloadURL}" loading="lazy" alt="example">
@@ -24,7 +26,7 @@ fetch('/productsGallery')
                   <i class="bi bi-zoom-in"></i>Vezi pagina
                 </button>
                 <button onclick="addToCart('${product.id}')" class="block-card__button button" id="cartButton-${product.id}">
-                  <i class="bi bi-plus-circle"></i> Adaugă în coș
+                  ${inCartIndex === -1? `<i class="bi bi-plus-circle"></i> Adaugă în coș` : `<i class="bi bi-check2-circle"></i> Adăugat`}
                 </button>
               </div>
             </div>
@@ -41,8 +43,7 @@ function visitProductPage(productId){
   localStorage.setItem("BBA_PRODUCT_VISIT_KEY", productId);
   location.href = "./produs.html";
 }
-
-function addToCart(productId){
+function getCart(){
   const CART_STRING = localStorage.getItem("BBA_CART");
   let cart;
   if(!CART_STRING) cart = [];
@@ -50,16 +51,20 @@ function addToCart(productId){
     const CART_JSON = JSON.parse(CART_STRING);
     cart = [...CART_JSON];
   }
+  return cart;
+}
+function addToCart(productId){
+  const cart = getCart();
   const buttonDOM = document.getElementById("cartButton-" + productId);
 
   const inCartIndex = cart.findIndex((cartProductId) => productId === cartProductId);
   if(inCartIndex !== -1) {
     cart.splice(inCartIndex, 1);
-    buttonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`
+    buttonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`;
   }
   else{
     cart.unshift(productId);
-    buttonDOM.innerHTML = `<i class="bi bi-check2-circle"></i> Adăugat cu succes`;
+    buttonDOM.innerHTML = `<i class="bi bi-check2-circle"></i> Adăugat`;
   }
   
   localStorage.setItem("BBA_CART", JSON.stringify(cart));

@@ -16,4 +16,8 @@ function changeTo(setting){
   sectionDOM.style.display = "block";
   sectionButtonDOM.classList.add("sidebar__item--selected")
 }
+function visitProductPage(productId){
+  localStorage.setItem("BBA_PRODUCT_VISIT_KEY", productId);
+  window.open("../../pagini/produs.html", "_blank");
+}
 changeTo("products");

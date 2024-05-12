@@ -176,7 +176,7 @@ async function displayProducts() {
           <p class="block-card__description">${product.description}</p>
           <div class="block-card__purchase">
             <p class="block-card__price">${product.price} lei</p>
-            <button class="block-card__button button button--bordered">
+            <button onclick="visitProductPage('${doc.id}')" class="block-card__button button button--bordered">
               <i class="bi bi-zoom-in"></i>Vezi pagina
             </button>
           </div>

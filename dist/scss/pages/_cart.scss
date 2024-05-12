@@ -7,8 +7,7 @@
 }
 .cart{
   position: relative;
-  min-width: 43rem;
-  max-width: 60%;
+  width: 60%;
 
   &__pre-title{
     text-align: center;
@@ -85,6 +84,11 @@
       color: $gray;
     }
   }
+  &__empty{
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 10rem;
+  }
 }
 .cart-total{
   width: 40%;
@@ -143,6 +147,7 @@
     font-size: 1.2rem;
     &--important{
       font-weight: 600;
+      margin-bottom: -0.5rem;
     }
   }
   &__hr{
@@ -158,10 +163,11 @@
   
   &__button{
     width: max-content;
+    float: right;
   }
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1120px) {
   .cart-container{
     flex-direction: column;
   }
@@ -173,7 +179,12 @@
     }
   }
   .cart{
-    max-width: 100%;
+    width: 100%;
 
+  }
+}
+@media (max-width: 500px){
+  .cart-total__button{
+    float: none;
   }
 }

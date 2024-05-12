@@ -1369,8 +1369,7 @@ p {
 
 .cart {
   position: relative;
-  min-width: 43rem;
-  max-width: 60%; }
+  width: 60%; }
   .cart__pre-title {
     text-align: center; }
   .cart__list {
@@ -1427,6 +1426,10 @@ p {
     transition: 0.2s all; }
     .cart__remove:hover {
       color: #807a7d; }
+  .cart__empty {
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 10rem; }
 
 .cart-total {
   width: 40%; }
@@ -1474,7 +1477,8 @@ p {
   .cart-total__field {
     font-size: 1.2rem; }
     .cart-total__field--important {
-      font-weight: 600; }
+      font-weight: 600;
+      margin-bottom: -0.5rem; }
   .cart-total__hr {
     margin-top: 0.5rem;
     border-color: #ecd4c0; }
@@ -1484,9 +1488,10 @@ p {
     font-size: 1.4rem;
     font-weight: 600; }
   .cart-total__button {
-    width: max-content; }
+    width: max-content;
+    float: right; }
 
-@media (max-width: 1060px) {
+@media (max-width: 1120px) {
   .cart-container {
     flex-direction: column; }
   .cart-total {
@@ -1495,4 +1500,8 @@ p {
     .cart-total__card {
       width: 100%; }
   .cart {
-    max-width: 100%; } }
+    width: 100%; } }
+
+@media (max-width: 500px) {
+  .cart-total__button {
+    float: none; } }

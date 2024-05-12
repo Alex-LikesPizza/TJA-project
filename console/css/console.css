@@ -459,6 +459,7 @@
   }
 }
 .product__container{
+  list-style: none;
   position: relative;
   border: 1px solid black;
   border-radius: 0.5rem;

@@ -1,11 +1,20 @@
-const cartContainerDOM = document.querySelector(".cart__list");
-
+const cartDOM = document.querySelector(".cart");
+let totalProductPrice = 0;
 function loadProducts(){
-  cartContainerDOM.innerHTML = "";
   
   const CART_ITEMS_STRING = localStorage.getItem("BBA_CART");
   const CART_ITEMS = JSON.parse(CART_ITEMS_STRING);
-
+  if(!CART_ITEMS || CART_ITEMS.length === 0){
+    cartDOM.innerHTML = `
+    <h2 class="cart__pre-title">Cart</h2>
+    <div class='cart__empty'>Nu aveți nimic în Cart...</div>`
+  }
+  else{
+    cartDOM.innerHTML = `
+    <h2 class="cart__pre-title">Cart</h2>
+    <ul class="cart__list"></ul>`;
+  }
+  const cartContainerDOM = document.querySelector(".cart__list");
   CART_ITEMS.forEach(productId => {
     fetch(`/productData?id=${encodeURIComponent(productId)}`, {
       method: 'GET',
@@ -15,6 +24,7 @@ function loadProducts(){
     })
     .then(productDataString => productDataString.json())
     .then(productData => {
+      totalProductPrice += productData.price;
       const listItem = document.createElement("li");
       listItem.classList.add("cart__item");
       listItem.innerHTML = `
@@ -24,7 +34,7 @@ function loadProducts(){
                   <h3 class="block-card__title">${productData.title}</h3>
                   <p class="block-card__description">${productData.description}</p>
                   <div class="block-card__purchase">
-                    <p class="block-card__price">${productData.price}</p>
+                    <p class="block-card__price">${productData.price.toFixed(2)} lei</p>
                     <button onclick="${""}" class="block-card__button button button--bordered">
                       <i class="bi bi-bookmark"></i>
                     </button>
@@ -39,6 +49,12 @@ function loadProducts(){
               </div>
       `;
       cartContainerDOM.appendChild(listItem);
+
+      const preTotalDOM = document.getElementById("cart__pre-total");
+      const totalDOM = document.getElementById("cart__total");
+      const TVA = 0.1;
+      preTotalDOM.textContent = totalProductPrice.toFixed(2);
+      totalDOM.textContent = (totalProductPrice * (1 + TVA)).toFixed(2);
     })
     .catch(err => {
       console.error(err);
