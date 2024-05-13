@@ -29,7 +29,7 @@ function loadProducts(){
       listItem.classList.add("cart__item");
       listItem.innerHTML = `
               <div class="block-card">
-                <img onclick="${() => {visitProductPage(productData.id)}}" class="block-card__image" src="${productData.previewImageDownloadURL} loading="lazy" alt="example">
+                <img onclick="visitProductPage('${productData.id}')" class="block-card__image" src="${productData.previewImageDownloadURL} loading="lazy" alt="example">
                 <div class="block-card__stats">
                   <h3 class="block-card__title">${productData.title}</h3>
                   <p class="block-card__description">${productData.description}</p>
@@ -38,8 +38,8 @@ function loadProducts(){
                     <button onclick="${""}" class="block-card__button button button--bordered">
                       <i class="bi bi-bookmark"></i>
                     </button>
-                    <button onclick="visitProductPage('${productData.id}')}" class="block-card__button button button--bordered">
-                      <i class="bi bi-zoom-in"></i><a href="./produs.html"> Vezi pagina</a>
+                    <button onclick="visitProductPage('${productData.id}')" class="block-card__button button button--bordered">
+                      <i class="bi bi-zoom-in"></i>Vezi pagina
                     </button>
                     <button onclick="removeFromCart('${productData.id}')" class="block-card__button button">
                       <i class="bi bi-dash-circle"></i> Scoate din coș

@@ -10,7 +10,9 @@ fetch('/productsGallery')
     products.forEach(product => {
       const listItem = document.createElement('li');
       const cart = getCart();
-      const inCartIndex = cart.findIndex((cartProductId) => product.id === cartProductId);
+      const isInCart = cart.includes(product.id);
+      const wishlist = getWishlist();
+      const isInWishlist = wishlist.includes(product.id);
       listItem.innerHTML = `
           <div class="block-card">
             <img onclick="visitProductPage('${product.id}')" class="block-card__image" src="${product.previewImageDownloadURL}" loading="lazy" alt="example">
@@ -20,13 +22,13 @@ fetch('/productsGallery')
               <div class="block-card__purchase">
                 <p class="block-card__price">${product.price.toFixed(2)} lei</p>
                 <button onclick="addToWishlist('${product.id}')" class="block-card__button button button--bordered" id="wishlistButton-${product.id}">
-                  <i class="bi bi-bookmark"></i>
+                  ${!isInWishlist? `<i class="bi bi-bookmark"></i>` : `<i class="bi bi-bookmark-fill"></i>`}
                 </button>
                 <button onclick="visitProductPage('${product.id}')" class="block-card__button button button--bordered">
                   <i class="bi bi-zoom-in"></i>Vezi pagina
                 </button>
                 <button onclick="addToCart('${product.id}')" class="block-card__button button" id="cartButton-${product.id}">
-                  ${inCartIndex === -1? `<i class="bi bi-plus-circle"></i> Adaugă în coș` : `<i class="bi bi-check2-circle"></i> Adăugat`}
+                  ${!isInCart? `<i class="bi bi-plus-circle"></i> Adaugă în coș` : `<i class="bi bi-check2-circle"></i> Adăugat`}
                 </button>
               </div>
             </div>
@@ -41,7 +43,7 @@ fetch('/productsGallery')
 
 function visitProductPage(productId){
   localStorage.setItem("BBA_PRODUCT_VISIT_KEY", productId);
-  location.href = "./produs.html";
+  window.open("./produs.html", "_blank");
 }
 function getCart(){
   const CART_STRING = localStorage.getItem("BBA_CART");
@@ -68,12 +70,26 @@ function addToCart(productId){
   }
   
   localStorage.setItem("BBA_CART", JSON.stringify(cart));
-
+  removeFromWishlist(productId);
   
   window.updateCartCounter();
 }
+function removeFromCart(productId){
+  const cart = getCart();
+  const buttonDOM = document.getElementById("cartButton-" + productId);
 
-function addToWishlist(productId){
+  const inCartIndex = cart.findIndex((cartProductId) => productId === cartProductId);
+  if(inCartIndex !== -1) {
+    cart.splice(inCartIndex, 1);
+    buttonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`;
+  }
+
+  localStorage.setItem("BBA_CART", JSON.stringify(cart));
+
+  window.updateCartCounter();
+}
+
+function getWishlist(){
   const WISHLIST_STRING = localStorage.getItem("BBA_WISHLIST");
   let wishlist;
   if(!WISHLIST_STRING) wishlist = [];
@@ -81,20 +97,37 @@ function addToWishlist(productId){
     const WISHLIST_JSON = JSON.parse(WISHLIST_STRING);
     wishlist = [...WISHLIST_JSON];
   }
-  const buttonDOM = document.getElementById("wishlistButton-" + productId);
+  return wishlist;
+}
 
-  const inCartIndex = wishlist.findIndex((cartProductId) => productId === cartProductId);
-  if(inCartIndex !== -1) {
-    wishlist.splice(inCartIndex, 1);
+function addToWishlist(productId){
+  let wishlist = getWishlist();
+  const buttonDOM = document.getElementById("wishlistButton-" + productId);
+  
+  const inWishlistIndex = wishlist.findIndex((wishlistProductId) => productId === wishlistProductId);
+  if(inWishlistIndex !== -1) {
+    wishlist.splice(inWishlistIndex, 1);
     buttonDOM.innerHTML = `<i class="bi bi-bookmark"></i>`
   }
   else{
     wishlist.unshift(productId);
-    buttonDOM.innerHTML = `<i class="bi bi-bookmark-x"></i>`;
+    buttonDOM.innerHTML = `<i class="bi bi-bookmark-fill"></i>`;
   }
-  
+  removeFromCart(productId);
+  localStorage.setItem("BBA_WISHLIST", JSON.stringify(wishlist)); 
+  window.updateCartCounter();
+}
+function removeFromWishlist(productId){
+  const wishlist = getWishlist();
+  const buttonDOM = document.getElementById("wishlistButton-" + productId);
+
+  const inWishlistIndex = wishlist.findIndex((wishlistProductId) => productId === wishlistProductId);
+  if(inWishlistIndex !== -1) {
+    wishlist.splice(inWishlistIndex, 1);
+    buttonDOM.innerHTML = `<i class="bi bi-bookmark"></i>`;
+  }
+
   localStorage.setItem("BBA_WISHLIST", JSON.stringify(wishlist));
 
-  
   window.updateCartCounter();
 }

@@ -11,6 +11,8 @@
   box-shadow: $medium-shadow;
   position: relative;
 
+  animation: fade-in 0.5s ease;
+
   &__stats{
     padding: $small-margin;
     width: 100%;

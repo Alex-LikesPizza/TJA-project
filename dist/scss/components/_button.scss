@@ -9,6 +9,7 @@
   cursor: pointer;
   box-shadow: $light-shadow;
   text-align: center;
+  color: #222222;
 
   &:hover{
     background-color: darken($primary, 5%);
