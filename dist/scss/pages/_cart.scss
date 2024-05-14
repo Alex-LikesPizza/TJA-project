@@ -190,8 +190,86 @@
 }
 
 .wishlist{
-  width: 100%;
-  height: 10rem;
+  display: none;
+  position: relative;
+  display: block;
+  margin-top: 1rem;
+
+  &__list{
+    list-style: none;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+    gap: 1rem 0.4rem;
+    margin-top: $normal-margin;
+  }
+}
+
+.cart-modal{
+  background-color: $primary-light;
+  outline: 4px solid $primary-dark;
+  border-radius: $medium-radius;
+  padding: $normal-margin;
+  max-height: 70vh;
+  overflow-y: scroll;
   
+  &__input {
+    display: block;
+    font-size: 1.1rem;
+    width: clamp(10ch, 80vw, 70ch);
+    padding: $small-margin;
+    border: 1px solid #ccc;
+    border-radius: $small-margin;
+    margin-top: $xsmall-margin;
+    outline-color: darken($primary-dark, 6%);
+    outline-offset: -3px;
+    &--message{
+      resize: vertical;
+    }
+  }
+  &__label {
+    font-size: 1.2rem;
+    margin-top: $small-margin;
+  }
+  &__title{
+    text-align: center;
+  }
+  &__buttons{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: $normal-margin;
+    padding: $normal-margin;
+
+    &--save{
+      width: 50%;
+      max-width: 10rem;
+    }
+    &--cancel{
+      width: 50%;
+      max-width: 7rem;
+    }
+  }
+  & input, & textarea{
+    cursor: default;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
   
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border: 3px solid transparent;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+  }
+  -moz-scrollbar-width: thin;
+  -moz-scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
 }
