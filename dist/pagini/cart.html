@@ -252,7 +252,7 @@
       </div>
     </div>
     
-    <div class="modal cart-modal" id="cart-modal">
+    <form method="POST" class="modal cart-modal" id="cart-modal">
       <h3 class="cart-modal__title">
         Comandă acum, plătiți mai târziu.
       </h3>
@@ -263,22 +263,22 @@
         </div>
         <div class="cart-modal__field-container">
           <label class="cart-modal__label">Email:</label>
-          <input type="text" id="cart-modal--email" class="cart-modal__input">
+          <input type="email" id="cart-modal--email" class="cart-modal__input">
         </div>
         <div class="cart-modal__field-container">
           <label class="cart-modal__label">Telefon:</label>
-          <input type="text" id="cart-modal--phone" class="cart-modal__input">
+          <input type="number" id="cart-modal--phone" class="cart-modal__input">
         </div>
         <div class="cart-modal__field-container">
           <label class="cart-modal__label">Mesaj (opțional):</label>
-          <textarea type="text" id="cart-modal--message" class="cart-modal__input cart-modal__input--message"></textarea>
+          <textarea id="cart-modal--message" class="cart-modal__input cart-modal__input--message"></textarea>
         </div>
       </div>
       <div class="cart-modal__buttons">
-        <button onclick="closeModal()" class="cart-modal__buttons--cancel button button--bordered button--bordered">Anulează</button>
-        <button id="cart-modal--submit" class="cart-modal__buttons--save button">Comandă</button>
+        <button type="button" onclick="closeModal()" class="cart-modal__buttons--cancel button button--bordered button--bordered">Anulează</button>
+        <button type="submit" id="cart-modal--submit" class="cart-modal__buttons--save button">Comandă</button>
       </div>
-    </div>
+    </form>
   </main>
 
   <footer class="footer">

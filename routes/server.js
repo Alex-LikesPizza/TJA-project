@@ -33,6 +33,24 @@ const postData = async (data) => {
     return false;
   }
 }
+const postProduct = async (data) => {
+  
+  let col = collection(database, "productRequests");
+  const sendData = {}
+  sendData.name = data.name;
+  sendData.email = data.email;
+  sendData.number = data.number;
+  sendData.message = data.message;
+  sendData.timestamp = serverTimestamp(); 
+  try {
+    const docRef = await addDoc(col, {...sendData});
+    console.log("Document written with ID: ", docRef.id);
+    return true;
+  } catch (error) {
+    console.error("Error adding document: ", error);
+    return false;
+  }
+}
 const getGallery = async () => {
   const querySnapshot = await getDocs(collection(database, "products"));
   const products = [];
@@ -97,19 +115,21 @@ route.post("/server", async (req, res, next) => {
     }
   });
 });
-route.post("/productsOrder", async (req, res) => {
+route.post("/productOrder", async (req, res) => {
   let rawData = '';
-  console.log("------New Request------");
-
   req.on('data', (chunk) => {
     rawData += chunk;
   });
   req.on('end', async () => { 
     try{
       const data = JSON.parse(rawData);
-      // TODO: Add firebase upload
-      
-      res.json({message: " data uploaded successfully"});
+      const success =
+        await postProduct(data);
+      if (success) {
+        res.json({ message: 'Data received and written successfully' });
+      } else {
+        res.status(500).json({ error: 'Failed to write data.' });
+      }
     }
     catch(error){
       console.error('Error:', error.message);

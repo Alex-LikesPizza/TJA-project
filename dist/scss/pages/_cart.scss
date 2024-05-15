@@ -92,7 +92,7 @@
 }
 .cart-total{
   width: 40%;
-
+  color: $primary-accent;
   &__card{
     background-color: lighten($primary, 5%);
     border-radius: $normal-radius;

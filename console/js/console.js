@@ -20,4 +20,4 @@ function visitProductPage(productId){
   localStorage.setItem("BBA_PRODUCT_VISIT_KEY", productId);
   window.open("../../pagini/produs.html", "_blank");
 }
-changeTo("products");
+changeTo("product-orders");

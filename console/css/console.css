@@ -468,3 +468,8 @@
   width: 100%;
   background-color: #f6e6d765;
 }
+
+.product-orders__list{
+  list-style: none;
+  
+}

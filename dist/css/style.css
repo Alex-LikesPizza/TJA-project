@@ -388,6 +388,7 @@ p {
   transition: .2s background-color, .2s border-color;
   box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2);
   position: relative;
+  color: #44372f;
   animation: fade-in 0.2s ease; }
   .block-card__stats {
     padding: 0.5rem;
@@ -452,7 +453,7 @@ p {
   cursor: pointer;
   box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2);
   text-align: center;
-  color: #222222; }
+  color: #44372f; }
   .button:hover {
     background-color: #e6c7ac; }
   .button--no-button {
@@ -1437,7 +1438,8 @@ p {
     line-height: 10rem; }
 
 .cart-total {
-  width: 40%; }
+  width: 40%;
+  color: #44372f; }
   .cart-total__card {
     background-color: #f2e1d4;
     border-radius: 0.3rem;

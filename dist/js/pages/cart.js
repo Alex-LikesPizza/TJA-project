@@ -210,15 +210,31 @@ const formNameDOM = document.getElementById("cart-modal--name");
 const formEmailDOM = document.getElementById("cart-modal--email");
 const formPhoneDOM = document.getElementById("cart-modal--phone");
 const formMessageDOM = document.getElementById("cart-modal--message");
-const formSubmitButtonDOM = document.getElementById("cart-modal--submit");
+const formDOM = document.getElementById("cart-modal");
 
 function submitForm(){
   const formData = {
     name: formNameDOM.value,
     email: formEmailDOM.value,
-    phone: formPhoneDOM.value,
+    number: formPhoneDOM.value,
     message: formMessageDOM.value,
   }
-  
+
+  fetch("/productOrder", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData)
+    }
+  )
+  .then(response => response.json)
+  .then(data => {
+    console.log("Data sent successfully");
+  })
+  .catch(err => {
+    console.error(err)
+  })
+
 }
-formSubmitButtonDOM.addEventListener("click", submitForm);
+formDOM.addEventListener("submit", submitForm);
