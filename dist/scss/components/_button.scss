@@ -10,8 +10,10 @@
   box-shadow: $light-shadow;
   text-align: center;
   color: $primary-accent;
+  outline: none;
 
-  &:hover{
+  &:hover,
+  &:focus{
     background-color: darken($primary, 5%);
   }
   &--no-button{
@@ -29,7 +31,8 @@
     outline-color: $primary-accent;
     background: none;
     
-    &:hover{
+    &:hover,
+    &:focus{
       background-color: darken($primary, 4%);
       outline: none;
     }
@@ -40,7 +43,8 @@
     outline-color: $primary-accent;
     background: none;
     
-    &:hover{
+    &:hover,
+    &:focus{
       background-color: darken($primary, 4%);
       outline: none;
     }
@@ -52,7 +56,8 @@
     outline-color: $white;
     background: none;
 
-    &:hover{
+    &:hover,
+    &:focus{
       outline: none;
       background-color: $white;
       color: $black;
@@ -60,13 +65,15 @@
   }
   &--dark{
     background-color: darken($primary, 12%);
-    &:hover{
+    &:hover,
+    &:focus{
       background-color: darken($primary, 20%);
     }
   }
   &--light{
     background-color: $primary-light;
-    &:hover{
+    &:hover,
+    &:focus{
       background-color: darken($primary-light, 4%);
     }
   }

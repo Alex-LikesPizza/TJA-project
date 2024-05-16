@@ -34,10 +34,11 @@ function fetchProductData(){
 }
 
 const productButtonDOM = document.querySelector(".product__purchase");
-productButtonDOM.setAttribute("id", "button-" + productId);
 productButtonDOM.addEventListener("click", () => {addToCart(productId)});
+addToCart(productId);
+addToCart(productId);
 
-function addToCart(productId){
+function getCart(){
   const CART_STRING = localStorage.getItem("BBA_CART");
   let cart;
   if(!CART_STRING) cart = [];
@@ -45,12 +46,71 @@ function addToCart(productId){
     const CART_JSON = JSON.parse(CART_STRING);
     cart = [...CART_JSON];
   }
-  const isInCart = cart.findIndex((cartProductId) => productId === cartProductId) !== -1;
-  if(isInCart) return;
-  cart.unshift(productId);
+  return cart;
+}
+function addToCart(productId){
+  const cart = getCart();
+
+  const inCartIndex = cart.findIndex((cartProductId) => productId === cartProductId);
+  if(inCartIndex !== -1) {
+    cart.splice(inCartIndex, 1);
+    productButtonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`;
+  }
+  else{
+    cart.unshift(productId);
+    productButtonDOM.innerHTML = `<i class="bi bi-check2-circle"></i> Adăugat`;
+  }
+  
+  localStorage.setItem("BBA_CART", JSON.stringify(cart));
+  removeFromWishlist(productId);
+  
+  window.updateCartCounter();
+}
+function removeFromCart(productId){
+  const cart = getCart();
+
+  const inCartIndex = cart.findIndex((cartProductId) => productId === cartProductId);
+  if(inCartIndex !== -1) {
+    cart.splice(inCartIndex, 1);
+  }
+
   localStorage.setItem("BBA_CART", JSON.stringify(cart));
 
-  const buttonDOM = document.getElementById("button-" + productId);
-  buttonDOM.innerHTML = `<i class="bi bi-check2-circle"></i> Adăugat cu succes`;
   window.updateCartCounter();
+}
+
+function getWishlist(){
+  const WISHLIST_STRING = localStorage.getItem("BBA_WISHLIST");
+  let wishlist;
+  if(!WISHLIST_STRING) wishlist = [];
+  else{
+    const WISHLIST_JSON = JSON.parse(WISHLIST_STRING);
+    wishlist = [...WISHLIST_JSON];
+  }
+  return wishlist;
+}
+
+function addToWishlist(productId){
+  let wishlist = getWishlist();
+  
+  const inWishlistIndex = wishlist.findIndex((wishlistProductId) => productId === wishlistProductId);
+  if(inWishlistIndex !== -1) {
+    wishlist.splice(inWishlistIndex, 1);
+  }
+  else{
+    wishlist.unshift(productId);
+  }
+
+  localStorage.setItem("BBA_WISHLIST", JSON.stringify(wishlist)); 
+  removeFromCart(productId);
+}
+function removeFromWishlist(productId){
+  const wishlist = getWishlist();
+
+  const inWishlistIndex = wishlist.findIndex((wishlistProductId) => productId === wishlistProductId);
+  if(inWishlistIndex !== -1) {
+    wishlist.splice(inWishlistIndex, 1);
+  }
+
+  localStorage.setItem("BBA_WISHLIST", JSON.stringify(wishlist));
 }

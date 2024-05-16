@@ -453,8 +453,9 @@ p {
   cursor: pointer;
   box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2);
   text-align: center;
-  color: #44372f; }
-  .button:hover {
+  color: #44372f;
+  outline: none; }
+  .button:hover, .button:focus {
     background-color: #e6c7ac; }
   .button--no-button {
     border: none;
@@ -468,7 +469,7 @@ p {
     outline-style: solid;
     outline-color: #44372f;
     background: none; }
-    .button--bordered:hover {
+    .button--bordered:hover, .button--bordered:focus {
       background-color: #e7c9b0;
       outline: none; }
   .button--bordered-wide {
@@ -476,7 +477,7 @@ p {
     outline-style: solid;
     outline-color: #44372f;
     background: none; }
-    .button--bordered-wide:hover {
+    .button--bordered-wide:hover, .button--bordered-wide:focus {
       background-color: #e7c9b0;
       outline: none; }
   .button--monochrome-bordered {
@@ -485,17 +486,17 @@ p {
     color: #FAF9F9;
     outline-color: #FAF9F9;
     background: none; }
-    .button--monochrome-bordered:hover {
+    .button--monochrome-bordered:hover, .button--monochrome-bordered:focus {
       outline: none;
       background-color: #FAF9F9;
       color: #131112; }
   .button--dark {
     background-color: #deb491; }
-    .button--dark:hover {
+    .button--dark:hover, .button--dark:focus {
       background-color: #d49f72; }
   .button--light {
     background-color: #f8ebdf; }
-    .button--light:hover {
+    .button--light:hover, .button--light:focus {
       background-color: #f4e1ce; }
 
 .modal {
@@ -1358,7 +1359,8 @@ p {
     position: relative;
     box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2);
     border-radius: 0.2rem;
-    height: 70vh; }
+    height: 70vh;
+    margin-top: 4rem; }
   .product__image {
     width: 100%;
     height: 100%; }
