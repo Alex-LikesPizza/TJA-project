@@ -4,8 +4,9 @@ let totalProductPrice = 0;
 
 function loadProducts(){
   const CART_ITEMS_STRING = localStorage.getItem("BBA_CART");
-  const CART_ITEMS = JSON.parse(CART_ITEMS_STRING);
+  const CART_ITEMS = CART_ITEMS_STRING? JSON.parse(CART_ITEMS_STRING) : [];
   totalProductPrice = 0;
+  
   if(!CART_ITEMS || CART_ITEMS.length === 0){
     cartDOM.innerHTML = `
     <h2 class="cart__pre-title">Cart</h2>
@@ -69,7 +70,7 @@ function updateTotal(){
 }
 function loadWishlist(){
   const WISHLIST_ITEMS_STRING = localStorage.getItem("BBA_WISHLIST");
-  const WISHLIST_ITEMS = JSON.parse(WISHLIST_ITEMS_STRING);
+  const WISHLIST_ITEMS = WISHLIST_ITEMS_STRING? JSON.parse(WISHLIST_ITEMS_STRING) : [];
   if(!WISHLIST_ITEMS || WISHLIST_ITEMS.length === 0){
     wishlistDOM.style.display = "none";
   }
@@ -209,15 +210,58 @@ loadWishlist();
 const formNameDOM = document.getElementById("cart-modal--name");
 const formEmailDOM = document.getElementById("cart-modal--email");
 const formPhoneDOM = document.getElementById("cart-modal--phone");
+const formAddressDOM = document.getElementById("cart-modal--address");
+const formCodeDOM = document.getElementById("cart-modal--code");
 const formMessageDOM = document.getElementById("cart-modal--message");
 const formDOM = document.getElementById("cart-modal");
 
-function submitForm(){
-  const formData = {
+function getData() {
+  return {
     name: formNameDOM.value,
     email: formEmailDOM.value,
     number: formPhoneDOM.value,
+    address: formAddressDOM.value,
+    code: formCodeDOM.value,
     message: formMessageDOM.value,
+  };
+}
+
+let data = {
+  name: null,
+  email: null,
+  number: null,
+  address: null,
+  code: null,
+  message: null,
+}
+
+function submitForm(e){
+  e.preventDefault();
+
+  let cart = JSON.parse(localStorage.getItem("BBA_CART"));
+  if(cart.length === 0) alert("Nu aveți nici un produs în coș");
+  let data = getData();
+  for(const key in data){
+    if(data[key].trim() === ""){
+      alert("Vă rugăm să umpleți toate rândurile");
+      return;
+    };
+  }
+  data.productIDs = [...cart];
+  const phoneRegex = /^\+?\d(?:\s*\d){8,}$/;
+  if (!phoneRegex.test(data.number)) {
+    alert("Vă rugăm să introduceți un număr valid");
+    return;
+  } 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailRegex.test(data.email)){
+    alert("Vă rugăm să introduceți o adresă de email validă");
+    return;
+  }
+  const addressRegex = /^.{5,}$/;
+  if (!addressRegex.test(data.address)) {
+    alert("Vă rugăm să introduceți o adresă validă");
+    return;
   }
 
   fetch("/productOrder", {
@@ -225,7 +269,7 @@ function submitForm(){
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(data)
     }
   )
   .then(response => response.json)

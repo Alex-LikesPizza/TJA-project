@@ -1329,7 +1329,8 @@ p {
     font-size: 1.4rem;
     font-weight: bold; }
   .product__price {
-    color: #131112; }
+    color: #131112;
+    margin-top: 1rem; }
   .product__status {
     position: relative;
     cursor: default; }
@@ -1337,23 +1338,9 @@ p {
       color: green; }
     .product__status--sold {
       color: red; }
-  .product__purchase {
-    border: none;
-    background-color: #ecd4c0;
-    color: #44372f;
-    font-size: 1.4rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.3rem;
-    box-shadow: 0.1rem 0.1rem 0.2rem rgba(19, 17, 18, 0.2);
-    transition: 0.3s all;
-    cursor: pointer; }
-    .product__purchase .bi-plus-circle {
-      transform: translateY(-3px);
-      display: inline-block; }
-    .product__purchase:hover {
-      background-color: #d9bba5;
-      box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2);
-      transform: translateY(-2px); }
+  .product__button {
+    font-size: 1.25rem;
+    margin-right: 0.5rem; }
   .product__image-container {
     overflow: hidden;
     position: relative;

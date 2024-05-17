@@ -252,22 +252,30 @@
       </div>
     </div>
     
-    <form method="POST" class="modal cart-modal" id="cart-modal">
+    <form class="modal cart-modal" id="cart-modal">
       <h3 class="cart-modal__title">
         Comandă acum, plătiți mai târziu.
       </h3>
       <div class="cart-modal__data">
         <div class="cart-modal__field-container">
-          <label class="cart-modal__label">Nume:</label>
+          <label class="cart-modal__label" for="cart-modal--name">Nume:</label>
           <input type="text" id="cart-modal--name" class="cart-modal__input">
         </div>
         <div class="cart-modal__field-container">
-          <label class="cart-modal__label">Email:</label>
+          <label class="cart-modal__label" for="cart-modal--email">Email:</label>
           <input type="email" id="cart-modal--email" class="cart-modal__input">
         </div>
         <div class="cart-modal__field-container">
-          <label class="cart-modal__label">Telefon:</label>
+          <label class="cart-modal__label" for="cart-modal--phone">Telefon:</label>
           <input type="number" id="cart-modal--phone" class="cart-modal__input">
+        </div>
+        <div class="cart-modal__field-container">
+          <label class="cart-modal__label" for="cart-modal--address">Adresa:</label>
+          <input type="text" id="cart-modal--address" class="cart-modal__input">
+        </div>
+        <div class="cart-modal__field-container">
+          <label class="cart-modal__label" for="cart-modal--code">Cod Poștal:</label>
+          <input type="text" id="cart-modal--code" class="cart-modal__input">
         </div>
         <div class="cart-modal__field-container">
           <label class="cart-modal__label">Mesaj (opțional):</label>
@@ -283,11 +291,11 @@
 
   <footer class="footer">
     <div class="footer__background"></div>
-    <p class="footer__disclamer">
+    <!-- <p class="footer__disclamer">
       Acest website a fost realizat în cadrul
       competiției ”Tekwill Junior Ambassadors” organizată de proiectul ”Tekwill în Fiecare
       Școală” și nu reflectă neapărat opinia proiectului.
-    </p>
+    </p> -->
   </footer>  
 </body>
 </html>

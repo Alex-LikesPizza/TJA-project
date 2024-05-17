@@ -22,6 +22,7 @@
   }
   &__price{
     color: $black;
+    margin-top: 1rem;
   }
 
   &__status{
@@ -35,26 +36,9 @@
       color: red;
     } 
   }
-  &__purchase{
-    border: none;
-    background-color: $primary;
-    color: $primary-accent;
-    font-size: 1.4rem;
-    padding: $small-margin $normal-margin;
-    border-radius: $normal-radius;
-    box-shadow: $light-shadow;
-    transition: 0.3s all;
-    cursor: pointer;
-    
-    & .bi-plus-circle{
-      transform: translateY(-3px);
-      display: inline-block;
-    }
-      &:hover{
-      background-color: $primary-dark;
-      box-shadow: $medium-shadow;
-      transform: translateY(-2px);
-    }
+  &__button{
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
   }
 
 

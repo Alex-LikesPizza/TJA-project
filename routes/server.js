@@ -40,7 +40,10 @@ const postProduct = async (data) => {
   sendData.name = data.name;
   sendData.email = data.email;
   sendData.number = data.number;
+  sendData.address = data.address;
+  sendData.code = data.code;
   sendData.message = data.message;
+  sendData.productIDs = [...data.productIDs];
   sendData.timestamp = serverTimestamp(); 
   try {
     const docRef = await addDoc(col, {...sendData});

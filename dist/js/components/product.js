@@ -33,10 +33,10 @@ function fetchProductData(){
   })
 }
 
-const productButtonDOM = document.querySelector(".product__purchase");
+const productButtonDOM = document.querySelector("#purchase-button");
+const productButtonSaveDOM = document.querySelector("#save-button");
 productButtonDOM.addEventListener("click", () => {addToCart(productId)});
-addToCart(productId);
-addToCart(productId);
+productButtonSaveDOM.addEventListener("click", () => {addToWishlist(productId)});
 
 function getCart(){
   const CART_STRING = localStorage.getItem("BBA_CART");
@@ -59,6 +59,7 @@ function addToCart(productId){
   else{
     cart.unshift(productId);
     productButtonDOM.innerHTML = `<i class="bi bi-check2-circle"></i> Adăugat`;
+    productButtonSaveDOM.innerHTML = `<i class="bi bi-bookmark"></i>`;
   }
   
   localStorage.setItem("BBA_CART", JSON.stringify(cart));
@@ -96,9 +97,12 @@ function addToWishlist(productId){
   const inWishlistIndex = wishlist.findIndex((wishlistProductId) => productId === wishlistProductId);
   if(inWishlistIndex !== -1) {
     wishlist.splice(inWishlistIndex, 1);
+    productButtonSaveDOM.innerHTML = `<i class="bi bi-bookmark"></i>`;
   }
   else{
     wishlist.unshift(productId);
+    productButtonSaveDOM.innerHTML = `<i class="bi bi-bookmark-fill"></i>`;
+    productButtonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`;
   }
 
   localStorage.setItem("BBA_WISHLIST", JSON.stringify(wishlist)); 
