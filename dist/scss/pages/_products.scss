@@ -55,7 +55,11 @@
 }
 
 .products{
-  
+  &__title{
+    text-align: center;
+    font-size: 2.4rem;
+    background-image: linear-gradient(to left, rgba($primary, 0), $primary-light, rgba($primary, 0));
+  }
   &__gallery{
     list-style: none;
     position: relative;

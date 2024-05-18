@@ -2,7 +2,7 @@ const cartDOM = document.querySelector(".cart");
 const wishlistDOM = document.querySelector(".wishlist")
 let totalProductPrice = 0;
 
-function loadProducts(){
+function loadCart(){
   const CART_ITEMS_STRING = localStorage.getItem("BBA_CART");
   const CART_ITEMS = CART_ITEMS_STRING? JSON.parse(CART_ITEMS_STRING) : [];
   totalProductPrice = 0;
@@ -156,7 +156,7 @@ function removeFromCart(productId){
   localStorage.setItem("BBA_CART", JSON.stringify(cart));
 
   window.updateCartCounter();
-  loadProducts();
+  loadCart();
   loadWishlist();
 }
 
@@ -195,7 +195,7 @@ function removeFromWishlist(productId){
 
   localStorage.setItem("BBA_WISHLIST", JSON.stringify(wishlist));
 
-  loadProducts();
+  loadCart();
   loadWishlist();
 }
 
@@ -204,7 +204,7 @@ function visitProductPage(productId){
   localStorage.setItem("BBA_PRODUCT_VISIT_KEY", productId);
   window.open("./produs.html", "_blank");
 }
-loadProducts();
+loadCart();
 loadWishlist();
 
 const formNameDOM = document.getElementById("cart-modal--name");
@@ -213,6 +213,7 @@ const formPhoneDOM = document.getElementById("cart-modal--phone");
 const formAddressDOM = document.getElementById("cart-modal--address");
 const formCodeDOM = document.getElementById("cart-modal--code");
 const formMessageDOM = document.getElementById("cart-modal--message");
+const formSubmitDOM = document.getElementById("cart-modal--submit");
 const formDOM = document.getElementById("cart-modal");
 
 function getData() {
@@ -242,6 +243,7 @@ function submitForm(e){
   if(cart.length === 0) alert("Nu aveți nici un produs în coș");
   let data = getData();
   for(const key in data){
+    if(key === "message") continue;
     if(data[key].trim() === ""){
       alert("Vă rugăm să umpleți toate rândurile");
       return;
@@ -264,6 +266,7 @@ function submitForm(e){
     return;
   }
 
+  formSubmitDOM.setAttribute("disabled", true);
   fetch("/productOrder", {
       method: "POST",
       headers: {
@@ -274,7 +277,10 @@ function submitForm(e){
   )
   .then(response => response.json)
   .then(data => {
-    console.log("Data sent successfully");
+    formSubmitDOM.removeAttribute("disabled");
+    localStorage.setItem("BBA_CART", "");
+    loadCart();
+    closeModal()
   })
   .catch(err => {
     console.error(err)

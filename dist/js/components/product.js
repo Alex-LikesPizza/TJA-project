@@ -35,6 +35,8 @@ function fetchProductData(){
 
 const productButtonDOM = document.querySelector("#purchase-button");
 const productButtonSaveDOM = document.querySelector("#save-button");
+if(getCart().includes(productId)) productButtonDOM.innerHTML = `<i class="bi bi-check2-circle"></i> Adăugat`;
+if(getWishlist().includes(productId)) productButtonSaveDOM.innerHTML = `<i class="bi bi-bookmark-fill"></i>`;
 productButtonDOM.addEventListener("click", () => {addToCart(productId)});
 productButtonSaveDOM.addEventListener("click", () => {addToWishlist(productId)});
 

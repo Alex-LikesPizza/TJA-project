@@ -43,7 +43,7 @@ fetch('/productsGallery')
 
 function visitProductPage(productId){
   localStorage.setItem("BBA_PRODUCT_VISIT_KEY", productId);
-  window.open("./produs.html", "_blank");
+  location.href = "./produs.html"
 }
 function getCart(){
   const CART_STRING = localStorage.getItem("BBA_CART");
