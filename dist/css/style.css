@@ -1519,6 +1519,12 @@ p {
     grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
     gap: 1rem 0.4rem;
     margin-top: 1rem; }
+    @media (max-width: 1440px) {
+      .wishlist__list {
+        grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr)); } }
+    @media (max-width: 800px) {
+      .wishlist__list {
+        grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); } }
 
 .cart-modal {
   background-color: #f8ebdf;
