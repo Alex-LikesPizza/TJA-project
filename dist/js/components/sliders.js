@@ -6,25 +6,35 @@ const sliderFactory = (id, props) =>
     lazyLoading: true,
     perMove: 2,
     pagination: false,
-    fixedWidth: calculateWidth(),
     gap: "1rem",
 
     ...props,
   });
 
-if(document.querySelector("#slider--recents") != null)
-  sliderFactory("#slider--recents", {}).mount();
-if(document.querySelector("#slider--recomended") != null)
-  sliderFactory("#slider--recomended", {}).mount();
-if(document.querySelector("#slider--similar") != null)
-  sliderFactory("#slider--similar", {}).mount();
-;
+if(document.querySelector("#slider--recents") !== null)
+  sliderFactory("#slider--recents", {fixedWidth: calculateWidth()}).mount();
+if(document.querySelector("#slider--recomended") !== null)
+  sliderFactory("#slider--recomended", {fixedWidth: calculateWidth()}).mount();
+if(document.querySelector("#slider--similar") !== null)
+  sliderFactory("#slider--similar", {fixedWidth: calculateWidth()}).mount();
+if(document.querySelector("#slider--testimonials") !== null){
+  sliderFactory("#slider--testimonials", {
+    type: "carousel",
+    pagination: true,
+    perMove: 1,
+    perPage: 1,
+    gap: null,
+    rewind: true,
+    autoplay: true,
+    interval: 5000,
+  }).mount();
+}
 
 let hiddenSliders = ["recents", "recomended", "similar"];
 
 function hideSliders(){
   for(let str of hiddenSliders){
-    const elem = document.querySelector("#slider--" + str);
+    const elem = document.querySelector("#slider--" + str)
     if(elem === null) continue;
     elem.style.display = "none";
   }

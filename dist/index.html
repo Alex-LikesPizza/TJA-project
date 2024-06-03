@@ -10,13 +10,17 @@
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="../imports/splide/splide.min.css">
   <link rel="stylesheet" href="./css/style.css">
 
+  <script src="../imports/splide/splide.min.js"></script>
   <script src="./js/components/header.js" defer></script>
+  <script src="./js/components/sliders.js" defer></script>
 
   <title>Bellatrix Bizantin Art - Acasă</title>
 </head>
 <body>
+  <div id="to-top"></div>
   <div class="header__pre"></div>
   <header id="header" class="header">
     <div class="more more--closed">
@@ -192,7 +196,56 @@
         </div>
       </div>
     </section>
+    <section id="home-end-trigger" class="home-end">
+      <div class="home-end__background"></div>
+
+      <div id="slider--testimonials" class="splide home-end__testimonial-container">
+        <h2 class="home-end__title">Testemoniale:</h2>
+
+        <div class="splide__track">
+          <ul class="splide__list home-end__testimonials">
+            <li class="splide__slide home-end__testimonial">
+              <div class="testimonial__info">
+                <h3 class="testimonial__author">Solomon Alexandru-Nicolae</h3>
+                <p class="testimonial__comment">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate dolor vero inventore, a laudantium aperiam iure sequi accusantium praesentium eveniet optio ut, eligendi reiciendis, adipisci quidem fuga tenetur consectetur impedit.
+                </p>
+              </div>
+            </li>
+            <li class="splide__slide home-end__testimonial">
+              <div class="testimonial__info">
+                <h3 class="testimonial__author">Solomon Alexandru-Nicolae</h3>
+                <p class="testimonial__comment">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate dolor vero inventore, a laudantium aperiam iure sequi accusantium praesentium eveniet optio ut, eligendi reiciendis, adipisci quidem fuga tenetur consectetur impedit.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="home-end__info"
+           data-aos="fade-down"
+           data-aos-delay="100"
+           data-aos-duration="500"
+           data-aos-anchor="#home-end-trigger"
+           >
+           <h2 class="home-end__title">Contactați-ne</h2>
+           <ul class="home-end__contacts">
+             <li class="home-end__contact">Email: bellatrixbizantinart@gmail.com</li>
+          <li class="home-end__contact">Telefon: +40 724 711 844</li>
+          <li class="home-end__contact">Facebook: bellatrix bisantin art</li>
+        </ul>
+        <a href="./pagini/contacte.html" class="home-end__button button--no-button">Mai multe</a>
+      </div>
+    </section>
   </main>
+  <div class="to-top">
+    <a href="#to-top">
+      <button class="to-top__button button--no-button">
+        <i class="bi bi-arrow-up-short to-top__arrow"></i>
+      </button>
+    </a>
+  </div>
   <footer class="footer">
     <div class="footer__background"></div>
     <p class="footer__disclamer">

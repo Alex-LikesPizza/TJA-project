@@ -60,6 +60,9 @@
   box-sizing: inherit;
   font-family: 'Open Sans', sans-serif; }
 
+html {
+  scroll-behavior: smooth; }
+
 body {
   font-weight: 400;
   font-size: 1em;
@@ -308,6 +311,27 @@ p {
     text-align: center;
     font-size: 0.8rem;
     color: #44372f; }
+
+.to-top {
+  font-size: 3.5rem;
+  text-align: center;
+  line-height: 3.5rem;
+  margin: auto 1rem; }
+  .to-top .to-top__button {
+    position: relative;
+    width: 100%;
+    height: 4rem;
+    background-color: #f5f3f3;
+    border-radius: 0.3rem;
+    transition: 0.3s all ease-out; }
+    .to-top .to-top__button:hover {
+      background-color: #f1eeee; }
+  .to-top__arrow {
+    display: inline-block;
+    transition: 0.3s ease; }
+  .to-top:hover .to-top__arrow {
+    opacity: 0.6;
+    transform: translateY(-20%) scale(1.2); }
 
 .card {
   position: relative;
@@ -560,7 +584,8 @@ p {
   align-items: center;
   padding: 5rem 0;
   padding-left: 2rem;
-  position: relative; }
+  position: relative;
+  height: clamp(45rem, 90vh, 120rem); }
   .home__text {
     padding: 0 2rem 5rem 2rem;
     max-width: 50%; }
@@ -697,7 +722,7 @@ p {
 .info {
   position: relative;
   width: 100%;
-  height: 90vh;
+  height: clamp(45rem, 90vh, 120rem);
   margin-top: 1rem;
   border-radius: 0.3rem;
   overflow: hidden; }
@@ -832,6 +857,49 @@ p {
       .info__image--possibility4 {
         grid-column: 4;
         grid-row: 1 / span 2; } }
+
+.home-end {
+  display: flex;
+  width: 100%;
+  height: clamp(35rem, 70vh, 100rem);
+  background-color: #d9bba5;
+  margin-top: 1rem;
+  border-radius: 0.3rem 0.3rem 0.3rem 0.3rem;
+  justify-content: space-between;
+  padding: 5rem;
+  align-items: center;
+  position: relative; }
+  .home-end > * {
+    z-index: 1;
+    position: relative; }
+  .home-end__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 50%;
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    background-color: #e1c9b7; }
+  .home-end__info {
+    background-color: rgba(248, 235, 223, 0.6);
+    padding: 5rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0.3rem 0.3rem 0.3rem 0.3rem;
+    background-image: linear-gradient(to right, rgba(248, 235, 223, 0.6), rgba(248, 235, 223, 0.6)), url("../images/contact-us.jpg");
+    font-size: 1.2rem; }
+  .home-end__button {
+    text-decoration: underline; }
+  .home-end__title {
+    text-align: center;
+    font-size: 2.2rem; }
+  .home-end__contacts {
+    list-style: none; }
+  .home-end__contact {
+    white-space: nowrap; }
+  .home-end__testimonials {
+    list-style: none; }
 
 .main--about {
   overflow-x: hidden; }

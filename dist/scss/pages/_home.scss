@@ -23,6 +23,8 @@
   padding-left: 2rem;
   position: relative;
 
+  height: clamp(45rem, 90vh, 120rem);
+
 
   &__text{
     padding: 0 2rem 5rem 2rem;
@@ -217,7 +219,7 @@
 .info{
   position: relative;
   width: 100%;
-  height: 90vh;
+  height: clamp(45rem, 90vh, 120rem);
   margin-top: $normal-margin;
   border-radius: $normal-radius;
   overflow: hidden;
@@ -384,3 +386,54 @@
   }
 }
 
+.home-end{
+  display: flex;
+  width: 100%;
+  height: clamp(35rem, 70vh, 100rem);
+  background-color: $primary-dark;
+  margin-top: 1rem;
+  border-radius: $normal-radius $normal-radius $normal-radius $normal-radius;
+  justify-content: space-between;
+  padding: 5rem;
+  align-items: center;
+  position: relative;
+
+  @include level-up;
+
+  &__background{
+    @include full-size-absolute;
+    height: 50%;
+    @include top-triangle-clip;
+    background-color: lighten($primary-dark, 5%);
+  }
+  &__info{
+    background-color: rgba($primary-light, 0.6);
+    padding: 5rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: $normal-radius $normal-radius $normal-radius $normal-radius;
+    background-image: linear-gradient(to right, rgba($primary-light, 0.6), rgba($primary-light, 0.6)), url("../images/contact-us.jpg");
+    font-size: 1.2rem;
+  }
+  &__button{
+    text-decoration: underline;
+
+  }
+  &__title{
+    text-align: center;
+    font-size: 2.2rem;
+  }  
+  &__contacts{
+    list-style: none;
+  }
+  &__contact{
+    white-space: nowrap;
+  }
+  
+  &__testimonials{
+    list-style: none;
+  }
+  &__testimonial{
+
+  }
+}
