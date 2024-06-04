@@ -21,6 +21,7 @@
   &__image{
     @include full-size-absolute;
     z-index: 0;
+    object-fit: cover;
   }
   &__actions{
     position: absolute;

@@ -394,30 +394,41 @@
   margin-top: 1rem;
   border-radius: $normal-radius $normal-radius $normal-radius $normal-radius;
   justify-content: space-between;
+  gap: 2rem;
   padding: 5rem;
   align-items: center;
   position: relative;
 
   @include level-up;
 
-  &__background{
+  &__background2{
     @include full-size-absolute;
     height: 50%;
     @include top-triangle-clip;
-    background-color: lighten($primary-dark, 5%);
+    background-color: lighten($primary-dark, 3%);
+  }
+  &__background{
+    @include full-size-absolute;
+    height: 50%;
+    top: auto;
+    bottom: 0;
+    @include top-triangle-clip;
+    scale: -1;
+    background-color: lighten($primary-dark, 3%);
   }
   &__info{
     background-color: rgba($primary-light, 0.6);
     padding: 5rem;
+    height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: $normal-radius $normal-radius $normal-radius $normal-radius;
     background-image: linear-gradient(to right, rgba($primary-light, 0.6), rgba($primary-light, 0.6)), url("../images/contact-us.jpg");
     font-size: 1.2rem;
+    white-space: nowrap;
   }
   &__button{
     text-decoration: underline;
-
   }
   &__title{
     text-align: center;
@@ -427,13 +438,64 @@
     list-style: none;
   }
   &__contact{
-    white-space: nowrap;
+    white-space: inherit;
   }
   
-  &__testimonials{
+  &__testimonial-container{
+    position: relative;
     list-style: none;
+    height: 100%;
+    background-color: $primary;
+    border-radius: $normal-radius;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    & .home-end__title{
+      position: absolute;
+      top: 0.5rem;
+      z-index: 1;
+    }
+  }
+  &__testimonials{
+    padding: 0;
   }
   &__testimonial{
+    padding: 1rem 3rem;
+    background-color: rgba($primary-light, 0.4);
+    display: flex;
+    gap: 2rem;
+  }
+  &__author-image{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    align-self: center;
+  }
 
+  @media (max-width: 1350px) {
+    flex-direction: column;
+    height: fit-content;
+    padding: 2rem;
+
+    &__info{
+      padding: 1rem;
+      width: 100%;
+      white-space: initial;
+      word-break: break-all;
+    }
+    &__title{
+      text-align: start;
+    }
+    & .home-end__title{
+      position: static;
+    }
+  }
+  @media (max-width: 500px){
+    padding: 0;
+    &__testimonial-container{
+      display: none;
+    }
   }
 }

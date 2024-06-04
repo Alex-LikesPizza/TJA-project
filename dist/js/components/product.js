@@ -52,16 +52,20 @@ function getCart(){
 }
 function addToCart(productId){
   const cart = getCart();
+  const buttonsDOM = document.querySelectorAll(".cartButton-" + productId);
 
   const inCartIndex = cart.findIndex((cartProductId) => productId === cartProductId);
   if(inCartIndex !== -1) {
     cart.splice(inCartIndex, 1);
-    productButtonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`;
+    buttonsDOM.forEach(buttonDOM => {
+      buttonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`;
+    });
   }
   else{
     cart.unshift(productId);
-    productButtonDOM.innerHTML = `<i class="bi bi-check2-circle"></i> Adăugat`;
-    productButtonSaveDOM.innerHTML = `<i class="bi bi-bookmark"></i>`;
+    buttonsDOM.forEach(buttonDOM => {
+      buttonDOM.innerHTML = `<i class="bi bi-check2-circle"></i> Adăugat`;
+    });
   }
   
   localStorage.setItem("BBA_CART", JSON.stringify(cart));
@@ -71,10 +75,14 @@ function addToCart(productId){
 }
 function removeFromCart(productId){
   const cart = getCart();
+  const buttonsDOM = document.querySelectorAll(".cartButton-" + productId);
 
   const inCartIndex = cart.findIndex((cartProductId) => productId === cartProductId);
   if(inCartIndex !== -1) {
     cart.splice(inCartIndex, 1);
+    buttonsDOM.forEach(buttonDOM => {
+      buttonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`;
+    });
   }
 
   localStorage.setItem("BBA_CART", JSON.stringify(cart));
@@ -95,28 +103,53 @@ function getWishlist(){
 
 function addToWishlist(productId){
   let wishlist = getWishlist();
+  const buttonsDOM = document.querySelectorAll(".wishlistButton-" + productId);
   
   const inWishlistIndex = wishlist.findIndex((wishlistProductId) => productId === wishlistProductId);
   if(inWishlistIndex !== -1) {
     wishlist.splice(inWishlistIndex, 1);
-    productButtonSaveDOM.innerHTML = `<i class="bi bi-bookmark"></i>`;
+    buttonsDOM.forEach(buttonDOM => {
+      buttonDOM.innerHTML = `<i class="bi bi-bookmark"></i>`
+    });
   }
   else{
     wishlist.unshift(productId);
-    productButtonSaveDOM.innerHTML = `<i class="bi bi-bookmark-fill"></i>`;
-    productButtonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`;
+    buttonsDOM.forEach(buttonDOM => {
+      buttonDOM.innerHTML = `<i class="bi bi-bookmark-fill"></i>`;
+    });
   }
-
-  localStorage.setItem("BBA_WISHLIST", JSON.stringify(wishlist)); 
   removeFromCart(productId);
+  localStorage.setItem("BBA_WISHLIST", JSON.stringify(wishlist)); 
+  window.updateCartCounter();
 }
 function removeFromWishlist(productId){
   const wishlist = getWishlist();
+  const buttonsDOM = document.querySelectorAll(".wishlistButton-" + productId);
 
   const inWishlistIndex = wishlist.findIndex((wishlistProductId) => productId === wishlistProductId);
   if(inWishlistIndex !== -1) {
     wishlist.splice(inWishlistIndex, 1);
+    buttonsDOM.forEach(buttonDOM => {
+      buttonDOM.innerHTML = `<i class="bi bi-bookmark"></i>`;
+    })
   }
 
   localStorage.setItem("BBA_WISHLIST", JSON.stringify(wishlist));
+
+  window.updateCartCounter();
 }
+
+
+const resentsIDsJSON = localStorage.getItem("BBA_resents");
+const resentsIDs = resentsIDsJSON !== "null"? JSON.parse(resentsIDsJSON) : [];
+const itemIndex = resentsIDs.indexOf(productId);
+
+if(itemIndex === -1){
+  console.log("not found");
+}
+else{
+  resentsIDs.splice(itemIndex, 1);  
+}
+resentsIDs.unshift(productId);
+resentsIDs.splice(20);
+localStorage.setItem("BBA_resents", JSON.stringify(resentsIDs));
