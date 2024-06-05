@@ -79,6 +79,11 @@ if (resentsSlider) {
     sliderFactory("#slider--resents", { fixedWidth: calculateWidth() }).mount();
   });
 }
+if(recommendedSlider){
+  const recommendedIDsJSON_slider = localStorage.getItem("BBA_recommended");
+  const recommendedIDs_slider = recommendedIDsJSON_slider !== "null" ? JSON.parse(recommendedIDsJSON_slider) : [];
+
+}
 function newSliderItem(title, price, imageURL, productId){
   return ` 
   <li class="splide__slide">

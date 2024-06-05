@@ -3,7 +3,7 @@ const route = express.Router();
 
 const  firebaseConfig = require("../keys/firebaseConfig");
 const { initializeApp } = require("firebase/app");
-const { getFirestore, collection, addDoc, serverTimestamp, getDocs, getDoc, doc} = require("firebase/firestore");
+const { getFirestore, collection, addDoc, serverTimestamp, getDocs, getDoc, query, where, doc} = require("firebase/firestore");
 
 let app = initializeApp(firebaseConfig);;
 const database = getFirestore(app);
@@ -93,6 +93,47 @@ route.get("/productsGallery",  async (req, res, next) => {
   }
   catch(err){
     console.log(err);
+    res.status(500).json({ error: "Failed to fetch products." });
+  }
+});
+
+route.get("/searchData",  async (req, res, next) => {
+  res.setHeader('Content-Type', 'application/json');
+  try {
+    const data = req.query.data;
+    console.log("Search term:", data);
+    
+    if (!data) {
+      console.log("No search term provided");
+      res.status(400).send({ notFound: true });
+      return;
+    }
+  
+    const productsRef = collection(database, "products");
+    
+    const searchTerm = data.trim().toLowerCase();
+    const searchWords = searchTerm.split(" ").filter(word => word.length > 0);
+    const q = query(
+      productsRef,
+      where('keywords', 'array-contains-any', searchWords)
+    );
+    const snapshot = await getDocs(q);
+    
+    if (snapshot.empty) {
+      console.log("No products found");
+      res.status(404).send({ notFound: true });
+      return;
+    }
+  
+    const products = [];
+    snapshot.forEach(doc => {
+      products.push({ id: doc.id, ...doc.data() });
+    });
+  
+    console.log("Products:", products);
+    res.status(200).send(products);
+  } catch (err) {
+    console.error("Error:", err);
     res.status(500).json({ error: "Failed to fetch products." });
   }
 });

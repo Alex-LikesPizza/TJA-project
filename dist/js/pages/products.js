@@ -41,6 +41,63 @@ fetch('/productsGallery')
     console.error('Error fetching products:', error.message);
   });
 
+
+const productSearchForm = document.getElementById("product-search-form");
+
+productSearchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const data = new FormData(productSearchForm);
+  fetchSearchResults(data.get("input-text"));
+});
+function fetchSearchResults(data){
+  if(!(typeof data === "string") || data.trim() === ""){
+    alert("Vă rog să introduceți text valid");
+    return;
+  }
+  fetch(`/searchData?data=${encodeURIComponent(data)}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to fetch products');
+    }
+    return response.json();
+  })
+  .then(products => {
+    // products.forEach(product => {
+    //   const listItem = document.createElement('li');
+    //   const cart = getCart();
+    //   const isInCart = cart.includes(product.id);
+    //   const wishlist = getWishlist();
+    //   const isInWishlist = wishlist.includes(product.id);
+    //   listItem.innerHTML = `
+    //       <div class="block-card">
+    //         <img onclick="visitProductPage('${product.id}')" class="block-card__image" src="${product.previewImageDownloadURL}" loading="lazy" alt="example">
+    //         <div class="block-card__stats">
+    //           <h3 class="block-card__title">${product.title}</h3>
+    //           <p class="block-card__description">${product.description}</p>
+    //           <div class="block-card__purchase">
+    //             <p class="block-card__price">${product.price.toFixed(2)} lei</p>
+    //             <button onclick="addToWishlist('${product.id}')" class="block-card__button button button--bordered" id="wishlistButton-${product.id}">
+    //               ${!isInWishlist? `<i class="bi bi-bookmark"></i>` : `<i class="bi bi-bookmark-fill"></i>`}
+    //             </button>
+    //             <button onclick="visitProductPage('${product.id}')" class="block-card__button button button--bordered">
+    //               <i class="bi bi-zoom-in"></i>Vezi pagina
+    //             </button>
+    //             <button onclick="addToCart('${product.id}')" class="block-card__button button" id="cartButton-${product.id}">
+    //               ${!isInCart? `<i class="bi bi-plus-circle"></i> Adaugă în coș` : `<i class="bi bi-check2-circle"></i> Adăugat`}
+    //             </button>
+    //           </div>
+    //         </div>
+    //       </div>
+    //   `;
+    //   galleryDOM.appendChild(listItem);
+    console.log("dss")
+  })
+  .catch(error => {
+    console.error('Error fetching products:', error.message);
+  });
+
+}
+
 function visitProductPage(productId){
   localStorage.setItem("BBA_PRODUCT_VISIT_KEY", productId);
   location.href = "./produs.html"
