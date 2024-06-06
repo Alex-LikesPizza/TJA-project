@@ -1,4 +1,5 @@
 const titleUploadDOM = document.getElementById("upload--title");
+const keywordsUploadDOM = document.getElementById("upload--keywords");
 const descriptionUploadDOM = document.getElementById("upload--description");
 const priceUploadDOM = document.getElementById("upload--price");
 
@@ -13,6 +14,7 @@ const productData = {
   title: undefined,
   description: undefined,
   price: undefined,
+  keywords: undefined,
   image: undefined,
   previewImage: undefined,
 }
@@ -32,6 +34,30 @@ priceUploadDOM.addEventListener("input", (e) => {
   if(price < 0 || isNaN(price)) price = 100;
   productData.price = price;
   pricePreviewDOM.textContent =price.toFixed(2) + " lei";
+});
+
+keywordsUploadDOM.addEventListener("input", (e) => {
+  function standardizeWord(str) {
+    str.trim();
+    const diacriticsMap = {
+        'ă': 'a', 'â': 'a', 'î': 'i', 'ș': 's', 'ş': 's', 'ț': 't', 'ţ': 't',
+        'Ă': 'A', 'Â': 'A', 'Î': 'I', 'Ș': 'S', 'Ş': 'S', 'Ț': 'T', 'Ţ': 'T'
+    };
+    return str.replace(/[ăâîșşțţĂÂÎȘŞȚŢ]/g, function(match) {
+        return diacriticsMap[match];
+    });
+  }
+
+  const keywords = keywordsUploadDOM.value.trim().split(",");
+  const cleanKeywords = [];
+  keywords.forEach(keyword => {
+    keyword = standardizeWord(keyword);
+    if(!keyword) return;
+    cleanKeywords.push(keyword);
+  });
+
+  productData.keywords = cleanKeywords;
+  if(!cleanKeywords || cleanKeywords.length === 0) productData.keywords = undefined;
 });
 fileUploadDOM.addEventListener("input", (e) => {
   const file = e.target.files[0];

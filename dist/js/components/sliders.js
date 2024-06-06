@@ -71,7 +71,11 @@ if (resentsSlider) {
 
     products.forEach(({ productId, product }) => {
       const title = product.title;
-      const price = product.price.toFixed(2);
+      if(title === undefined){
+        removeFromResents(productId);
+        return;
+      }
+      const price = product.price?.toFixed(2);
       const imageURL = product.previewImageDownloadURL;
       sliderList.innerHTML += newSliderItem(title, price, imageURL, productId);
     });
@@ -83,6 +87,13 @@ if(recommendedSlider){
   const recommendedIDsJSON_slider = localStorage.getItem("BBA_recommended");
   const recommendedIDs_slider = recommendedIDsJSON_slider !== "null" ? JSON.parse(recommendedIDsJSON_slider) : [];
 
+}
+function removeFromResents(id){
+  let resents = JSON.parse(localStorage.getItem("BBA_resents")) || [];
+  const index = resents.indexOf(id);
+  if(index !== -1)
+    resents.splice(index, 1);
+  localStorage.setItem("BBA_resents", JSON.stringify(resents))
 }
 function newSliderItem(title, price, imageURL, productId){
   return ` 
@@ -104,16 +115,6 @@ function newSliderItem(title, price, imageURL, productId){
     </div>
   </li>
 `
-}
-
-function getCart(){
-  const CART_STRING = localStorage.getItem("BBA_CART");
-  let cart;
-  if(!CART_STRING) cart = [];
-  else{
-    cart = JSON.parse(CART_STRING);
-  }
-  return cart;
 }
 
 hideSlider("recommended");

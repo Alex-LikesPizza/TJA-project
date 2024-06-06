@@ -383,7 +383,7 @@
 .upload__field-container {
   margin-bottom: 1rem;
 }
-#upload--title {
+#upload--title, #upload--keywords {
   font-size: 1.3rem;
   width: 100%;
 }

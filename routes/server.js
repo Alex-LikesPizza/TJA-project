@@ -101,27 +101,36 @@ route.get("/searchData",  async (req, res, next) => {
   res.setHeader('Content-Type', 'application/json');
   try {
     const data = req.query.data;
-    console.log("Search term:", data);
     
     if (!data) {
-      console.log("No search term provided");
-      res.status(400).send({ notFound: true });
+      res.status(200).send({ notFound: true });
       return;
     }
   
     const productsRef = collection(database, "products");
     
+    function standardizeWord(str) {
+      str.trim();
+      const diacriticsMap = {
+          'ă': 'a', 'â': 'a', 'î': 'i', 'ș': 's', 'ş': 's', 'ț': 't', 'ţ': 't',
+          'Ă': 'A', 'Â': 'A', 'Î': 'I', 'Ș': 'S', 'Ş': 'S', 'Ț': 'T', 'Ţ': 'T'
+      };
+      return str.replace(/[ăâîșşțţĂÂÎȘŞȚŢ]/g, function(match) {
+          return diacriticsMap[match];
+      });
+    }
+
     const searchTerm = data.trim().toLowerCase();
-    const searchWords = searchTerm.split(" ").filter(word => word.length > 0);
-    const q = query(
-      productsRef,
-      where('keywords', 'array-contains-any', searchWords)
-    );
-    const snapshot = await getDocs(q);
-    
+    const searchWords = searchTerm.split(" ").filter(word => word.length > 0).map(word => standardizeWord(word));
+    console.log("Search:", searchWords);
+
+    // const q = query(
+    //   productsRef,
+    //   where('keywords', 'array-contains-any', searchWords),
+    // );
+    const snapshot = await getDocs(productsRef);
     if (snapshot.empty) {
-      console.log("No products found");
-      res.status(404).send({ notFound: true });
+      res.status(200).send({ notFound: true });
       return;
     }
   
@@ -129,8 +138,7 @@ route.get("/searchData",  async (req, res, next) => {
     snapshot.forEach(doc => {
       products.push({ id: doc.id, ...doc.data() });
     });
-  
-    console.log("Products:", products);
+    console.log(products);
     res.status(200).send(products);
   } catch (err) {
     console.error("Error:", err);
