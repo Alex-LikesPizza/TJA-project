@@ -8,7 +8,6 @@ fetch('/productsGallery')
   })
   .then(products => {
     products.forEach(product => {
-      console.log(product.title, product.keywords);
       const listItem = document.createElement('li');
       const cart = getCart();
       const isInCart = cart.includes(product.id);
@@ -53,7 +52,8 @@ productSearchForm.addEventListener("submit", (e) => {
 });
 function fetchSearchResults(data){
   if(!(typeof data === "string") || data.trim() === ""){
-    alert("Vă rog să introduceți text valid");
+    galleryDOM.style.display = "grid";
+    productSearchDOM.innerHTML = "";
     return;
   }
   fetch(`/searchData?data=${encodeURIComponent(data)}`)
@@ -69,6 +69,7 @@ function fetchSearchResults(data){
       productSearchDOM.innerHTML = "";
       return;
     }
+    console.log(products);
     productSearchDOM.innerHTML = "";
     products.forEach(product => {
       const listItem = document.createElement('li');

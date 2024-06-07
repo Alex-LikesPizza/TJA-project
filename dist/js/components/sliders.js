@@ -5,7 +5,6 @@ const sliderFactory = (id, props) =>
     perMove: 2,
     pagination: false,
     gap: "1rem",
-
     ...props,
   });
   
@@ -99,16 +98,16 @@ function newSliderItem(title, price, imageURL, productId){
   return ` 
   <li class="splide__slide">
     <div class="card">
-      <a class="card__image" onclick="visitProductPage_slider('${productId}')">
+      <a class="card__image" onclick="visitProductPage('${productId}')">
         <img  class="card__image" src="${imageURL}" loading="lazy" alt="example">
       </a>
       <h3 class="card__title">${title}</h3>
       <div class="card__actions">
-        <button onclick="addToCart('${productId}')" class="button button--monochrome-bordered cartButton-${productId}">
+        <button onclick="addToWishlist('${productId}')" class="button button--monochrome-bordered wishlistButton-${productId}">
           <i class="bi bi-bookmark"></i>
         </button>
         <p class="card__price">${price} lei</p>
-        <button onclick="addToWishlist('${productId}')" class="button button--monochrome-bordered wishlistButton-${productId}">
+        <button onclick="addToCart('${productId}')" class="button button--monochrome-bordered cartButton-${productId}">
           <i class="bi bi-plus-circle"></i>
         </button>
       </div>

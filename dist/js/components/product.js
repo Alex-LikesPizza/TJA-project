@@ -52,20 +52,14 @@ function getCart(){
 }
 function addToCart(productId){
   const cart = getCart();
-  const buttonsDOM = document.querySelectorAll(".cartButton-" + productId);
-
   const inCartIndex = cart.findIndex((cartProductId) => productId === cartProductId);
   if(inCartIndex !== -1) {
     cart.splice(inCartIndex, 1);
-    buttonsDOM.forEach(buttonDOM => {
-      buttonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`;
-    });
+    productButtonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`;
   }
   else{
     cart.unshift(productId);
-    buttonsDOM.forEach(buttonDOM => {
-      buttonDOM.innerHTML = `<i class="bi bi-check2-circle"></i> Adăugat`;
-    });
+    productButtonDOM.innerHTML = `<i class="bi bi-check2-circle"></i> Adăugat`;
   }
   
   localStorage.setItem("BBA_CART", JSON.stringify(cart));
@@ -75,14 +69,11 @@ function addToCart(productId){
 }
 function removeFromCart(productId){
   const cart = getCart();
-  const buttonsDOM = document.querySelectorAll(".cartButton-" + productId);
 
   const inCartIndex = cart.findIndex((cartProductId) => productId === cartProductId);
   if(inCartIndex !== -1) {
     cart.splice(inCartIndex, 1);
-    buttonsDOM.forEach(buttonDOM => {
-      buttonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`;
-    });
+    productButtonDOM.innerHTML = `<i class="bi bi-plus-circle"></i> Adaugă în coș`;
   }
 
   localStorage.setItem("BBA_CART", JSON.stringify(cart));
@@ -103,20 +94,15 @@ function getWishlist(){
 
 function addToWishlist(productId){
   let wishlist = getWishlist();
-  const buttonsDOM = document.querySelectorAll(".wishlistButton-" + productId);
   
   const inWishlistIndex = wishlist.findIndex((wishlistProductId) => productId === wishlistProductId);
   if(inWishlistIndex !== -1) {
     wishlist.splice(inWishlistIndex, 1);
-    buttonsDOM.forEach(buttonDOM => {
-      buttonDOM.innerHTML = `<i class="bi bi-bookmark"></i>`
-    });
+    productButtonSaveDOM.innerHTML = `<i class="bi bi-bookmark"></i>`
   }
   else{
     wishlist.unshift(productId);
-    buttonsDOM.forEach(buttonDOM => {
-      buttonDOM.innerHTML = `<i class="bi bi-bookmark-fill"></i>`;
-    });
+    productButtonSaveDOM.innerHTML = `<i class="bi bi-bookmark-fill"></i>`;
   }
   removeFromCart(productId);
   localStorage.setItem("BBA_WISHLIST", JSON.stringify(wishlist)); 
@@ -124,14 +110,11 @@ function addToWishlist(productId){
 }
 function removeFromWishlist(productId){
   const wishlist = getWishlist();
-  const buttonsDOM = document.querySelectorAll(".wishlistButton-" + productId);
 
   const inWishlistIndex = wishlist.findIndex((wishlistProductId) => productId === wishlistProductId);
   if(inWishlistIndex !== -1) {
     wishlist.splice(inWishlistIndex, 1);
-    buttonsDOM.forEach(buttonDOM => {
-      buttonDOM.innerHTML = `<i class="bi bi-bookmark"></i>`;
-    })
+    productButtonSaveDOM.innerHTML = `<i class="bi bi-bookmark"></i>`;
   }
 
   localStorage.setItem("BBA_WISHLIST", JSON.stringify(wishlist));

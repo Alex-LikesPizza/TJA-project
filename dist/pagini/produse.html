@@ -20,6 +20,7 @@
   <title>Bellatrix Bizantin Art - Produse</title>
 </head>
 <body>
+  <div id="to-top"></div>
   <div class="header__pre"></div>
   <header id="header" class="header">
     <div class="more more--closed">
@@ -114,12 +115,12 @@
     <section class="products">
       <h2 class="products__title">Galerie</h2>
       <div class="products-nav">
+        <div class="products-nav__background"></div>
         <h2 class="products-nav__title">Caută</h2>
         <form class="products-nav__form" id="product-search-form">
-          <input name="input-text" type="text" class="products-nav__search" placeholder="Coș cu fructe...">
+          <input name="input-text" type="text" class="products-nav__search" placeholder="animal...">
           <input type="submit" value="Caută" class="products-nav__submit">
         </form>
-        <div class="products-nav__background"></div>
       </div>
       <ul class="products__gallery">
         <!-- <li>
@@ -175,7 +176,13 @@
       </ul>
     </section>
   </main>
-
+  <div class="to-top">
+    <a href="#to-top">
+      <button class="to-top__button button--no-button">
+        <i class="bi bi-arrow-up-short to-top__arrow"></i>
+      </button>
+    </a>
+  </div>
   <footer class="footer">
     <div class="footer__background"></div>
     <p class="footer__disclamer">

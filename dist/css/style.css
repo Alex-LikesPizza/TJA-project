@@ -388,7 +388,7 @@ p {
   transform: scale(1.2); }
 
 .slider {
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   background-color: #f8ebdf;
   padding: 1rem;
   border-radius: 0.3rem;
@@ -660,9 +660,8 @@ p {
     position: relative;
     width: 16rem;
     height: 21.3rem;
-    background-size: cover;
-    background-position: top;
     position: absolute;
+    object-fit: cover;
     border-radius: 4px;
     box-shadow: 2px 2px 3px rgba(19, 17, 18, 0.6);
     top: 0;
@@ -677,14 +676,10 @@ p {
       outline: 4px solid #caa081;
       outline-offset: 0.5rem; }
     .home__image--1 {
-      background-image: url("../images/sample2.jpg");
       transform: translateX(-1rem) rotate(-5deg); }
       .home__image--1:hover {
         rotate: 5deg; }
-    .home__image--2 {
-      background-image: url("../images/sample1.jpg"); }
     .home__image--3 {
-      background-image: url("../images/sample3.jpg");
       transform: translateX(1rem) rotate(5deg); }
       .home__image--3:hover {
         rotate: -5deg; }
@@ -1427,7 +1422,6 @@ p {
       transform: translateX(0.2rem); }
 
 .products__title {
-  margin-top: 2rem;
   text-align: center;
   font-size: 2.4rem;
   background-image: linear-gradient(to left, rgba(236, 212, 192, 0), #f8ebdf, rgba(236, 212, 192, 0)); }
@@ -1446,7 +1440,8 @@ p {
 
 .product {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  align-items: center; }
   .product__info {
     width: clamp(45ch, 40%, 60ch);
     margin-top: 4rem;
@@ -1480,11 +1475,12 @@ p {
     position: relative;
     box-shadow: 0.2rem 0.2rem 0.4rem rgba(19, 17, 18, 0.2);
     border-radius: 0.2rem;
-    height: 70vh;
+    max-width: 50vw;
+    max-height: 70vh;
     margin-top: 4rem; }
   .product__image {
-    width: 100%;
-    height: 100%; }
+    max-width: 50vw;
+    max-height: 70vh; }
     .product__image:hover {
       transform: scale(2);
       cursor: zoom-in; }
@@ -1640,7 +1636,7 @@ p {
   display: none;
   position: relative;
   display: block;
-  margin-top: 1rem; }
+  margin: 1rem 0; }
   .wishlist__list {
     list-style: none;
     position: relative;

@@ -129,9 +129,8 @@
     position: relative;
     width: 16rem;
     height: 21.3rem;
-    background-size: cover;
-    background-position: top;
     position: absolute;
+    object-fit: cover;
     border-radius: 4px;
     box-shadow: 2px 2px 3px rgba($black, .6);
     top: 0;
@@ -150,18 +149,13 @@
     }
     
     &--1{
-      background-image: url("../images/sample2.jpg");
       transform: translateX(-1rem) rotate(-5deg);
 
       &:hover{
         rotate: 5deg;
       }
     }
-    &--2{
-      background-image: url("../images/sample1.jpg");
-    }
     &--3{
-      background-image: url("../images/sample3.jpg");
       transform: translateX(1rem) rotate(5deg);
 
       &:hover{

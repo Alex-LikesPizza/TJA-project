@@ -121,14 +121,15 @@ route.get("/searchData",  async (req, res, next) => {
     }
 
     const searchTerm = data.trim().toLowerCase();
-    const searchWords = searchTerm.split(" ").filter(word => word.length > 0).map(word => standardizeWord(word));
+    const searchWords = searchTerm.split(" ").filter(word => word.length > 0).map(word => standardizeWord(word).trim());
     console.log("Search:", searchWords);
 
-    // const q = query(
-    //   productsRef,
-    //   where('keywords', 'array-contains-any', searchWords),
-    // );
-    const snapshot = await getDocs(productsRef);
+    const q = query(
+      productsRef,
+      where('keywords', 'array-contains-any', searchWords),
+    );
+    const snapshot = await getDocs(q);
+    
     if (snapshot.empty) {
       res.status(200).send({ notFound: true });
       return;

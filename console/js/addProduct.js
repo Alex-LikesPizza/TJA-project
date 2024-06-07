@@ -53,7 +53,7 @@ keywordsUploadDOM.addEventListener("input", (e) => {
   keywords.forEach(keyword => {
     keyword = standardizeWord(keyword);
     if(!keyword) return;
-    cleanKeywords.push(keyword);
+    cleanKeywords.push(keyword.trim());
   });
 
   productData.keywords = cleanKeywords;
