@@ -1,11 +1,11 @@
-const calculateWidth = () => parseFloat(getComputedStyle(document.querySelector(".card")).width);
-const sliderFactory = (id, props) =>
+const sliderFactory = (id, props = {}) =>
   new Splide(id, {
     lazyLoading: true,
     perMove: 2,
     pagination: false,
     gap: "1rem",
     ...props,
+    fixedWidth: "16rem",
   });
   
 
@@ -15,9 +15,9 @@ const similarSlider = document.querySelector("#slider--similar");
 const testimonialsSlider = document.querySelector("#slider--testimonials");
 
 if(recommendedSlider !== null)
-  sliderFactory("#slider--recommended", {fixedWidth: calculateWidth()}).mount();
+  sliderFactory("#slider--recommended").mount();
 if(similarSlider !== null)
-  sliderFactory("#slider--similar", {fixedWidth: calculateWidth()}).mount();
+  sliderFactory("#slider--similar").mount();
 if(testimonialsSlider !== null){
   sliderFactory("#slider--testimonials", {
     type: "carousel",
@@ -79,7 +79,7 @@ if (resentsSlider) {
       sliderList.innerHTML += newSliderItem(title, price, imageURL, productId);
     });
 
-    sliderFactory("#slider--resents", { fixedWidth: calculateWidth() }).mount();
+    sliderFactory("#slider--resents").mount();
   });
 }
 if(recommendedSlider){
